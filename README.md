@@ -1,1 +1,1 @@
-# HotellApp
+# HotelApp
