@@ -1,0 +1,30 @@
+.column2 {
+    float: left;
+    width: 33.33%;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+    
+  }
+
+  /* Clear floats after the columns */
+  .date-container{
+    justify-content: left;
+    position: absolute;
+    bottom: 20px;
+    border: #fff;
+    padding: 10px;
+    color: #fff;
+     bottom: 5px; left: 300px; right: 300px;
+     font-size: large;
+     text-align: center;
+     padding: 5px;
+     
+  
+
+  }
+  .date-container:after{
+    
+    content: "";
+  display: table;
+  clear: both;
+  }
