@@ -1,44 +1,42 @@
 import React, { useState } from 'react'
 import FlavorForm from '../../components/Forma'
 import Kalendar from '../../components/Kalendar'
-import '../../components/pages/StepOne.css'
-import 'react-bootstrap'
-export default () => {
-  
+import Datum2 from '../../components/Datum2'
+import '../../components/pages/Rezervacija.css'
 
+import 'react-bootstrap'
+import { Fragment } from 'react'
+
+
+export default () => {
   return (
+    <Fragment>
+    
     <div className="step-one-container">
-        <div className="row">
-            <p>Odaberite datum rezervacije:</p>
-            <div className="col-sm-6">
-                <p>
-                <Kalendar/>
-                </p>
-            </div>
-            <div className="col-sm-6">
-                <p>
-                <Kalendar/>
-                </p>
-            </div>
+        <div className="row-s1">
+                <Datum2/>
         </div>
         
         <div className="pick">
+        
             <div className="columnPick">
+            <i class="fas fa-bed"></i>
                 <p>Broj soba:</p>
                 <FlavorForm/>
             </div>
             <div className="columnPick">
-                <p>Broj osoba:</p>
+            <i class="far fa-user"></i>
+                <p>Broj odraslih:</p>
                 <FlavorForm/>
             </div>
             <div className="columnPick">
+            <i class="fas fa-baby"></i>
                 <p>Broj djece:</p>
                 <FlavorForm/>
             </div>
             
         </div>
-       
-       
     </div>
+    </Fragment>
   )
 }

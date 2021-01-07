@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+}
+.hero-container-rezerv {
+  background: url('../../images/rezervacija.jpg') center center/cover repeat; 
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+  position: relative;
+  color: white;
+}
+
+.step-one-container{
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  
+}
+
+.row-s1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.date-container-2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 4rem;
+  justify-content: center;
+  color: black;
+  font-size: x-large;
+  border: 1px solid black;
+  
+}
+
+.first-column-2 {
+  text-align: center;
+  width: 45%;
+  float: left;
+  color: black;
+  padding-right: 100px;
+}
+
+.second-column-2 {
+  width: 45%;
+  float: right;
+  color: black;
+  padding-left: 100px;
+}
+
+.pick{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4rem;
+  justify-content: center;
+  color: black;
+}
+.columnPick{
+  text-align: center;
+  width: 30%;
+  float: left;
+  padding: 5px;
+  color: black;
+  font-size: x-large;
+  border: 1px solid black;
+}
+
+.btn-povratak{
+  float: left;
+  padding: 30px;
+    font-size: 50px;
+    border-radius: 40px;
+}
+.btn-nastavak{
+  float: right;
+  padding: 30px;
+    font-size: 50px;
+    border-radius: 40px;
+}
+
+.title-rezerv{
+  text-align: right;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: xx-large; 
+}
+
+.input-form{
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.row-step-3{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  justify-content: center;
+  color: black;
+  font-size: x-large;
+  
+}
+.first-column-3 {
+  text-align: center;
+  width: 30%;
+  float: left;
+  color: black;
+  padding: 5px;
+}
+
+.second-column-3 {
+  width: 30%;
+  float: right;
+  color: black;
+  padding: 5px;
+}
+
+.napomena{
+  font-size: x-small;
+}
+
+.title{
+  font-size: 30px;
+  
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+}
+
+.input-form2{
+  width: 120%;
+  height: 100px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

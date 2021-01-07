@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
+import './Rezervacija.css'
 
 import 'react-calendar/dist/Calendar.css';
 
@@ -24,13 +25,20 @@ export default class Rezervacija extends Component{
 
   render(){
     return (
-      <div className="step-one">
+      <>
+        <div className="hero-container-rezerv">
         
-      <h1 className='rezervacija'>Rezervacija</h1>;
-      <MultiStep steps={steps} prevStyle={prevStyle} nextStyle={nextStyle}/>
+          Rezervacija
+          
+        </div>
+
+        <div >
+        <MultiStep steps={steps} prevStyle={prevStyle} nextStyle={nextStyle}/>
+        </div>
       
       
-      </div>
+      
+      </>
     );
   }
   
