@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Button } from './Button';
-//import './Datum.css';
 
 function Datum() {
   // Declare a new state variable, which we'll call "count"
@@ -12,9 +10,9 @@ function Datum() {
 
   
   return (
-      <div className="date-container">
-      <div className="column"> 
-      
+      <div className="date-container-2">
+      <div className="first-column-2"> 
+      <i class="far fa-calendar-alt"></i>
         <p>Datum dolaska:</p>
         <DatePicker filterDate={d => {
           return new Date() <d;
@@ -27,8 +25,8 @@ function Datum() {
         />
       </div>
       
-      <div className="column">
-      
+      <div className="second-column-2">
+      <i class="far fa-calendar-alt"></i>
       <p>Datum odlaska:</p>
        <DatePicker filterDate={d => {
           return new Date() < startDate;
@@ -40,9 +38,6 @@ function Datum() {
           minDate={startDate}
           onChange={date => setEndDate(date)}
         />
-      </div>
-      <div className="column">
-      <Button buttonStyle='btn--outline'>Rezerviši sada</Button>
       </div>
       </div>
     );

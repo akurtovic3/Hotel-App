@@ -158,3 +158,8 @@
       transition: 250ms;
     }
   }
+
+  /*moje dodavanje*/
+  .logo-navbar{
+    padding: 10px;
+  }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { css, styled, setup } from 'goober'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import '../components/pages/Rezervacija.css'
 setup(React.createElement)
 
 
@@ -9,6 +10,9 @@ const Ol = styled('ol')`
   margin: 0;
   padding-bottom: 2.2rem;
   list-style-type: none;
+  text-align: center;
+  
+  font-size: x-large;
 `
 
 const LiClass = props => css`
@@ -134,7 +138,7 @@ export default function MultiStep(props) {
         
         <div className="btn-povratak">
         
-        <Button   size="lg" 
+        <Button  
           style={buttonsState.showPreviousBtn ? props.prevStyle : { display: 'none' }}
           onClick={previous}
         >
@@ -144,8 +148,7 @@ export default function MultiStep(props) {
         <div className="btn-nastavak">
         <Button  size="lg" 
           style={buttonsState.showNextBtn ? props.nextStyle : { display: 'none' }}
-          onClick={next}
-        >
+          onClick={next}>
           Nastavi rezervaciju
         </Button>
         </div>

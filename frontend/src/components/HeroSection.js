@@ -10,19 +10,9 @@ function HeroSection() {
     
   return (
     <div className='hero-container'>
-      
-      
-      
-      <div className='clr-entr-point'>
-
-      <div className='reservation-div'>
-        
+         <video src='/videos/video-1m.mp4' autoPlay loop muted />
           <Datum/>
-        
-        
-      </div>
       
-      </div>
     </div>
     
   );

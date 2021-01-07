@@ -7,8 +7,8 @@ video {
   }
   
   .hero-container {
-     background: url('../images/img-home.jpg') center center/cover no-repeat; 
-    height: 80vh;
+    /* background: url('../images/img-home.jpg') center center/cover no-repeat; */
+    height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -75,3 +75,34 @@ video {
  .reservation-div{
    border: #fff;
  }
+
+ /*Postavke za dio gdje se postavlja datum na Home stranici*/
+ .column {
+  float: left;
+  width: 33.33%;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+  
+}
+
+/* Clear floats after the columns */
+.date-container{
+  justify-content: left;
+  position: absolute;
+  bottom: 20px;
+  border: 1px solid white;
+  padding: 10px;
+  color: #fff;
+   bottom: 5px; left: 300px; right: 300px;
+   font-size: large;
+   text-align: center;
+   padding: 5px;
+   background-color: rgba(255,255,255,0.5);
+   
+}
+.date-container:after{
+  
+  content: "";
+display: table;
+clear: both;
+}
