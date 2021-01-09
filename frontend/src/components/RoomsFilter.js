@@ -26,7 +26,7 @@ const RoomsFilter = ({ rooms }) => {
   // get unique types
   let types = getUnique(rooms, "type");
   // add all
-  types = ["all", ...types];
+  types = ["svi tipovi", ...types];
   // map to jsx
   types = types.map((item, index) => (
     <option key={index} value={item}>
@@ -47,7 +47,7 @@ const RoomsFilter = ({ rooms }) => {
       <form className="filter-form">
         {/* select type */}
         <div className="form-group">
-          <label htmlFor="type">room type</label>
+          <label htmlFor="type">Soba / Apartman</label>
           <select
             name="type"
             id="type"
@@ -61,7 +61,7 @@ const RoomsFilter = ({ rooms }) => {
         {/* end of select type */}
         {/* guests  */}
         <div className="form-group">
-          <label htmlFor="capacity">Guests</label>
+          <label htmlFor="capacity">Gosti</label>
           <select
             name="capacity"
             id="capacity"
@@ -75,7 +75,7 @@ const RoomsFilter = ({ rooms }) => {
         {/* end of guests */}
         {/* room price */}
         <div className="form-group">
-          <label htmlFor="price">room price ${price}</label>
+          <label htmlFor="price">Cijena €{price}</label>
           <input
             type="range"
             name="price"
@@ -90,7 +90,7 @@ const RoomsFilter = ({ rooms }) => {
         {/* end of room price*/}
         {/* size */}
         <div className="form-group">
-          <label htmlFor="price">room size </label>
+          <label htmlFor="price">Veličina (m²) </label>
           <div className="size-inputs">
             <input
               type="number"
@@ -111,16 +111,7 @@ const RoomsFilter = ({ rooms }) => {
         {/* end of select type */}
         {/* extras */}
         <div className="form-group">
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
-              onChange={handleChange}
-            />
-            <label htmlFor="breakfast">breakfast</label>
-          </div>
+          
           <div className="single-extra">
             <input
               type="checkbox"
@@ -128,7 +119,7 @@ const RoomsFilter = ({ rooms }) => {
               checked={pets}
               onChange={handleChange}
             />
-            <label htmlFor="breakfast">pets</label>
+            <label htmlFor="breakfast">Kućni ljubimci</label>
           </div>
         </div>
         {/* end of extras type */}

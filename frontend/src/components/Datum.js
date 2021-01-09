@@ -44,6 +44,7 @@ function Datum() {
       <div className="column">
       <Button buttonStyle='btn--outline'>Rezerviši sada</Button>
       </div>
+      
       </div>
     );
      

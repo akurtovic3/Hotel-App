@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { css, styled, setup } from 'goober'
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import '../components/pages/Rezervacija.css'
 setup(React.createElement)
 
@@ -11,8 +11,11 @@ const Ol = styled('ol')`
   padding-bottom: 2.2rem;
   list-style-type: none;
   text-align: center;
-  
+  background-color: rgba(255, 255, 255, 0.74);
   font-size: x-large;
+  width: 700px;
+  margin: auto;
+  
 `
 
 const LiClass = props => css`
@@ -68,6 +71,7 @@ const getTopNavStyles = (indx, length) => {
 const getButtonsState = (indx, length) => {
   if (indx > 0 && indx < length - 1) {
     return {
+      
       showPreviousBtn: true,
       showNextBtn: true
     }
@@ -75,6 +79,7 @@ const getButtonsState = (indx, length) => {
     return {
       showPreviousBtn: false,
       showNextBtn: true
+     
     }
   } else {
     return {
@@ -122,13 +127,17 @@ export default function MultiStep(props) {
 
   const renderSteps = () =>
     props.steps.map((s, i) => (
+      
         <li
           className={LiClass({state: stylesState[i]})} 
           onClick={handleOnClick}
           key={i}
           value={i}
         >
-          <span>{i+1}</span>
+          
+          <span>
+                {i+1}
+          </span>
         </li>
     ))
 
@@ -138,37 +147,48 @@ export default function MultiStep(props) {
         
         <div className="btn-povratak">
         
-        <Button  
-          style={buttonsState.showPreviousBtn ? props.prevStyle : { display: 'none' }}
-          onClick={previous}
-        >
-          Povratak
-        </Button>
+        <Link to={`/rezervacija/${compState-1}`}>
+          <Button  
+            style={buttonsState.showPreviousBtn ? props.prevStyle : { display: 'none' }}
+            onClick={previous}
+          >
+            Povratak
+          </Button>
+        </Link>
+        
         </div>
         <div className="btn-nastavak">
-        <Button  size="lg" 
-          style={buttonsState.showNextBtn ? props.nextStyle : { display: 'none' }}
-          onClick={next}>
-          Nastavi rezervaciju
-        </Button>
+          <Link to={`/rezervacija/${compState+1}`}>
+          <Button variant="outlined" size="large" 
+            style={buttonsState.showNextBtn ? props.nextStyle : { display: 'none' }}
+            onClick={next}>
+            
+            Nastavi rezervaciju
+            
+          </Button>
+          </Link>
         </div>
       </div>
     )
 
   return (
     <div className="multistep-position">
-    <div onKeyDown={handleKeyDown}>
-      <Ol>{renderSteps()}</Ol>
-      {inactiveComponentClassName ?
-        props.steps.map((step, index) => {
-          const className = index === compState ? activeComponentClassName : inactiveComponentClassName
-          return (<div className={className}>{step.component}</div>)
-        }) :
-        <div>{props.steps[compState].component}</div>
-      }
-      
-      <div>{renderNav(showNav)}</div>
-    </div>
+      <div onKeyDown={handleKeyDown}>
+        <Ol>{renderSteps()}</Ol>
+        {inactiveComponentClassName ?
+          props.steps.map((step, index) => {
+            const className = index === compState ? activeComponentClassName : inactiveComponentClassName
+            return (<div className={className}>
+                      {step.component}
+                    </div>)
+          }) :
+          <div>
+            {props.steps[compState].component}
+          </div>
+        }
+        
+        <div>{renderNav(showNav)}</div>
+      </div>
     </div>
   )
 }
