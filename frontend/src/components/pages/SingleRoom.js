@@ -18,6 +18,8 @@ export default class SingleRoom extends Component {
   }
   static contextType = RoomContext;
 
+  
+
   // componentDidMount() {
   //   console.log(this.props);
   // }
@@ -29,7 +31,7 @@ export default class SingleRoom extends Component {
       return (
         <div className="error">
           <h3> no such room could be found...</h3>
-          <Link to="/rooms" className="btn-primary">
+          <Link to="/rezervacija/2" className="btn-primary">
             back to rooms
           </Link>
         </div>
@@ -51,6 +53,13 @@ export default class SingleRoom extends Component {
 
     return (
       <>
+        
+        <img src={images[0] || defaultBcg} class="image-single"  alt="single room" width="490px" />
+          
+            <Link exact to="/rezervacija/1" className="btn-primary">
+              Povratak
+            </Link>
+          
         
           
         
