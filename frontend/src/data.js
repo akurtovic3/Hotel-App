@@ -21,9 +21,9 @@ export default [
       id: "1"
     },
     fields: {
-      name: "single economy",
-      slug: "single-economy",
-      type: "single",
+      name: "Soba Superior sa pogledom na more",
+      slug: "single-superior-room",
+      type: "soba",
       price: 100,
       size: 200,
       capacity: 1,
@@ -78,9 +78,9 @@ export default [
       id: "2"
     },
     fields: {
-      name: "single basic",
-      slug: "single-basic",
-      type: "single",
+      name: "Jednokrevetna soba Superior",
+      slug: "single-superior-room",
+      type: "soba",
       price: 150,
       size: 250,
       capacity: 1,
@@ -135,12 +135,12 @@ export default [
       id: "3"
     },
     fields: {
-      name: "single standard",
-      slug: "single-standard",
-      type: "single",
+      name: "Standardna dvokrevetna soba",
+      slug: "double-room",
+      type: "soba",
       price: 250,
       size: 300,
-      capacity: 1,
+      capacity: 2,
       pets: true,
       breakfast: false,
       featured: false,
@@ -192,12 +192,12 @@ export default [
       id: "4"
     },
     fields: {
-      name: "single deluxe",
-      slug: "single-deluxe",
-      type: "single",
+      name: "Predsjednički apartman",
+      slug: "presidental-suite",
+      type: "apartman",
       price: 300,
       size: 400,
-      capacity: 1,
+      capacity: 3,
       pets: true,
       breakfast: true,
       featured: false,
@@ -249,12 +249,12 @@ export default [
       id: "5"
     },
     fields: {
-      name: "double economy",
-      slug: "double-economy",
-      type: "double",
+      name: "Apartman Deluxe",
+      slug: "suite-deluxe",
+      type: "apartman",
       price: 200,
       size: 300,
-      capacity: 2,
+      capacity: 4,
       pets: false,
       breakfast: false,
       featured: false,
@@ -306,12 +306,12 @@ export default [
       id: "6"
     },
     fields: {
-      name: "double basic",
-      slug: "double-basic",
-      type: "double",
+      name: "Standardna trokrevetna soba",
+      slug: "triple-standard",
+      type: "soba",
       price: 250,
       size: 350,
-      capacity: 2,
+      capacity: 3,
       pets: false,
       breakfast: false,
       featured: false,
@@ -363,12 +363,12 @@ export default [
       id: "7"
     },
     fields: {
-      name: "double standard",
-      slug: "double-standard",
-      type: "double",
+      name: "Jednokrevetna Deluxe soba",
+      slug: "single-deluxe",
+      type: "soba",
       price: 300,
       size: 400,
-      capacity: 2,
+      capacity: 1,
       pets: true,
       breakfast: false,
       featured: false,
@@ -420,9 +420,9 @@ export default [
       id: "8"
     },
     fields: {
-      name: "double deluxe",
+      name: "Dvokrevetna soba Deluxe",
       slug: "double-deluxe",
-      type: "double",
+      type: "soba",
       price: 400,
       size: 500,
       capacity: 2,
@@ -477,9 +477,9 @@ export default [
       id: "9"
     },
     fields: {
-      name: "family economy",
-      slug: "family-economy",
-      type: "family",
+      name: "Apartman Standard",
+      slug: "suite-standard",
+      type: "apartman",
       price: 300,
       size: 500,
       capacity: 3,
@@ -534,9 +534,9 @@ export default [
       id: "10"
     },
     fields: {
-      name: "family basic",
-      slug: "family-basic",
-      type: "family",
+      name: "Apartman deluxe",
+      slug: "suite-deluxe",
+      type: "apartman",
       price: 350,
       size: 550,
       capacity: 4,
@@ -591,9 +591,9 @@ export default [
       id: "11"
     },
     fields: {
-      name: "family standard",
-      slug: "family-standard",
-      type: "family",
+      name: "Predsjednički apartman s pogledom na more",
+      slug: "presidential-suite",
+      type: "apartman",
       price: 400,
       size: 600,
       capacity: 5,
@@ -648,9 +648,9 @@ export default [
       id: "12"
     },
     fields: {
-      name: "family deluxe",
-      slug: "family-deluxe",
-      type: "family",
+      name: "Apartman za porodicu",
+      slug: "suite-family",
+      type: "apartman",
       price: 500,
       size: 700,
       capacity: 6,
@@ -705,12 +705,12 @@ export default [
       id: "13"
     },
     fields: {
-      name: "presidential",
+      name: "Predsjednički apartman sa pogledom na more",
       slug: "presidential-room",
-      type: "presidential",
+      type: "apartman",
       price: 600,
       size: 1000,
-      capacity: 10,
+      capacity: 4,
       pets: true,
       breakfast: true,
       featured: true,
