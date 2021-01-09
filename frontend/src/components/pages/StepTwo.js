@@ -9,10 +9,14 @@ const Rooms = () => {
     <>
       
           <Link to="/" className="btn-primary">
-            return home
+            
           </Link>
-        
-          <RoomsContainer />
+
+          <div className="step-two-container">
+            <RoomsContainer />
+          </div>
+          
+          
     </>
   );
 };

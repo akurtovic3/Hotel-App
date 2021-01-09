@@ -3,7 +3,7 @@ import '../../App.css';
 import './Rezervacija.css'
 
 import 'react-calendar/dist/Calendar.css';
-
+import {Switch} from 'react-router-dom'
 import MultiStep from '../../components/react-multistep'
 
 
@@ -26,17 +26,14 @@ export default class Rezervacija extends Component{
   render(){
     return (
       <>
-        <div className="hero-container-rezerv">
-        
-          Rezervacija
+      
           
-        </div>
 
-        <div >
-        <MultiStep steps={steps} prevStyle={prevStyle} nextStyle={nextStyle}/>
-        </div>
-      
-      
+          <div className="multiStepContainer">
+            <div className='title-rezerv'>Rezervacija</div>
+            <MultiStep steps={steps} prevStyle={prevStyle} nextStyle={nextStyle}/>
+         
+          </div>
       
       </>
     );
