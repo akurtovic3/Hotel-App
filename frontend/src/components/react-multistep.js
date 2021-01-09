@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { css, styled, setup } from 'goober'
 import Button from 'react-bootstrap/Button';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link ,Router} from 'react-router-dom';
 import '../components/pages/Rezervacija.css'
 setup(React.createElement)
 
@@ -107,11 +107,13 @@ export default function MultiStep(props) {
   const setStepState = (indx) => {
     setStyles(getTopNavStyles(indx, props.steps.length))
     setComp(indx < props.steps.length ? indx : compState)
+    
     setButtons(getButtonsState(indx, props.steps.length))
   }
 
   const next = () => setStepState(compState + 1)
   const previous = () => setStepState(compState > 0 ? compState - 1 : compState)
+  //const previous = () => setStepState( compState - 1)
   const handleKeyDown = evt => evt.which === 13 ? next(props.steps.length) : {}
 
   const handleOnClick = evt => {
@@ -147,7 +149,7 @@ export default function MultiStep(props) {
         
         <div className="btn-povratak">
         
-        <Link to={`/rezervacija/${compState-1}`}>
+        <Link exact to={`/rezervacija/${compState-1}`}>
           <Button  
             style={buttonsState.showPreviousBtn ? props.prevStyle : { display: 'none' }}
             onClick={previous}
@@ -158,7 +160,7 @@ export default function MultiStep(props) {
         
         </div>
         <div className="btn-nastavak">
-          <Link to={`/rezervacija/${compState+1}`}>
+          <Link exact to={`/rezervacija/${compState+1}`}>
           <Button variant="outlined" size="large" 
             style={buttonsState.showNextBtn ? props.nextStyle : { display: 'none' }}
             onClick={next}>
@@ -183,12 +185,35 @@ export default function MultiStep(props) {
                     </div>)
           }) :
           <div>
-            {props.steps[compState].component}
+            
+           
+          
+              <Switch>
+    
+                <Route path="/rezervacija/0" >
+                {props.steps[0].component}
+                </Route>
+                <Route path="/rezervacija/1" >
+                {props.steps[1].component}
+                </Route>
+                <Route path="/rezervacija/2" >
+                {props.steps[2].component}
+                </Route>
+                <Route path="/rezervacija/3" >
+                {props.steps[3].component}
+                </Route>
+      
+      
+      
+              </Switch>
+                
+             
           </div>
         }
         
         <div>{renderNav(showNav)}</div>
       </div>
     </div>
+
   )
 }

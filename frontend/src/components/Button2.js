@@ -18,6 +18,7 @@ const STYLES = ['btn--primary', 'btn--outline', 'btn--test'];
 
 const SIZES = ['btn--medium', 'btn--large'];
 
+
 export const Button2 = ({
   children,
   type,
@@ -32,7 +33,7 @@ export const Button2 = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to='/rezervacija/3' className='btn-mobile'>
+    <Link to='/rezervacija/2' className='btn-mobile'>
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}

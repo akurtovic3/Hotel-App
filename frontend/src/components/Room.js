@@ -7,7 +7,8 @@ import {ImUser} from 'react-icons/im'
 import {TiTimes} from 'react-icons/ti'
 import {IoIosBed, IoMdBed} from 'react-icons/io'
 import { Button2 } from './Button2';
-
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import AOS from 'aos';
 import "aos/dist/aos.css";
 
@@ -28,7 +29,7 @@ const Room = memo(({ room }) => {
             
             <div className="middle">
             <Link to={`/rooms/${slug}`} className="btn-primary-room-link">
-            <button type="button" class="btn btn-outline-secondary">Saznajte više</button>
+              <button type="button" class="btn btn-outline-secondary">Saznajte više</button>
               </Link>
               
             </div>
@@ -71,6 +72,7 @@ const Room = memo(({ room }) => {
               <Link to={`/rooms/${slug}`} className="btn-primary-room-link">
                 Više informacija o sobi
               </Link>
+              
           </div>   
         
         </div>
