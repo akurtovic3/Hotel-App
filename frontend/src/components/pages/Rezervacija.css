@@ -336,3 +336,39 @@
 .left-side:hover .middle {
   opacity: 1;
 }
+
+.single-room-info{
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+  justify-content: space-around;
+  padding: 20px;
+}
+.single-room-info.left{
+  width: 50%;
+  color: black;
+  padding: 5px;
+   
+}
+.single-room-info.right{
+  width: 50%;
+  color: black;
+  padding: 5px;
+}
+
+.extras{
+  list-style-type: none;
+}
+
+.btn-group{
+  padding: 5px;
+}
+
+.cijena{
+  display: flex;
+  text-align: center;
+  border: 2px solid cadetblue;
+  
+  padding: 5px;
+  
+}

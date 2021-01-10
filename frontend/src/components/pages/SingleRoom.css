@@ -1,0 +1,12 @@
+.single-room-page-cont{
+   background: url('../../images/rezervacija.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 120vh;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid;
+}
+

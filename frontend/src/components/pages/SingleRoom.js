@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { RoomContext } from "../../context";
 import '../../components/Banner.js'
 import '../../components/StyledHero.js'
-
+import { Zoom, Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+import './SingleRoom.css'
 
 export default class SingleRoom extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ export default class SingleRoom extends Component {
         <div className="error">
           <h3> no such room could be found...</h3>
           <Link to="/rezervacija/2" className="btn-primary">
-            back to rooms
+            Povratak na sobe
           </Link>
         </div>
       );
@@ -53,11 +55,11 @@ export default class SingleRoom extends Component {
 
     return (
       <>
-        
+      <div className='single-room-page-cont'>
         <img src={images[0] || defaultBcg} class="image-single"  alt="single room" width="490px" />
           
             <Link exact to="/rezervacija/1" className="btn-primary">
-              Povratak
+            <button type="button" class="btn btn-outline-secondary">Povratak na sobe</button>
             </Link>
           
         
@@ -65,9 +67,13 @@ export default class SingleRoom extends Component {
         
         <section className="single-room">
           <div className="single-room-images">
+          <div className="slide-container">
+          <Slide scale={0.4}>
             {defaultImages.map((item, index) => (
               <img key={index} src={item} alt={name} />
             ))}
+            </Slide>
+          </div>
           </div>
           <div className="single-room-info">
             <article className="desc">
@@ -95,6 +101,7 @@ export default class SingleRoom extends Component {
             ))}
           </ul>
         </section>
+        </div>
       </>
     );
   }
