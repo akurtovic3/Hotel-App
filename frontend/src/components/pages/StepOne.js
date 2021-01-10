@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import '../../components/pages/Rezervacija.css'
 import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router-dom';
 
+
 import 'react-bootstrap'
 import { Fragment } from 'react'
 import StepTwo from './StepTwo'
@@ -51,8 +52,25 @@ class StepOne extends Component{
   render(){
   return (
     <div className="multiStepContainer">
-            
-    <div className='title-rezerv'>Rezervacija {this.state.brDjece}</div>
+      <div className='multi-step-btns'>
+        <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> 1</button>
+        <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-2" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}>2</button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button >
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-3" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}>3</button>
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="linija" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-4" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}>4</button>
+      </div>
+      <div className="podnaslovi">
+      <p>Informacije o boravku</p>
+      <p>Odabir sobe</p>   
+      <p>Vaši lični podaci</p>
+      <p>Pregled rezervacije</p>
+      </div>
+    
     <div className="multistep-position">
     <Fragment>
     
@@ -102,14 +120,13 @@ class StepOne extends Component{
         
     <div className="btn-nastavak">
       <Route render={({ history}) => (
-        <Button variant="outlined" size="large" 
-          style={nextStyle}
+        <button  className="btn-nastavak-povratak-style"
           onClick={() => { history.push('/rezervacija/1', { proslijedjeno:this.state, prevStyle:prevStyle, nextStyle:nextStyle,
             
           });
           this.sljKorak(); }}>
           Nastavi rezervaciju
-        </Button>
+        </button>
       )}
     />
 

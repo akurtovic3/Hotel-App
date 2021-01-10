@@ -1,7 +1,7 @@
 
-import Button from 'react-bootstrap/Button';
-import {  Route } from "react-router-dom";
 
+import {  Route } from "react-router-dom";
+import {FcCheckmark} from 'react-icons/fc'
 import React, { Component } from 'react'
 
 export default class StepThree extends Component {
@@ -54,8 +54,27 @@ export default class StepThree extends Component {
 
   render() {
     return (
-      <div>
+      
            <div className='multiStepContainer'>
+             <div>
+        <div className='multi-step-btns'>
+        <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> <FcCheckmark/></button>
+        <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-2" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}><FcCheckmark/></button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button >
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-3" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}>3</button>
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="linija" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
+        <button className="multi-step-btn-style-4" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}>4</button>
+      </div>
+      <div className="podnaslovi">
+      <p>Informacije o boravku</p>
+      <p>Odabir sobe</p>   
+      <p>Vaši lični podaci</p>
+      <p>Pregled rezervacije</p>
+      </div>
               <div className="step-three-container">
                 <p className="title">Informacije o gostu:</p>
                 <div className='row-step-3'>
@@ -92,27 +111,25 @@ export default class StepThree extends Component {
               </div>
               <div className="btn-povratak">
                       <Route render={({ history}) => (
-                        <Button variant="outlined" size="large" 
-                          style={this.props.location.state.prevStyle}
+                        <button className="btn-nastavak-povratak-style"
                           onClick={() => { history.push('/rezervacija/1', { proslijedjeno:this.state, 
                             
                           });
                           this.prethKorak(); }}>
                           Povratak
-                        </Button>
+                        </button>
                       )}
                     />
               </div>
               <div className="btn-nastavak">
                       <Route render={({ history}) => (
-                        <Button variant="outlined" size="large" 
-                          style={this.props.location.state.nextStyle}
+                        <button className="btn-nastavak-povratak-style"
                           onClick={() => { history.push('/rezervacija/3', { proslijedjeno:this.state, 
                             
                           });
                           this.sljKorak(); }}>
                           Nastavi rezervaciju
-                        </Button>
+                        </button>
                       )}
               />
 
