@@ -15,6 +15,8 @@ import img10 from "./images/room-10.jpeg";
 import img11 from "./images/room-11.jpeg";
 import img12 from "./images/room-12.jpeg";
 
+
+
 export default [
   {
     sys: {
@@ -25,21 +27,27 @@ export default [
       slug: "single-superior-room",
       type: "soba",
       price: 100,
-      size: 200,
+      size: 40,
       capacity: 1,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 5,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -82,21 +90,27 @@ export default [
       slug: "single-superior-room",
       type: "soba",
       price: 150,
-      size: 250,
+      size: 30,
       capacity: 1,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 4,
+      balkon: 1,
+      pogled: 0,
+      tv: 1,
+      minibar: 0,
+      fridge: 0,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -139,21 +153,27 @@ export default [
       slug: "double-room",
       type: "soba",
       price: 250,
-      size: 300,
+      size: 30,
       capacity: 2,
       pets: true,
       breakfast: false,
       featured: false,
+      rates: 3,
+      balkon: 0,
+      pogled: 0,
+      tv: 0,
+      minibar: 0,
+      fridge: 0,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -196,21 +216,27 @@ export default [
       slug: "presidental-suite",
       type: "apartman",
       price: 300,
-      size: 400,
+      size: 60,
       capacity: 3,
       pets: true,
       breakfast: true,
       featured: false,
+      rates: 5,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -253,21 +279,27 @@ export default [
       slug: "suite-deluxe",
       type: "apartman",
       price: 200,
-      size: 300,
+      size: 50,
       capacity: 4,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 4,
+      balkon: 1,
+      pogled: 0,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -310,21 +342,27 @@ export default [
       slug: "triple-standard",
       type: "soba",
       price: 250,
-      size: 350,
+      size: 35,
       capacity: 3,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 4,
+      balkon: 0,
+      pogled: 0,
+      tv: 1,
+      minibar: 0,
+      fridge: 0,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -367,21 +405,27 @@ export default [
       slug: "single-deluxe",
       type: "soba",
       price: 300,
-      size: 400,
+      size: 37,
       capacity: 1,
       pets: true,
       breakfast: false,
       featured: false,
+      rates: 5,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 0,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -424,21 +468,27 @@ export default [
       slug: "double-deluxe",
       type: "soba",
       price: 400,
-      size: 500,
+      size: 27,
       capacity: 2,
       pets: true,
       breakfast: true,
       featured: true,
+      rates: 5,
+      balkon: 1,
+      pogled: 0,
+      tv: 1,
+      minibar: 1,
+      fridge: 0,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -481,21 +531,27 @@ export default [
       slug: "suite-standard",
       type: "apartman",
       price: 300,
-      size: 500,
+      size: 31,
       capacity: 3,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 4,
+      balkon: 1,
+      pogled: 0,
+      tv: 0,
+      minibar: 0,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -538,21 +594,27 @@ export default [
       slug: "suite-deluxe",
       type: "apartman",
       price: 350,
-      size: 550,
+      size: 47,
       capacity: 4,
       pets: false,
       breakfast: false,
       featured: false,
+      rates: 4,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -595,21 +657,27 @@ export default [
       slug: "presidential-suite",
       type: "apartman",
       price: 400,
-      size: 600,
+      size: 63,
       capacity: 5,
       pets: true,
       breakfast: false,
       featured: false,
+      rates: 5,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -652,21 +720,27 @@ export default [
       slug: "suite-family",
       type: "apartman",
       price: 500,
-      size: 700,
+      size: 36,
       capacity: 6,
       pets: true,
       breakfast: true,
       featured: true,
+      rates: 4,
+      balkon: 1,
+      pogled: 1,
+      tv: 0,
+      minibar: 0,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
@@ -709,21 +783,27 @@ export default [
       slug: "presidential-room",
       type: "apartman",
       price: 600,
-      size: 1000,
+      size: 60,
       capacity: 4,
       pets: true,
       breakfast: true,
       featured: true,
+      rates: 5,
+      balkon: 1,
+      pogled: 1,
+      tv: 1,
+      minibar: 1,
+      fridge: 1,
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       extras: [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
+        "Besplatan toaletni pribor",
+        "Fen za kosu",
+        "Ogrtač, peškiri, posteljina",
+        "Utičnica pokraj kreveta",
+        "Usluga buđenja",
+        "Aparat za pripremu kafe/čaja",
+        "Satelitski programi"
       ],
       images: [
         {
