@@ -20,7 +20,11 @@ export default class FlavorForm extends React.Component {
         <form >
           <label>
             
-            <select value={this.state.value} onChange={this.handleChange}>
+            <select value={this.state.value} onChange={e =>{if(this.props.id=="djeca") this.props.promijeniBrDjece(e.target.value)
+                                                            else if(this.props.id=="sobe") this.props.promijeniBrSoba(e.target.value)
+                                                            else this.props.promijeniBrOdraslih(e.target.value)
+                                                          this.handleChange(e) }
+                                                            }>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

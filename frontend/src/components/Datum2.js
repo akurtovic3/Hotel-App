@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Datum() {
+function Datum(props) {
   // Declare a new state variable, which we'll call "count"
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(props?props.startDate:Date.now());
+  const [endDate, setEndDate] = useState(props?props.endDate:Date.now());
 
   
   return (

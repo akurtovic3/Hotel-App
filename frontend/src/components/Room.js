@@ -1,32 +1,31 @@
 import React from "react";
+import {useState} from 'react'
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 import { memo } from "react";
-import {useState} from 'react';
-
+import {ImUser} from 'react-icons/im'
+import {TiTimes} from 'react-icons/ti'
+import {IoIosBed, IoMdBed} from 'react-icons/io'
 import { Button2 } from './Button2';
 import Popup from 'reactjs-popup';
 import '../components/PopUp.css';
 import AOS from 'aos';
 import "aos/dist/aos.css";
-import { Slide } from 'react-slideshow-image';
+import '../components/pages/Rezervacija.css'
+import 'react-slideshow-image/dist/styles.css'
 
+import { Slide } from 'react-slideshow-image';
 import {AiFillStar, AiOutlineStar, AiOutlineWifi} from 'react-icons/ai'
 import {FaRulerCombined, FaSnowflake, FaShower, FaWater,FaGlassCheers} from 'react-icons/fa'
-import {ImUser} from 'react-icons/im'
-import {TiTimes} from 'react-icons/ti'
-import {IoIosBed, IoMdBed} from 'react-icons/io'
 import {RiParkingBoxLine,RiSafeFill} from 'react-icons/ri'
 import {CgScreen, CgTrees} from 'react-icons/cg'
 import {MdKitchen  } from 'react-icons/md'
 import {FcCheckmark} from 'react-icons/fc'
 
-
 const Room = memo(({ room }) => {
-  const { name, slug, images, price, capacity, description, extras, size, pets, breakfast, rates, pogled, tv, minibar, fridge, balkon } = room;
+  const { name, slug, images, price, capacity, rates, size, pets, extras, pogled, tv, minibar, fridge } = room;
   const [main, ...defaultImages] = images;
-  console.log(defaultImages);
   const [dorucak, setDorucak] = useState(false);
   const [rucak, setRucak] = useState(false);
   const [vecera, setVecera] = useState(false);
@@ -36,8 +35,6 @@ const Room = memo(({ room }) => {
   const [color3, setColor3] = useState('#D3D3D3'); const [color4, setColor4] = useState('#D3D3D3');
   const [color5, setColor5] = useState('#D3D3D3');
   
-  
-
   AOS.init({
     // initialise with other settings
     duration : 2000
@@ -52,7 +49,6 @@ const Room = memo(({ room }) => {
             <img src={images[0] || defaultImg} class="image"  alt="single room" width="490px" />
             
             <div className="middle">
-            
             <Popup trigger={<button type="button" class="btn btn-outline-secondary">Saznajte više</button>} position="right center">
               <div>
               <h className="room-name">{name}</h>
@@ -179,9 +175,7 @@ const Room = memo(({ room }) => {
           </p>
           <div className="link-sobe">
               BESPLATNO otkazivanje • Nema plaćanja unaprijed <br/>
-              <Link to={`/rooms/${slug}`} className="btn-primary-room-link">
-                Više informacija o sobi
-              </Link>
+              
               
           </div>   
         

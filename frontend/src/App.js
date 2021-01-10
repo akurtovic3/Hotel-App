@@ -20,7 +20,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/rezervacija' component={Rezervacija} />
+         
           <Route path='/rezervacija/0' component={StepOne} />
           <Route path='/rezervacija/1' component={StepTwo} />
           <Route path='/rezervacija/2' component={StepThree} />
