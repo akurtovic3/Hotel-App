@@ -5,21 +5,22 @@ import { Link, withRouter, useHistory, Route } from "react-router-dom";
 import {FcCheckmark} from 'react-icons/fc'
 import '../../components/pages/Rezervacija.css'
 
-
 class Rooms extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      osnove:props.location.state.osnove,
-      nextStyle:props.location.state.nextStyle,
-      prevStyle:props.location.state.prevStyle,
+      ...props.location.state.info,
+      startDate: props.location.state.info.startDate ? new Date(props.location.state.info.startDate)  : new Date(),
+      endDate: props.location.state.info.endDate ? new Date(props.location.state.info.endDate)  : new Date(),
+      brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
+      brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 1,
       idSobe:-1,
       korak:2,
-      dorucak: false,
-      rucak: false,
-      vecera: false,
-      spa: false,
-      bazen: false
+      dorucak: props.location.state.info.dorucak? props.location.state.info.dorucak  : false,
+      rucak: props.location.state.info.rucak? props.location.state.info.rucak  : false,
+      vecera: props.location.state.info.vecera? props.location.state.info.vecera  : false,
+      spa: props.location.state.info.spa? props.location.state.info.spa  : false,
+      bazen: props.location.state.info.bazen? props.location.state.info.bazen  : false,
     };
     this.handleChangeDorucak = this.handleChangeDorucak.bind(this);
     this.handleChangeRucak = this.handleChangeRucak.bind(this);
@@ -156,28 +157,17 @@ class Rooms extends Component{
           <div className="btn-povratak">
             <Route render={({ history}) => (
               <button className="btn-nastavak-povratak-style" 
-                onClick={() => { history.push('/rezervacija/0', { proslijedjeno:this.state, 
+                onClick={() =>{ //this.props.history.goBack
+                history.push('/rezervacija/0', { info:this.state
                   
                 });
-                this.prethKorak(); }}>
+               }}>
                 Povratak
               </button>
             )}
           />
             </div>
-          <div className="btn-nastavak">
-            <Route render={({ history}) => (
-              <button className="btn-nastavak-povratak-style" 
-                onClick={() => { if(this.state.idSobe!=-1) {history.push('/rezervacija/2', { osnove:this.state.osnove, 
-                  
-                });
-                this.sljKorak(); }}}>
-                Nastavi rezervaciju
-              </button>
-            )}
-    />
-
-    </div>
+          
     </div>
     </>
   );

@@ -14,7 +14,6 @@ function RoomContainer({ context, props }) {
 
   return (
     <>
-    <div>{props.osnove.brOdraslih}</div>
       <RoomsFilter rooms={rooms} />
       <RoomsList props={props} rooms={sortedRooms} />
     </>

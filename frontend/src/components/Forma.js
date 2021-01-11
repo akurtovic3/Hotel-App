@@ -3,14 +3,21 @@ import React, { Component } from 'react';
 export default class FlavorForm extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {value: '1'};
+      this.state = {valueDjeca: props.pocetniDjeca?props.pocetniDjeca: '1',
+      valueOdrasli:props.pocetniOdrasli? props.pocetniOdrasli: '1'};
+
   
       this.handleChange = this.handleChange.bind(this);
+      console.log(this.state)
+      console.log(props)
       
     }
   
     handleChange(event) {
-      this.setState({value: event.target.value});
+      if(this.props.id=="djeca")
+        this.setState({valueDjeca: event.target.value, valueOdrasli:this.state.valueOdrasli});
+      else 
+      this.setState({valueDjeca: this.state.valueDjeca, valueOdrasli:event.target.value});
     }
   
     
@@ -20,8 +27,7 @@ export default class FlavorForm extends React.Component {
         <form >
           <label>
             
-            <select value={this.state.value} onChange={e =>{if(this.props.id=="djeca") this.props.promijeniBrDjece(e.target.value)
-                                                            else if(this.props.id=="sobe") this.props.promijeniBrSoba(e.target.value)
+            <select value={this.props.id==="djeca"? this.state.valueDjeca : this.state.valueOdrasli} onChange={e =>{if(this.props.id=="djeca") this.props.promijeniBrDjece(e.target.value)
                                                             else this.props.promijeniBrOdraslih(e.target.value)
                                                           this.handleChange(e) }
                                                             }>

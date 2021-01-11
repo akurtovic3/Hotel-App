@@ -153,8 +153,7 @@ const Room = memo(({ room, props }) => {
               <button
               className={`btn btn--outline btn--medium`}
                 onClick={() => { history.push('/rezervacija/2', {
-                  osnove:props, 
-                  infoSoba:{naziv:name, cijena: price}
+                  info:{...props, naziv:name, cijena: price}
                 }) }}
               >
                 Rezerviši

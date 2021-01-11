@@ -15,11 +15,11 @@ class StepOne extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          startDate: props.location.state ? new Date(props.location.state.startDate)  : new Date(),
-          endDate: props.location.state ? new Date(props.location.state.endDate)  : new Date(),
-          brOdraslih: 1,
-          brDjece:1,
-          brSoba:1,
+          ...props.location.state.info,
+          startDate: props.location.state.info ? new Date(props.location.state.info.startDate)  : new Date(),
+          endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : new Date(),
+          brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
+          brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 1,
           korak:1,
         };
         
@@ -96,21 +96,16 @@ class StepOne extends Component{
         </div>
         
         <div className="pick">
-        
-            <div className="columnPick">
-            <i class="fas fa-bed"></i>
-                <p>Broj soba:</p>
-                <FlavorForm id="sobe" promijeniBrSoba={this.promijeniBrSoba}/>
-            </div>
+      
             <div className="columnPick">
             <i class="far fa-user"></i>
                 <p>Broj odraslih:</p>
-                <FlavorForm id="odrasli" promijeniBrOdraslih={this.promijeniBrOdraslih}/>
+                <FlavorForm id="odrasli" pocetniOdrasli={this.state.brOdraslih}  promijeniBrOdraslih={this.promijeniBrOdraslih}/>
             </div>
             <div className="columnPick">
             <i class="fas fa-baby"></i>
                 <p>Broj djece:</p>
-                <FlavorForm id="djeca" promijeniBrDjece={this.promijeniBrDjece}/>
+                <FlavorForm id="djeca" pocetniDjeca={this.state.brDjece} promijeniBrDjece={this.promijeniBrDjece}/>
             </div>
             
         </div>
@@ -121,10 +116,12 @@ class StepOne extends Component{
     <div className="btn-nastavak">
       <Route render={({ history}) => (
         <button  className="btn-nastavak-povratak-style"
-          onClick={() => { history.push('/rezervacija/1', { osnove:this.state, prevStyle:prevStyle, nextStyle:nextStyle
-            
-          });
-          this.sljKorak(); }}>
+          onClick={() => { history.push('/rezervacija/1', { info:{
+            startDate:this.state.startDate,
+            endDate:this.state.endDate,
+            brOdraslih:this.state.brOdraslih,
+            brDjece:this.state.brDjece      }      
+          }); }}>
           Nastavi rezervaciju
         </button>
       )}

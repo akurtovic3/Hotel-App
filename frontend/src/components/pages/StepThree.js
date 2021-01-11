@@ -9,16 +9,16 @@ class StepThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      osnove:props.location.state.osnove,
-      infoSoba:props.location.state.infoSoba,
-      ime: '',
-      prezime: '',
-      email: '',
-      brojtel: '',
-      specZahtj:'',
+      ...props.location.state.info,
+      ime: props.location.state.info.ime ? props.location.state.info.ime  : '',
+      prezime: props.location.state.info.prezime ? props.location.state.info.prezime  : '',
+      email: props.location.state.info.email ? props.location.state.info.email  : '',
+      brojTel: props.location.state.info.brojTel ? props.location.state.info.brojTel  : '',
+      specZahtj:props.location.state.info.specZahtj ? props.location.state.info.specZahtj  : '',
       korak:3,
       error: false
     };
+    this.provjeriUnos();
     this.promijeniIme = this.promijeniIme.bind(this);
     this.promijeniPrezime = this.promijeniPrezime.bind(this);
     this.promijeniEmail = this.promijeniEmail.bind(this);
@@ -27,7 +27,7 @@ class StepThree extends Component {
     console.log(props);
   }
   
-provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojtel!="") { this.setState(state => ({
+provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojTel!="") { this.setState(state => ({
   ...state,
   error:false
 })); return true;} else { this.setState(state => ({
@@ -37,29 +37,29 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
   promijeniIme(e) {
     this.setState(state => ({
       ...state,
-      ime: e.target.ime,
+      ime: e.target.value,
     }))
   }
   promijeniPrezime(e) {
     this.setState(state => ({
       ...state,
-      prezime: e.target.prezime
+      prezime: e.target.value
     }))
   }
   promijeniEmail(e) {
     this.setState(state => ({
       ...state,
-      email: e.target.email}))
+      email: e.target.value}))
   }
   promijeniBrojTel(e) {
     this.setState(state => ({
       ...state,
-      brojtel: e.target.brojtel}))
+      brojTel: e.target.value}))
   }
   promijeniSpecZahtj(e) {
     this.setState(state => ({
       ...state,
-      specZahtj: e.target.specZahtj}))
+      specZahtj: e.target.value}))
   }
  
   postaviKorak(indx) {
@@ -100,23 +100,23 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                 <p className="title">Informacije o gostu:</p>
                 <div className='row-step-3'>
                   <div className='first-column-3'>
-                      <input type="ime"  className='input-form' placeholder='*Ime'
-                        ime={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/>
+                      <input   className='input-form' placeholder='*Ime'
+                        value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/>
                   </div>
                   <div className='second-column-3'>
-                      <input  type="prezime"  className='input-form' placeholder='*Prezime' 
-                      prezime={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} } />
+                      <input   className='input-form' placeholder='*Prezime' 
+                      value={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} } />
                   </div>
                 </div>
                 <div className='row-step-3'>
                   <div className='first-column-3'>
-                    <input  type="email"  className='input-form' placeholder='*E-mail' 
-                    email={this.state.email} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} } /> 
+                    <input    className='input-form' placeholder='*E-mail' 
+                    value={this.state.email} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} } /> 
                     <p className="napomena">Ovo je e-mail na koji ćemo vam poslati informacije o rezervaciji.</p>
                   </div>
                   <div className='second-column-3'>
-                    <input  type="brojtel"  className='input-form' placeholder='*Broj telefona' 
-                    brojtel={this.state.brojtel} onChange={(e) => { this.promijeniBrojTel(e); this.provjeriUnos()} } />  
+                    <input    className='input-form' placeholder='*Broj telefona' 
+                    value={this.state.brojTel} onChange={(e) => { this.promijeniBrojTel(e); this.provjeriUnos()} } />  
                     
                   </div>
                 </div>
@@ -124,21 +124,20 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                 <div className='row'>
                   <div className='six columns'>
                     <label className="title">Specijalni zahtjevi:</label>
-                    <input type="specZahtj"className='input-form2' placeholder='Ukoliko imate specijalne zahtjeve, napomene i slično, navedite ih ovdje.' 
-                    specZahtj={this.state.specZahtj} onChange={this.promijeniSpecZahtj} /> 
+                    <input className='input-form2' placeholder='Ukoliko imate specijalne zahtjeve, napomene i slično, navedite ih ovdje.' 
+                    value={this.state.specZahtj} onChange={this.promijeniSpecZahtj} /> 
                   </div>
                 </div>
                 {this.state.error && <Alert color="danger" fade={false}>
-            Morate popuniti sva polja označena zvjezdicom!
+            <p style={{color: "red", fontWeight: "bold"}}>Morate popuniti sva polja označena zvjezdicom!</p>
           </Alert>}
               </div>
+              <div>
               <div className="btn-povratak">
                       <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { history.push('/rezervacija/1', { proslijedjeno:this.state, 
-                            
-                          });
-                          this.prethKorak(); }}>
+                          onClick={() => { history.push('/rezervacija/1', { info:this.state}
+                          );}}>
                           Povratak
                         </button>
                       )}
@@ -147,16 +146,14 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
               <div className="btn-nastavak">
                       <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { osnove:this.state.osnove, 
-                            infoSoba:this.state.infoSoba, 
-                            infoKorisnik:{ime:this.state.ime, prezime:this.state.prezime, email:this.state.email, brTel:this.state.brojtel, specZahtj:this.state.specZahtj}
-                          });
-                          this.sljKorak(); } }}>
+                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { info:this.state}
+                          ); } }}>
                           Nastavi rezervaciju
                         </button>
                       )}
               />
 
+              </div>
               </div>
               </div>
 

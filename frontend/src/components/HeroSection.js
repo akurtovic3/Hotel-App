@@ -62,7 +62,7 @@ class HeroSection extends React.Component{
     <button
     className={`btn btn--outline btn--medium`}
       onClick={() => { history.push('/rezervacija/0', {
-        startDate:this.state.startDate, endDate:this.state.endDate
+        info:{startDate:this.state.startDate, endDate:this.state.endDate}
       }) }}
     >
       Rezerviši sada
