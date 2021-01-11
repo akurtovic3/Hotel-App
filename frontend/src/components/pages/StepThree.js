@@ -1,20 +1,23 @@
 
 
-import {  Route } from "react-router-dom";
+import {  Route, withRouter } from "react-router-dom";
 import {FcCheckmark} from 'react-icons/fc'
 import React, { Component } from 'react'
+import Alert from "reactstrap/lib/Alert";
 
-export default class StepThree extends Component {
+class StepThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      osnove:props.location.state,
+      osnove:props.location.state.osnove,
+      infoSoba:props.location.state.infoSoba,
       ime: '',
       prezime: '',
       email: '',
       brojtel: '',
       specZahtj:'',
       korak:3,
+      error: false
     };
     this.promijeniIme = this.promijeniIme.bind(this);
     this.promijeniPrezime = this.promijeniPrezime.bind(this);
@@ -24,7 +27,13 @@ export default class StepThree extends Component {
     console.log(props);
   }
   
-
+provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojtel!="") { this.setState(state => ({
+  ...state,
+  error:false
+})); return true;} else { this.setState(state => ({
+  ...state,
+  error:true
+})); return false;}}
   promijeniIme(e) {
     this.setState({ime: e.target.ime});
   }
@@ -80,22 +89,22 @@ export default class StepThree extends Component {
                 <div className='row-step-3'>
                   <div className='first-column-3'>
                       <input type="ime"  className='input-form' placeholder='*Ime'
-                        ime={this.state.ime} onChange={this.promijeniIme} />
+                        ime={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/>
                   </div>
                   <div className='second-column-3'>
                       <input  type="prezime"  className='input-form' placeholder='*Prezime' 
-                      prezime={this.state.prezime} onChange={this.promijeniPrezime} />
+                      prezime={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} } />
                   </div>
                 </div>
                 <div className='row-step-3'>
                   <div className='first-column-3'>
                     <input  type="email"  className='input-form' placeholder='*E-mail' 
-                    email={this.state.email} onChange={this.promijeniEmail} /> 
+                    email={this.state.email} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} } /> 
                     <p className="napomena">Ovo je e-mail na koji ćemo vam poslati informacije o rezervaciji.</p>
                   </div>
                   <div className='second-column-3'>
                     <input  type="brojtel"  className='input-form' placeholder='*Broj telefona' 
-                    brojtel={this.state.brojtel} onChange={this.promijeniBrojTel} />  
+                    brojtel={this.state.brojtel} onChange={(e) => { this.promijeniBrojTel(e); this.provjeriUnos()} } />  
                     
                   </div>
                 </div>
@@ -107,7 +116,9 @@ export default class StepThree extends Component {
                     specZahtj={this.state.specZahtj} onChange={this.promijeniSpecZahtj} /> 
                   </div>
                 </div>
-                
+                {this.state.error && <Alert color="danger" fade={false}>
+            Morate popuniti sva polja označena zvjezdicom!
+          </Alert>}
               </div>
               <div className="btn-povratak">
                       <Route render={({ history}) => (
@@ -124,10 +135,11 @@ export default class StepThree extends Component {
               <div className="btn-nastavak">
                       <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { history.push('/rezervacija/3', { proslijedjeno:this.state, 
-                            
+                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { osnove:this.state.osnove, 
+                            infoSoba:this.state.infoSoba, 
+                            infoKorisnik:{ime:this.state.ime, prezime:this.state.prezime, email:this.state.email, brTel:this.state.brojtel, specZahtj:this.state.specZahtj}
                           });
-                          this.sljKorak(); }}>
+                          this.sljKorak(); } }}>
                           Nastavi rezervaciju
                         </button>
                       )}
@@ -142,4 +154,4 @@ export default class StepThree extends Component {
   }
 }
 
-
+export default withRouter(StepThree);

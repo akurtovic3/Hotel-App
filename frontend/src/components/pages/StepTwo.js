@@ -10,11 +10,12 @@ class Rooms extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      osnove:props.location.state,
+      osnove:props.location.state.osnove,
+      nextStyle:props.location.state.nextStyle,
+      prevStyle:props.location.state.prevStyle,
       idSobe:-1,
       korak:2,
     };
-    
     console.log(props);
   }
   postaviKorak(indx) {
@@ -23,9 +24,14 @@ class Rooms extends Component{
       korak:indx,
     }))
   }
-  sljKorak(){ this.postaviKorak(this.state.korak + 1) }
+  sljKorak(){ this.postaviKorak(this.state.korak + 1); console.log(this.state.idSobe)}
   prethKorak(){ this.postaviKorak(this.state.korak > 0 ? this.state.korak -1 : this.state.korak)}
-  
+  promijeni=(broj)=>{this.idSobee=broj; console.log(broj); console.log(this.idSobee)}
+  promijeniIdSobe=(broj) =>{this.setState(state => ({
+    ...state,
+    idSobe:broj
+  }))
+}
   render(){
   return (
     <> 
@@ -50,7 +56,7 @@ class Rooms extends Component{
         </div>
       </div>    
           <div className="step-two-container">
-            <RoomsContainer />
+            <RoomsContainer props={this.state}/>
           </div>
           <div>
 
@@ -69,10 +75,10 @@ class Rooms extends Component{
           <div className="btn-nastavak">
             <Route render={({ history}) => (
               <button className="btn-nastavak-povratak-style" 
-                onClick={() => { history.push('/rezervacija/2', { proslijedjeno:this.state, 
+                onClick={() => { if(this.state.idSobe!=-1) {history.push('/rezervacija/2', { osnove:this.state.osnove, 
                   
                 });
-                this.sljKorak(); }}>
+                this.sljKorak(); }}}>
                 Nastavi rezervaciju
               </button>
             )}

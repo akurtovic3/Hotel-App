@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from 'react'
-import { Link } from "react-router-dom";
+import { Link, withRouter, useHistory , Route} from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 import { memo } from "react";
@@ -14,7 +14,7 @@ import AOS from 'aos';
 import "aos/dist/aos.css";
 import '../components/pages/Rezervacija.css'
 import 'react-slideshow-image/dist/styles.css'
-
+import './Button.css';
 import { Slide } from 'react-slideshow-image';
 import {AiFillStar, AiOutlineStar, AiOutlineWifi} from 'react-icons/ai'
 import {FaRulerCombined, FaSnowflake, FaShower, FaWater,FaGlassCheers} from 'react-icons/fa'
@@ -23,7 +23,7 @@ import {CgScreen, CgTrees} from 'react-icons/cg'
 import {MdKitchen  } from 'react-icons/md'
 import {FcCheckmark} from 'react-icons/fc'
 
-const Room = memo(({ room }) => {
+const Room = memo(({ room, props }) => {
   const { name, slug, images, price, capacity, rates, size, pets, extras, pogled, tv, minibar, fridge } = room;
   const [main, ...defaultImages] = images;
   const [dorucak, setDorucak] = useState(false);
@@ -31,10 +31,11 @@ const Room = memo(({ room }) => {
   const [vecera, setVecera] = useState(false);
   const [spa, setSpa] = useState(false);
   const [bazen, setBazen] = useState(false);
+  const [popupOpened, setPopupOpened] = useState(false);
   const [color1, setColor1] = useState('#D3D3D3'); const [color2, setColor2] = useState('#D3D3D3'); 
   const [color3, setColor3] = useState('#D3D3D3'); const [color4, setColor4] = useState('#D3D3D3');
   const [color5, setColor5] = useState('#D3D3D3');
-  
+
   AOS.init({
     // initialise with other settings
     duration : 2000
@@ -49,7 +50,8 @@ const Room = memo(({ room }) => {
             <img src={images[0] || defaultImg} class="image"  alt="single room" width="490px" />
             
             <div className="middle">
-            <Popup trigger={<button type="button" class="btn btn-outline-secondary">Saznajte više</button>} position="right center">
+            <Popup trigger={<button type="button" class="btn btn-outline-secondary" >Saznajte više</button>} 
+            position="right center">
               <div>
               <h className="room-name">{name}</h>
               <p>
@@ -133,6 +135,7 @@ const Room = memo(({ room }) => {
                   <div className="rigt">
                     <h className="cijena">Cijena bez <br/> dodatnih ponuda : <br/> {price} €</h>
                   </div>
+                 
                 </div>
                 
               </div>
@@ -169,9 +172,20 @@ const Room = memo(({ room }) => {
           </p>
           <p>
           
-          <Button2>
-            Rezerviši
-          </Button2>
+            
+          
+          <Route render={({ history}) => (
+              <button
+              className={`btn btn--outline btn--medium`}
+                onClick={() => { history.push('/rezervacija/2', {
+                  osnove:props, 
+                  infoSoba:{naziv:name, cijena: price, dorucak:dorucak, rucak:rucak, vecera:vecera, spa:spa, bazen:bazen}
+                }) }}
+              >
+                Rezerviši
+                </button>
+            )}
+          />
           </p>
           <div className="link-sobe">
               BESPLATNO otkazivanje • Nema plaćanja unaprijed <br/>
@@ -194,4 +208,4 @@ Room.propTypes = {
     price: PropTypes.number.isRequired
   })
 };
-export default Room;
+export default withRouter(Room);

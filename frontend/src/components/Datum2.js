@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Datum(props) {
-  // Declare a new state variable, which we'll call "count"
-  const [startDate, setStartDate] = useState(props?props.startDate:Date.now());
-  const [endDate, setEndDate] = useState(props?props.endDate:Date.now());
+class Datum2 extends React.Component{
+  // Declare a new state variable, which we'll call "coun
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: props?new Date(props.startDate):new Date(),
+      endDate: props?new Date(props.endDate):new Date()
 
+    };
+  }
+  render() {
   
   return (
       <div className="date-container-2">
@@ -17,11 +23,16 @@ function Datum(props) {
         <DatePicker filterDate={d => {
           return new Date() <d;
               }}
-          selected={startDate}
+          selected={this.state.startDate}
           selectsStart
-          startDate={startDate}
-          endDate={endDate} // add the endDate to your startDate DatePicker now that it is defined
-          onChange={date => setStartDate(date)}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate} // add the endDate to your startDate DatePicker now that it is defined
+          onChange={date => {this.setState(state => ({
+            startDate: date,
+            endDate:date
+          }));
+          this.props.handle1(date);
+          }}
         />
       </div>
       
@@ -29,21 +40,25 @@ function Datum(props) {
       <i class="far fa-calendar-alt"></i>
       <p>Datum odlaska:</p>
        <DatePicker filterDate={d => {
-          return new Date() < startDate;
+          return new Date() < this.state.startDate;
               }}
-          selected={endDate}
+          selected={this.state.endDate}
           selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          onChange={date => setEndDate(date)}
+          startDate={this.state.startDate}
+          endDate={this.state.startDate}
+          minDate={this.state.startDate}
+          onChange={date => {this.setState(state => ({
+            endDate: date
+          })); 
+          this.props.handle2(date);
+        }}
         />
       </div>
       </div>
     );
      
-   
+            }
   
 }
 
-export default Datum;
+export default Datum2;

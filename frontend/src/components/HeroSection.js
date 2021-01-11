@@ -16,8 +16,8 @@ class HeroSection extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      startDate: Date.now(),
-      endDate: Date.now()
+      startDate: new Date(),
+      endDate: new Date()
     };
   }
   render() {
@@ -62,7 +62,7 @@ class HeroSection extends React.Component{
     <button
     className={`btn btn--outline btn--medium`}
       onClick={() => { history.push('/rezervacija/0', {
-        startDate:this.state.startDate, endDate:this.state.endDate, proba:"Amina"
+        startDate:this.state.startDate, endDate:this.state.endDate
       }) }}
     >
       Rezerviši sada

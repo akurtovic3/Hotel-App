@@ -15,8 +15,8 @@ class StepOne extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          startDate: props.location.state ? props.location.state.startDate  : Date.now(),
-          endDate: props.location.state ? props.location.state.endDate  : Date.now(),
+          startDate: props.location.state ? new Date(props.location.state.startDate)  : new Date(),
+          endDate: props.location.state ? new Date(props.location.state.endDate)  : new Date(),
           brOdraslih: 1,
           brDjece:1,
           brSoba:1,
@@ -35,15 +35,15 @@ class StepOne extends Component{
       prethKorak(){ this.postaviKorak(this.state.korak > 0 ? this.state.korak -1 : this.state.korak)}
       promijeniBrOdraslih=(broj) =>{this.setState(state => ({
         ...state,
-        brOdraslih:broj
+        brOdraslih:parseInt(broj)
       }))}
       promijeniBrDjece=(broj) =>{this.setState(state => ({
         ...state,
-        brDjece:broj
+        brDjece:parseInt(broj)
       }))}
       promijeniBrSoba=(broj) =>{this.setState(state => ({
         ...state,
-        brSoba:broj
+        brSoba:parseInt(broj)
       }))}
       povecajKorak=() =>{this.setState(state => ({
         ...state,
@@ -121,7 +121,7 @@ class StepOne extends Component{
     <div className="btn-nastavak">
       <Route render={({ history}) => (
         <button  className="btn-nastavak-povratak-style"
-          onClick={() => { history.push('/rezervacija/1', { proslijedjeno:this.state, prevStyle:prevStyle, nextStyle:nextStyle,
+          onClick={() => { history.push('/rezervacija/1', { osnove:this.state, prevStyle:prevStyle, nextStyle:nextStyle
             
           });
           this.sljKorak(); }}>

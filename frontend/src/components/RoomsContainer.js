@@ -4,15 +4,19 @@ import Loading from "./Loading";
 import RoomsFilter from "./RoomsFilter";
 import RoomsList from "./RoomsList";
 
-function RoomContainer({ context }) {
+function RoomContainer({ context, props }) {
   const { loading, sortedRooms, rooms } = context;
   if (loading) {
+    
     return <Loading />;
   }
+  console.log(props)
+
   return (
     <>
+    <div>{props.osnove.brOdraslih}</div>
       <RoomsFilter rooms={rooms} />
-      <RoomsList rooms={sortedRooms} />
+      <RoomsList props={props} rooms={sortedRooms} />
     </>
   );
 }
