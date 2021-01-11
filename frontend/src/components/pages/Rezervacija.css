@@ -450,5 +450,38 @@
   
 }
 
+.ponude-select-group{
+  display: flex;
+  width: 600px;
+  margin: auto;
+  justify-content: space-around;
+  text-align: center;
+  padding-top:30px;
+  background-color: aliceblue;
+}
 
+.ponude-container{
+  background-color: aliceblue;
+}
 
+.paragr{
+  text-align: center;
+  padding-top: 30px;
+}
+
+.step-four-container{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  color: black;
+  justify-content: center;
+  text-align: center;
+  width: 700px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.74);
+}
+
+.header-step-4{
+  padding: 30px;
+}

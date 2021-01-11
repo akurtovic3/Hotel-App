@@ -23,7 +23,7 @@ class StepFour extends React.Component {
   render() {
     return (
       <div className="multiStepContainer">
-         <div>
+         <div className="header-step-4"> 
         <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> <FcCheckmark/></button>
         <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
@@ -36,7 +36,10 @@ class StepFour extends React.Component {
         <button className="linija" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
         <button className="multi-step-btn-style-4" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}>4</button>
         </div>
-        <div className="podnaslovi">
+        
+      </div>
+      <div className="step-four-container">
+      
         <h1>Informacije o boravku</h1> 
         <p>Odraslih osoba: {this.state.osnove.brOdraslih}</p>
         <p>Djece: {this.state.osnove.brDjece}</p>
@@ -47,10 +50,21 @@ class StepFour extends React.Component {
         <p>{this.state.infoSoba.rucak&&"Ručak"}</p>
         <p>Vaši lični podaci</p>
         <p>Pregled rezervacije</p>
-        </div>
-        <h1>Hello, world!</h1>
-        <h2>It is .</h2>
-      </div>
+        
+      
+            </div>
+            <div className="btn-povratak">
+            <Route render={({ history}) => (
+              <button className="btn-nastavak-povratak-style" 
+                onClick={() => { history.push('/rezervacija/2', { proslijedjeno:this.state, 
+                  
+                });
+                this.prethKorak(); }}>
+                Povratak
+              </button>
+            )}
+          />
+            </div>
       </div>
     );
   }

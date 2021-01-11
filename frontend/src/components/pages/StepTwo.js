@@ -15,8 +15,50 @@ class Rooms extends Component{
       prevStyle:props.location.state.prevStyle,
       idSobe:-1,
       korak:2,
+      dorucak: false,
+      rucak: false,
+      vecera: false,
+      spa: false,
+      bazen: false
     };
+    this.handleChangeDorucak = this.handleChangeDorucak.bind(this);
+    this.handleChangeRucak = this.handleChangeRucak.bind(this);
+    this.handleChangeVecera = this.handleChangeVecera.bind(this);
+    this.handleChangeSpa = this.handleChangeSpa.bind(this);
+    this.handleChangeBazen = this.handleChangeBazen.bind(this);
     console.log(props);
+    
+  }
+
+  handleChangeDorucak(e) {
+    this.setState(state => ({
+      ...state,
+      dorucak:!this.state.dorucak,
+    }))
+  }
+  handleChangeRucak(e) {
+    this.setState(state => ({
+      ...state,
+      rucak:!this.state.rucak,
+    }))
+  }
+  handleChangeVecera(e) {
+    this.setState(state => ({
+      ...state,
+      vecera:!this.state.vecera,
+    }))
+  }
+  handleChangeSpa(e) {
+    this.setState(state => ({
+      ...state,
+      spa:!this.state.spa,
+    }))
+  }
+  handleChangeBazen(e) {
+    this.setState(state => ({
+      ...state,
+      bazen:!this.state.bazen,
+    }))
   }
   postaviKorak(indx) {
     this.setState(state => ({
@@ -54,11 +96,62 @@ class Rooms extends Component{
         <p>Vaši lični podaci</p>
         <p>Pregled rezervacije</p>
         </div>
-      </div>    
+      </div>
+      <div className="ponude-container">
+      <div className="paragr">Izaberite dodatnu uslugu po želji:</div>
+          <div className="ponude-select-group">
+          
+          <div className="selekcija-dorucka">
+            <input
+              type="checkbox"
+              name="dorucak"
+              defaultChecked={this.state.dorucak}
+              onChange={this.handleChangeDorucak}
+            />
+            <label htmlFor="dorucak">Doručak</label>
+          </div>
+          <div className="selekcija-rucka">
+            <input
+              type="checkbox"
+              name="rucak"
+              defaultChecked={this.state.rucak}
+              onChange={this.handleChangeRucak}
+            />
+            <label htmlFor="rucak">Ručak</label>
+          </div>
+          <div className="selekcija-vecera">
+            <input
+              type="checkbox"
+              name="vecera"
+              defaultChecked={this.state.vecera}
+              onChange={this.handleChangeVecera}
+            />
+            <label htmlFor="vecera">Večera</label>
+          </div>
+          <div className="selekcija-spa">
+            <input
+              type="checkbox"
+              name="spa"
+              defaultChecked={this.state.spa}
+              onChange={this.handleChangeSpa}
+            />
+            <label htmlFor="spa">Spa</label>
+          </div>
+          <div className="selekcija-bazen">
+            <input
+              type="checkbox"
+              name="bazen"
+              defaultChecked={this.state.bazen}
+              onChange={this.handleChangeBazen}
+            />
+            <label htmlFor="bazen">Bazen</label>
+          </div>
+          </div>
+        </div>
           <div className="step-two-container">
             <RoomsContainer props={this.state}/>
           </div>
-          <div>
+  <div>
 
           <div className="btn-povratak">
             <Route render={({ history}) => (

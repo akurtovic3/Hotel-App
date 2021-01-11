@@ -35,19 +35,31 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
   error:true
 })); return false;}}
   promijeniIme(e) {
-    this.setState({ime: e.target.ime});
+    this.setState(state => ({
+      ...state,
+      ime: e.target.ime,
+    }))
   }
   promijeniPrezime(e) {
-    this.setState({prezime: e.target.prezime});
+    this.setState(state => ({
+      ...state,
+      prezime: e.target.prezime
+    }))
   }
   promijeniEmail(e) {
-    this.setState({email: e.target.email});
+    this.setState(state => ({
+      ...state,
+      email: e.target.email}))
   }
   promijeniBrojTel(e) {
-    this.setState({brojtel: e.target.brojtel});
+    this.setState(state => ({
+      ...state,
+      brojtel: e.target.brojtel}))
   }
   promijeniSpecZahtj(e) {
-    this.setState({specZahtj: e.target.specZahtj});
+    this.setState(state => ({
+      ...state,
+      specZahtj: e.target.specZahtj}))
   }
  
   postaviKorak(indx) {

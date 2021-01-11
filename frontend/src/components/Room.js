@@ -26,15 +26,7 @@ import {FcCheckmark} from 'react-icons/fc'
 const Room = memo(({ room, props }) => {
   const { name, slug, images, price, capacity, rates, size, pets, extras, pogled, tv, minibar, fridge } = room;
   const [main, ...defaultImages] = images;
-  const [dorucak, setDorucak] = useState(false);
-  const [rucak, setRucak] = useState(false);
-  const [vecera, setVecera] = useState(false);
-  const [spa, setSpa] = useState(false);
-  const [bazen, setBazen] = useState(false);
-  const [popupOpened, setPopupOpened] = useState(false);
-  const [color1, setColor1] = useState('#D3D3D3'); const [color2, setColor2] = useState('#D3D3D3'); 
-  const [color3, setColor3] = useState('#D3D3D3'); const [color4, setColor4] = useState('#D3D3D3');
-  const [color5, setColor5] = useState('#D3D3D3');
+ 
 
   AOS.init({
     // initialise with other settings
@@ -44,6 +36,7 @@ const Room = memo(({ room, props }) => {
   // console.log(name);
   return (
     <article className="room">
+      
     
       <div className="single-room-container" data-aos="fade-in">
         <div className='left-side'>
@@ -114,28 +107,10 @@ const Room = memo(({ room, props }) => {
                   </div>
                 </section>
                 <div className="single-room-info">
-                  <div className="left">
-                  <button className="btn-group" style={{background:color1}} onClick={() => {setDorucak(!dorucak);  setColor1(dorucak ? '#009933' : '#D3D3D3'); }}>
-                    Doručak+
-                  </button>
-
-                  <button className="btn-group" style={{background:color2}} onClick={() => {setRucak(!rucak);  setColor2(rucak ? '#009933' : '#D3D3D3'); }}>
-                    Ručak+
-                  </button>
-                  <button className="btn-group" style={{background:color3}} onClick={() => {setVecera(!vecera);  setColor3(vecera ? '#009933' : '#D3D3D3'); }}>
-                    Večera+
-                  </button>
-                  <button className="btn-group" style={{background:color4}} onClick={() => {setSpa(!spa);  setColor4(spa ? '#009933' : '#D3D3D3'); }}>
-                    Spa+
-                  </button>
-                  <button className="btn-group" style={{background:color5}} onClick={() => {setBazen(!bazen);  setColor5(bazen ? '#009933' : '#D3D3D3'); }}>
-                    Bazen+
-                  </button>
-                  </div>
-                  <div className="rigt">
+                  <div className="left"></div>
+                 <div className="right">
                     <h className="cijena">Cijena bez <br/> dodatnih ponuda : <br/> {price} €</h>
-                  </div>
-                 
+                </div>
                 </div>
                 
               </div>
@@ -179,7 +154,7 @@ const Room = memo(({ room, props }) => {
               className={`btn btn--outline btn--medium`}
                 onClick={() => { history.push('/rezervacija/2', {
                   osnove:props, 
-                  infoSoba:{naziv:name, cijena: price, dorucak:dorucak, rucak:rucak, vecera:vecera, spa:spa, bazen:bazen}
+                  infoSoba:{naziv:name, cijena: price}
                 }) }}
               >
                 Rezerviši
