@@ -14,14 +14,25 @@ const nextStyle = {'background': '#33c3f0',  'border-width': '2px'}
 class StepOne extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-          ...props.location.state.info,
-          startDate: props.location.state.info ? new Date(props.location.state.info.startDate)  : new Date(),
-          endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : new Date(),
-          brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
-          brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 0,
-          korak:1,
-        };
+        try{
+          this.state = {
+            ...props.location.state.info,
+            startDate: props.location.state.info ? new Date(props.location.state.info.startDate)  : new Date(),
+            endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : new Date(),
+            brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
+            brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 0,
+            korak:1,
+          };
+        }
+        catch{
+          this.state = {
+            startDate: new Date(),
+            endDate: new Date(),
+            brOdraslih:  1,
+            brDjece: 0,
+            korak:1,
+          };
+        }
         
         console.log(props);
       }

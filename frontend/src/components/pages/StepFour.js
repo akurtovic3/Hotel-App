@@ -5,7 +5,7 @@ import '../../components/HeroSection.css'
 import Moment from 'react-moment';
 import Popup from 'reactjs-popup';
 import '../../components/PopUp2.css'
-
+import Axios from "axios";
 
 
 class StepFour extends React.Component {
@@ -13,7 +13,9 @@ class StepFour extends React.Component {
     super(props);
     this.state = {
       ...props.location.state.info, 
-      modal: false   
+      modal: false   ,
+      idSoba:8, 
+      id_korisnik:-1
 
     };
     
@@ -24,13 +26,52 @@ class StepFour extends React.Component {
   }
 
   modalOpen() {
-    this.setState({ modal: true });
+    this.setState(state => ({
+      ...state,
+      modal: true
+    }))
   }
-
+submitRezervaciju=()=>{
+  console.log("uslo")
+  Axios.post("http://localhost:3001/kreirajNeregistrovanogKorisnika", 
+  {
+    ime: this.state.ime,
+    prezime: this.state.prezime,
+    email:this.state.email,
+    br_tel:this.state.brojTel
+  }).then((result)=>{
+    this.setState(state => ({
+      ...state,
+      id_korisnik:result.data.id_korisnik
+    }))
+    Axios.post("http://localhost:3001/kreirajRezervaciju", 
+  {
+    id_korisnik : result.data.id_korisnik,
+    id_soba : this.state.idSoba,
+    start_date : new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(this.state.startDate),
+    end_date : new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(this.state.endDate),
+    br_djece : this.state.brDjece,
+    br_odraslih : this.state.brOdraslih,
+    dorucak : this.state.dorucak,
+    rucak : this.state.rucak,
+    vecera : this.state.vecera,
+    spa : this.state.spa,
+    bazen : this.state.bazen,
+    cijena : this.state.cijena
+  }).then(()=>{
+    alert("successful insert!");
+  });
+    
+  });
+  //console.log(id_korisnik)
+  
+  console.log("izaslo")
+}
   modalClose() {
-    this.setState({
+    this.setState(state => ({
+      ...state,
       modal: false
-    });
+    }))
   }
   provjeriImaLiPogodnosti=()=>{if(this.state.dorucak==true || this.state.rucak==true || this.state.vecera==true || this.state.spa==true || this.state.bazen==true) return true; else return false;}
   render() {
@@ -81,7 +122,7 @@ class StepFour extends React.Component {
         
       
             </div>
-            
+            <div>
             <div className="btn-povratak">
             <Route render={({ history}) => (
               <button className="btn-nastavak-povratak-style" 
@@ -93,23 +134,27 @@ class StepFour extends React.Component {
             )}
           />
             </div> 
-            
+            <div className="btn-povratak">
             <div className="modal">
-            <Popup modal trigger={<button type="button" class="btn btn-outline-secondary" >Potvrdi rezervaciju</button>}>
+            <button type="button" class="btn-nastavak-povratak-style" onClick={this.submitRezervaciju}>Potvrdi rezervaciju</button>
+            {/*<Popup modal className='popup' trigger={<button type="button" class="btn-nastavak-povratak-style" onClick={this.submitRezervaciju}>Potvrdi rezervaciju</button>}>
               Uspješno ste izvršili rezervaciju! <br/> 
 
               <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { info:this.state}
-                          ); } }}>
+                          onClick={() => { history.push('/', { info:this.state}
+                          ); } }
+                          
+                          >
                           Povratak na početnu stranicu
                         </button>
                       )}
               />
-            </Popup>
-            
+            </Popup>  
+              */}
+            </div>
            </div>
-            
+           </div>
       </div> 
     );
   }

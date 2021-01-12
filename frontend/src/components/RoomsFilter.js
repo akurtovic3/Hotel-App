@@ -7,13 +7,12 @@ const getUnique = (items, value) => {
   return [...new Set(items.map(item => item[value]))];
 };
 
-const RoomsFilter = ({ rooms }) => {
+const RoomsFilter = ({ props, rooms }) => {
   // react hooks
   const context = useContext(RoomContext);
   const {
     handleChange,
     type,
-    capacity,
     price,
     minPrice,
     maxPrice,
@@ -22,7 +21,7 @@ const RoomsFilter = ({ rooms }) => {
     breakfast,
     pets
   } = context;
-
+  var capacity=props.brOdraslih+props.brDjece;
   // get unique types
   let types = getUnique(rooms, "type");
   // add all
@@ -40,6 +39,7 @@ const RoomsFilter = ({ rooms }) => {
       {item}
     </option>
   ));
+  
   return (
     <section className="filter-container">
      

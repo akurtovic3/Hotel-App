@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import RoomsFilter from "./RoomsFilter";
 import RoomsList from "./RoomsList";
 
-function RoomContainer({ context, props }) {
+function RoomContainer({ context, props, idovi, brGostiju }) {
   const { loading, sortedRooms, rooms } = context;
   if (loading) {
     
@@ -14,8 +14,8 @@ function RoomContainer({ context, props }) {
 
   return (
     <>
-      <RoomsFilter rooms={rooms} />
-      <RoomsList props={props} rooms={sortedRooms} />
+      <RoomsFilter props={props} rooms={rooms} />
+      <RoomsList props={props} rooms={sortedRooms} idovi={idovi} brGostiju={brGostiju}/>
     </>
   );
 }

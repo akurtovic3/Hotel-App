@@ -45,21 +45,25 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
       ...state,
       prezime: e.target.value
     }))
+    this.provjeriUnos()
   }
   promijeniEmail(e) {
     this.setState(state => ({
       ...state,
       email: e.target.value}))
+      this.provjeriUnos()
   }
   promijeniBrojTel(e) {
     this.setState(state => ({
       ...state,
       brojTel: e.target.value}))
+      this.provjeriUnos()
   }
   promijeniSpecZahtj(e) {
     this.setState(state => ({
       ...state,
       specZahtj: e.target.value}))
+      this.provjeriUnos()
   }
  
   postaviKorak(indx) {

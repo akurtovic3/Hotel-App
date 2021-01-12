@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import RoomsContainer from "../../components/RoomsContainer";
-
+import Axios from "axios"
 import { Link, withRouter, useHistory, Route } from "react-router-dom";
 import {FcCheckmark} from 'react-icons/fc'
 import '../../components/pages/Rezervacija.css'
-
+import Moment from "moment"
 class Rooms extends Component{
   constructor(props) {
     super(props);
@@ -21,6 +21,7 @@ class Rooms extends Component{
       vecera: props.location.state.info.vecera? props.location.state.info.vecera  : false,
       spa: props.location.state.info.spa? props.location.state.info.spa  : false,
       bazen: props.location.state.info.bazen? props.location.state.info.bazen  : false,
+      idovi:[]
     };
     this.handleChangeDorucak = this.handleChangeDorucak.bind(this);
     this.handleChangeRucak = this.handleChangeRucak.bind(this);
@@ -28,7 +29,28 @@ class Rooms extends Component{
     this.handleChangeSpa = this.handleChangeSpa.bind(this);
     this.handleChangeBazen = this.handleChangeBazen.bind(this);
     console.log(props);
+    var niz;
+    var idoviNiz=[];
+    Axios.get("http://localhost:3001/raspoloziveSobe?start_date="+Moment(this.state.startDate).format('YYYY-MM-DD hh:mm:ss')+"&end_date="+Moment(this.state.endDate).format('YYYY-MM-DD hh:mm:ss')).then((result, fields)=>{
+    //niz=new Array(result);
+    alert("successfully filtered rooms!");
+    console.log(Moment(props.startDate).format('YYYY-MM-DD hh-mm-ss'));
+    niz=result.data;
+    console.log(niz)
     
+    niz.forEach(item => {
+      console.log(item)
+      console.log(item.id_soba)
+      idoviNiz.push(item.id_soba)
+    });
+    console.log(niz)
+    console.log(idoviNiz)
+    this.setState(state => ({
+      ...state,
+      idovi:idoviNiz,
+    }))
+  });
+  console.log(this.state)
   }
 
   handleChangeDorucak(e) {
@@ -150,7 +172,7 @@ class Rooms extends Component{
           </div>
         </div>
           <div className="step-two-container">
-            <RoomsContainer props={this.state}/>
+            <RoomsContainer props={this.state} idovi={this.state.idovi} brGostiju={this.state.brDjece+this.state.brOdraslih}/>
           </div>
   <div>
 

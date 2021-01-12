@@ -1,18 +1,28 @@
 /* index.css */ 
 .modal {
+  padding-top: 25px;
     font-size: 12px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .popup{
+    align-self: center;
   }
   .modal > .header {
-    width: 100%;
+    width: 50%;
     border-bottom: 1px solid gray;
     font-size: 18px;
     text-align: center;
     padding: 5px;
   }
   .modal > .content {
-    width: 100%;
+    width: 50%;
     padding: 10px 5px;
-  }
+    
+    }
   .modal > .actions {
     margin: auto;
   }
