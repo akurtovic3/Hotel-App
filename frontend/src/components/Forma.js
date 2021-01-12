@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 export default class FlavorForm extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {valueDjeca: props.pocetniDjeca?props.pocetniDjeca: '1',
-      valueOdrasli:props.pocetniOdrasli? props.pocetniOdrasli: '1'};
+      this.state = {valueDjeca: props.pocetniDjeca?props.pocetniDjeca: 0,
+      valueOdrasli:props.pocetniOdrasli? props.pocetniOdrasli: 2};
 
   
       this.handleChange = this.handleChange.bind(this);
@@ -31,6 +31,7 @@ export default class FlavorForm extends React.Component {
                                                             else this.props.promijeniBrOdraslih(e.target.value)
                                                           this.handleChange(e) }
                                                             }>
+              {this.props.id==="djeca"&&<option value="0">0</option>}
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

@@ -23,6 +23,7 @@ class Datum2 extends React.Component{
         <DatePicker filterDate={d => {
           return new Date() <d;
               }}
+          format="dd-MM-yyyy"
           selected={this.state.startDate}
           selectsStart
           startDate={this.state.startDate}
@@ -42,6 +43,7 @@ class Datum2 extends React.Component{
        <DatePicker filterDate={d => {
           return new Date() < this.state.startDate;
               }}
+              format="dd-MM-yyyy"
           selected={this.state.endDate}
           selectsEnd
           startDate={this.state.startDate}

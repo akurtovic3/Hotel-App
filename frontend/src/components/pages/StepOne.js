@@ -19,7 +19,7 @@ class StepOne extends Component{
           startDate: props.location.state.info ? new Date(props.location.state.info.startDate)  : new Date(),
           endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : new Date(),
           brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
-          brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 1,
+          brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 0,
           korak:1,
         };
         
@@ -96,7 +96,7 @@ class StepOne extends Component{
         </div>
         
         <div className="pick">
-      
+        
             <div className="columnPick">
             <i class="far fa-user"></i>
                 <p>Broj odraslih:</p>
