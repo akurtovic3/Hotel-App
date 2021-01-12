@@ -33,7 +33,7 @@ class Rooms extends Component{
     var idoviNiz=[];
     Axios.get("http://localhost:3001/raspoloziveSobe?start_date="+Moment(this.state.startDate).format('YYYY-MM-DD hh:mm:ss')+"&end_date="+Moment(this.state.endDate).format('YYYY-MM-DD hh:mm:ss')).then((result, fields)=>{
     //niz=new Array(result);
-    alert("successfully filtered rooms!");
+    //alert("successfully filtered rooms!");
     console.log(Moment(props.startDate).format('YYYY-MM-DD hh-mm-ss'));
     niz=result.data;
     console.log(niz)
@@ -131,7 +131,7 @@ class Rooms extends Component{
               defaultChecked={this.state.dorucak}
               onChange={this.handleChangeDorucak}
             />
-            <label htmlFor="dorucak">Doručak</label>
+            <label htmlFor="dorucak"> Doručak</label>
           </div>
           <div className="selekcija-rucka">
             <input
@@ -140,7 +140,7 @@ class Rooms extends Component{
               defaultChecked={this.state.rucak}
               onChange={this.handleChangeRucak}
             />
-            <label htmlFor="rucak">Ručak</label>
+            <label htmlFor="rucak"> Ručak</label>
           </div>
           <div className="selekcija-vecera">
             <input
@@ -149,7 +149,7 @@ class Rooms extends Component{
               defaultChecked={this.state.vecera}
               onChange={this.handleChangeVecera}
             />
-            <label htmlFor="vecera">Večera</label>
+            <label htmlFor="vecera"> Večera</label>
           </div>
           <div className="selekcija-spa">
             <input
@@ -158,7 +158,7 @@ class Rooms extends Component{
               defaultChecked={this.state.spa}
               onChange={this.handleChangeSpa}
             />
-            <label htmlFor="spa">Spa</label>
+            <label htmlFor="spa"> Spa</label>
           </div>
           <div className="selekcija-bazen">
             <input
@@ -167,7 +167,7 @@ class Rooms extends Component{
               defaultChecked={this.state.bazen}
               onChange={this.handleChangeBazen}
             />
-            <label htmlFor="bazen">Bazen</label>
+            <label htmlFor="bazen"> Bazen</label>
           </div>
           </div>
         </div>

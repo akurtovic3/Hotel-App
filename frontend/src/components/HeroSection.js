@@ -50,7 +50,7 @@ class HeroSection extends React.Component{
           selected={this.state.endDate}
           selectsEnd
           startDate={this.state.startDate}
-          endDate={this.state.endDate}
+          endDate={this.state.startDate}
           minDate={this.state.startDate}
           onChange={date => this.setState(state => ({
             endDate: date
@@ -61,6 +61,7 @@ class HeroSection extends React.Component{
       <Route render={({ history}) => (
     <button
     className={`btn btn--outline btn--medium`}
+    style={{fontWeight: "bold"}}
       onClick={() => { history.push('/rezervacija/0', {
         info:{startDate:this.state.startDate, endDate:this.state.endDate}
       }) }}

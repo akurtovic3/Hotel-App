@@ -4,7 +4,7 @@ export default class FlavorForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {valueDjeca: props.pocetniDjeca?props.pocetniDjeca: 0,
-      valueOdrasli:props.pocetniOdrasli? props.pocetniOdrasli: 2};
+      valueOdrasli:props.pocetniOdrasli? props.pocetniOdrasli: 1};
 
   
       this.handleChange = this.handleChange.bind(this);
