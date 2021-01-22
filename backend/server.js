@@ -16,7 +16,7 @@ const db = mysql.createConnection({
   host: "localhost",
   password: "",
   database: "hotel_db",
-  port:3308
+  port:3306
 });
 
 db.connect();
