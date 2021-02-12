@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Prijava.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
 export default function Prijava() {
   const [userName, setUserName] = useState("");
@@ -20,7 +21,7 @@ export default function Prijava() {
     <div className="prijava-container">
     
     <div className="Login">
-    <h1>Prijava na stranicu</h1>
+    <h1>Prijava na stranicu hotela</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Username</Form.Label>
@@ -45,9 +46,12 @@ export default function Prijava() {
       </Form>
       <div className="reg-div">
       <p>Nemate račun?</p>
-      <Button block size="lg"  variant="outline-primary" disabled={!validateForm()}>
-          Registracija
+      <Link to='/registracija'>
+        <Button block size="lg"  variant="outline-primary" >
+            Registracija
         </Button>
+      </Link>
+      
       </div>
       
 

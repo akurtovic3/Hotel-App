@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Rezervacija from './components/pages/Rezervacija';
 import Ponude from './components/pages/Ponude';
 import Prijava from './components/pages/Prijava';
+import Registracija from './components/pages/Registracija';
 import SingleRoom from "./components/pages/SingleRoom";
 import StepOne from './components/pages/StepOne'
 import StepTwo from './components/pages/StepTwo'
@@ -28,6 +29,7 @@ function App() {
           
           <Route path='/ponude' exact component={Ponude} />
           <Route path='/prijava' component={Prijava} />
+          <Route path='/registracija' component={Registracija} />
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           
         </Switch>
