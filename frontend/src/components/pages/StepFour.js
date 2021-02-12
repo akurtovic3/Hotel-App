@@ -107,32 +107,32 @@ izracunajCijenu=()=>{
         
       </div>
       <div className="step-four-container">
-        <h1>PREGLED REZERVACIJE</h1> <br/>
-        <h2>Informacije o boravku</h2> 
-        <h4>Datum dolaska: <Moment format="DD/MM/YYYY">{this.state.startDate}</Moment></h4>
-        <h4>Datum odlaska: <Moment format="DD/MM/YYYY">{this.state.endDate}</Moment></h4>
+        <h2>PREGLED REZERVACIJE</h2> <br/>
+        <h3>Informacije o boravku</h3> 
+        <h5>Datum dolaska: <Moment format="DD/MM/YYYY">{this.state.startDate}</Moment></h5>
+        <h5>Datum odlaska: <Moment format="DD/MM/YYYY">{this.state.endDate}</Moment></h5>
              
-        <h4>Odraslih osoba: {this.state.brOdraslih}</h4>
-        <h4>Djece: {this.state.brDjece}</h4> <br/>
-        <h2>Informacije o sobi</h2> 
-        <h4>Naziv sobe : {this.state.naziv}</h4>  <br/>
-        <h2>Pogodnosti koje su uključene u rezervaciju:</h2>
-        <h4>{this.state.dorucak&&"Doručak"}</h4>
-        <h4>{this.state.rucak&&"Ručak"}</h4>
-        <h4>{this.state.vecera&&"Večera"}</h4>
-        <h4>{this.state.spa&&"Spa"}</h4>
-        <h4>{this.state.bazen&&"Bazen"}</h4><br/>
+        <h5>Odraslih osoba: {this.state.brOdraslih}</h5>
+        <h5>Djece: {this.state.brDjece}</h5> <br/>
+        <h3>Informacije o sobi</h3> 
+        <h5>Naziv sobe : {this.state.naziv}</h5>  <br/>
+        <h3>Pogodnosti koje su uključene u rezervaciju:</h3>
+        <h5>{this.state.dorucak&&"Doručak"}</h5>
+        <h5>{this.state.rucak&&"Ručak"}</h5>
+        <h5>{this.state.vecera&&"Večera"}</h5>
+        <h5>{this.state.spa&&"Spa"}</h5>
+        <h5>{this.state.bazen&&"Bazen"}</h5><br/>
         <p>{!this.provjeriImaLiPogodnosti()&&"Niste izabrali niti jednu od posebnih pogodnosti."}</p><br/>
-        <h2>Vaši lični podaci</h2>
-        <h4>Ime: {this.state.ime}</h4>
-        <h4>Prezime: {this.state.prezime}</h4>
-        <h4>E-mail: {this.state.email}</h4>
-        <h4>Broj telefona: {this.state.brojTel}</h4>
+        <h4>Vaši lični podaci</h4>
+        <h5>Ime: {this.state.ime}</h5>
+        <h5>Prezime: {this.state.prezime}</h5>
+        <h5>E-mail: {this.state.email}</h5>
+        <h5>Broj telefona: {this.state.brojTel}</h5>
         <br/>
-        <h1>Cijena: </h1> <h1 style={{fontWeight: "bold"}}>{this.state.cijena} €</h1>
+        <h2>Cijena: </h2> <h2 style={{fontWeight: "bold"}}>{this.state.cijena} €</h2>
         <p>   </p>
         <p>   </p>
-        <p style={{color: "red", fontWeight: "bold"}}>Ukoliko želite promijeniti/popraviti neku od stavki rezervacije vratite se na odgovarajući prethodni korak klikom na dugme "Povratak"!</p>
+        <p style={{color: "grey", fontWeight: "bold"}}>Ukoliko želite promijeniti/popraviti neku od stavki rezervacije vratite se na odgovarajući prethodni korak klikom na dugme "Povratak"!</p>
         
       
             </div>
@@ -148,11 +148,14 @@ izracunajCijenu=()=>{
             )}
           />
             </div> 
+            <div className="btn-nastavak">
+            <button className="btn-nastavak-povratak-style"  onClick={this.showModal.bind(this)}>Potvrdi rezervaciju</button>
+            </div>
             <div className="modal">
 
-            <div className="btn-potvrdi-rez">
-              <button className="btn-nastavak-povratak-style"  onClick={this.showModal.bind(this)}>Potvrdi rezervaciju</button>
-            </div>
+            
+              
+            
               <Modal
                 isOpen={this.state.modal}
                 onRequestClose={this.showModal.bind(this)}

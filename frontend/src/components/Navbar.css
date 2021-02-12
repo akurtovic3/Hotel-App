@@ -28,8 +28,13 @@
     font-size: 2rem;
     display: flex;
     align-items: center;
-    font-family:  Georgia, serif;;
+    font-family:  Georgia, serif;
+    
   }
+  .navbar-logo:hover {
+    color: #ffffff;
+    
+ }
   
   .fa-typo3 {
     margin-left: 0.5rem;
@@ -58,11 +63,14 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
+    color: white;
   }
   
   .nav-links:hover {
+    color: white;
     border-bottom: 4px solid #fff;
     transition: all 0.2s ease-out;
+   
   }
   
   .fa-bars {
@@ -109,18 +117,7 @@
       display: table;
     }
   
-    .nav-links:hover {
-      background-color: #fff;
-      color: #242424;
-      border-radius: 0;
-    }
-  
-    .navbar-logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(25%, 50%);
-    }
+    
   
     .menu-icon {
       display: block;
@@ -162,4 +159,11 @@
   /*moje dodavanje*/
   .logo-navbar{
     padding: 10px;
+  }
+
+  .nav-links-prijava {
+    text-align: center;
+    padding: 1.1rem;
+    width: 100%;
+    display: table;
   }

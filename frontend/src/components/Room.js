@@ -43,7 +43,7 @@ const Room = memo(({ room, props }) => {
             <img src={images[0] || defaultImg} class="image"  alt="single room" width="490px" />
             
             <div className="middle">
-            <Popup trigger={<button type="button" class="btn btn-outline-secondary" >Saznajte više</button>} 
+            <Popup trigger={<button type="button" class="btn btn-outline-light" >Saznajte više</button>} 
             position="right center">
               <div>
               <h className="room-name">{name}</h>
@@ -150,8 +150,8 @@ const Room = memo(({ room, props }) => {
             
           
           <Route render={({ history}) => (
-              <button
-              className={`btn btn--outline btn--medium`}
+              <button class="btn btn-outline-light"
+              
                 onClick={() => { history.push('/rezervacija/2', {
                   info:{...props, naziv:name, cijena: price}
                 }) }}

@@ -1,7 +1,8 @@
 import React from 'react';
 import './Cards.css';
-import CardItem from './CardItem';
+
 import logo from '../images/logo.png';
+
 
 function Cards() {
   return (
@@ -44,7 +45,7 @@ function Cards() {
           <div class="second-column">
             
             <h1 className="title">Sobe i apratmani</h1>
-            <p className="paragraf"> Vila Nezirović Lavina Jahorina u ponudi ima luksuzne
+            <p className="paragraf"> Vila Nezirović u ponudi ima luksuzne
              sobe i apartmane sa sadržajima koji garantuju visok nivo komfora i boravka. Na raspolaganju
               ćete imati Internet pristup, TV, sef za čuvanje vaših dragocjenosti
                kao i mini bar. Standardna soba može imati bračni ili odvojene ležaje, u skladu sa 

@@ -8,7 +8,7 @@ import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router
 
 import 'react-bootstrap'
 import { Fragment } from 'react'
-import StepTwo from './StepTwo'
+
 const prevStyle = {'background': '#33c3f0', 'border-width': '2px'}
 const nextStyle = {'background': '#33c3f0',  'border-width': '2px'}
 class StepOne extends Component{

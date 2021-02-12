@@ -4,8 +4,8 @@ import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Rezervacija from './components/pages/Rezervacija';
-import Products from './components/pages/Products';
-import SignUp from './components/pages/SignUp';
+import Ponude from './components/pages/Ponude';
+import Prijava from './components/pages/Prijava';
 import SingleRoom from "./components/pages/SingleRoom";
 import StepOne from './components/pages/StepOne'
 import StepTwo from './components/pages/StepTwo'
@@ -26,8 +26,8 @@ function App() {
           <Route path='/rezervacija/2' component={StepThree} />
           <Route path='/rezervacija/3' component={StepFour} />
           
-          <Route path='/products' component={Products} />
-          <Route path='/sign-up' component={SignUp} />
+          <Route path='/ponude' exact component={Ponude} />
+          <Route path='/prijava' component={Prijava} />
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           
         </Switch>

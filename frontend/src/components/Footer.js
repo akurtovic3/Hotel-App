@@ -13,8 +13,8 @@ function Footer() {
           <div class='footer-link-items'>
             <h2>Kontaktirajte nas</h2>
             <div className="adresa">
-            <h4 >Adresa: Doni Štoj 85360, Crna Gora</h4>
-            <h4>Telefon: +382 68 226 337</h4>
+            <h6 >Adresa: Doni Štoj 85360, Crna Gora</h6>
+            <h6>Telefon: +382 68 226 337</h6>
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@
   
   justify-content: center;
   text-align: center;
-  width: 700px;
+  width: 900px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.74);
   
@@ -173,7 +173,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 125vh;
+  height: 165vh;
   justify-content: center;
   text-align: center;
   border: 2px solid;
@@ -383,7 +383,7 @@
   
   justify-content: center;
   text-align: center;
-  width: 700px;
+  width: 900px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.74);
     padding: 30px;
