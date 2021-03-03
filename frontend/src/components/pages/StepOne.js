@@ -3,6 +3,7 @@ import FlavorForm from '../../components/Forma'
 import Datum2 from '../../components/Datum2'
 import Button from 'react-bootstrap/Button';
 import '../../components/pages/Rezervacija.css'
+import Navbar from '../Navbar';
 import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router-dom';
 
 
@@ -62,6 +63,8 @@ class StepOne extends Component{
       }))}
   render(){
   return (
+    <>
+    <Navbar />
     <div className="multiStepContainer">
       <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> 1</button>
@@ -142,6 +145,7 @@ class StepOne extends Component{
   </div>
     </Fragment>
     </div></div> 
+    </>
   )
             }
 }

@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./Prijava.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import Navbar from '../Navbar';
 
 export default function Prijava() {
   const [userName, setUserName] = useState("");
@@ -18,6 +19,8 @@ export default function Prijava() {
   }
 
   return (
+    <>
+    <Navbar />
     <div className="prijava-container">
     
     <div className="Login">
@@ -51,11 +54,16 @@ export default function Prijava() {
             Registracija
         </Button>
       </Link>
+      <Link to='/radnik'>
+        <p className="prijava_za_osoblje">Prijava za osoblje</p>
+        
+      </Link>
       
       </div>
       
 
     </div>
     </div>
+    </>
   );
 }

@@ -1,9 +1,7 @@
 import React from 'react';
-import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Rezervacija from './components/pages/Rezervacija';
 import Ponude from './components/pages/Ponude';
 import Prijava from './components/pages/Prijava';
 import Registracija from './components/pages/Registracija';
@@ -12,13 +10,15 @@ import StepOne from './components/pages/StepOne'
 import StepTwo from './components/pages/StepTwo'
 import StepThree from './components/pages/StepThree'
 import StepFour from './components/pages/StepFour'
+import Radnik from './RadnikPrijava';
+import RadnikMojProfil from './components/pages/RadnikMojProfil'
 
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        
         <Switch>
           <Route path='/' exact component={Home} />
          
@@ -32,6 +32,8 @@ function App() {
           <Route path='/registracija' component={Registracija} />
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           
+          <Route  exact path='/radnik' component={Radnik} />
+          <Route   path='/radnik-profil' component={RadnikMojProfil} />
         </Switch>
       </Router>
     </>

@@ -1,0 +1,91 @@
+.navbar {
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+  }
+  
+  .navbar-logo {
+    color: #fff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    font-family:  Georgia, serif;
+    
+  }
+  
+  
+  .nav-menu {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 60vw;
+    justify-content: end;
+    margin-right: 2rem;
+  }
+  
+  .nav-item {
+    height: 90px;
+    color: white;
+  }
+  
+
+
+  /*moje dodavanje*/
+  .logo-navbar{
+    padding: 10px;
+  }
+
+  .nav-item-dropdown{
+      padding-top: 20px;
+     
+  }
+
+  .davidimo{
+      background-color: transparent;
+      color: white;
+      border: none;
+      font-size: 18px;
+  }
+ 
+
+  .nav-item-dropdown:hover{
+    background-color: gray;
+}
+ 
+  .davidimo:hover{
+    background-color: transparent;
+  }
+
+  .nav-item-not-drop{
+    color: white;
+    padding-top:25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+  }
+  .nav-item-not-drop:hover{
+    background-color: gray;
+    
+  }
+  

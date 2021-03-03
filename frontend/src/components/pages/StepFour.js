@@ -8,6 +8,7 @@ import Popup from 'reactjs-popup';
 import '../../components/PopUp2.css'
 import Axios from "axios";
 import Modal from 'react-modal';
+import Navbar from '../Navbar';
 const c_obroka=5;
 const c_bazen=30;
 const c_spa=50;
@@ -90,6 +91,8 @@ izracunajCijenu=()=>{
   provjeriImaLiPogodnosti=()=>{if(this.state.dorucak==true || this.state.rucak==true || this.state.vecera==true || this.state.spa==true || this.state.bazen==true) return true; else return false;}
   render() {
     return (
+      <>
+      <Navbar/>
       <div className="multiStepContainer">
          <div className="header-step-4"> 
         <div className='multi-step-btns'>
@@ -197,6 +200,7 @@ izracunajCijenu=()=>{
               */}
             </div>
            </div>
+          </>
     );
   }
 }

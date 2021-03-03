@@ -7,6 +7,7 @@ import { useFormFields } from "../../libs/hooksLib";
 /*import { onError } from "../libs/errorLib";*/
 import "./Registracija.css";
 import { Link } from "react-router-dom";
+import Navbar from '../Navbar';
 
 export default function Registracija() {
   const [fields, handleFieldChange] = useFormFields({
@@ -61,7 +62,8 @@ export default function Registracija() {
 
   function renderForm() {
     return (
-    
+      <>
+      
       <Form onSubmit={handleSubmit}>
         <div className="row-reg">
             <div className="column-reg-1">
@@ -156,11 +158,13 @@ export default function Registracija() {
         </Link>
         
       </Form>
-      
+      </>
     );
   }
 
   return (
+    <>
+    <Navbar />
     <div className='registracija-container'>
     
     <div className="Signup">
@@ -169,5 +173,6 @@ export default function Registracija() {
       
     </div>
     </div>
+    </>
   );
 }

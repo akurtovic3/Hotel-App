@@ -4,6 +4,7 @@ import {  Route, withRouter } from "react-router-dom";
 import {FcCheckmark} from 'react-icons/fc'
 import React, { Component } from 'react'
 import Alert from "reactstrap/lib/Alert";
+import Navbar from '../Navbar';
 
 class StepThree extends Component {
   constructor(props) {
@@ -79,6 +80,8 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
 
   render() {
     return (
+      <>
+      <Navbar/>
       
            <div className='multiStepContainer'>
              <div>
@@ -163,6 +166,7 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
 
               
       </div>
+      </>
     )
   }
 }

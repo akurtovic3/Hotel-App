@@ -5,6 +5,8 @@ import { Link, withRouter, useHistory, Route } from "react-router-dom";
 import {FcCheckmark} from 'react-icons/fc'
 import '../../components/pages/Rezervacija.css'
 import Moment from "moment"
+import Navbar from '../Navbar';
+
 class Rooms extends Component{
   constructor(props) {
     super(props);
@@ -100,6 +102,7 @@ class Rooms extends Component{
   render(){
   return (
     <> 
+    <Navbar/>
     <div className="header-step-2"> 
         <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> <FcCheckmark/></button>
