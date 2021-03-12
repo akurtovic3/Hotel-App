@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Room from "./Room";
-import Axios from "axios";
-import Moment from 'moment';
+
 const RoomsList = ({ rooms, props, idovi, brGostiju}) => {
   const [imaSoba, setImaSoba] = useState(0);
   console.log(props)

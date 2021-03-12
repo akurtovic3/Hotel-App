@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react'
 import FlavorForm from '../../components/Forma'
 import Datum2 from '../../components/Datum2'
-import Button from 'react-bootstrap/Button';
+
 import '../../components/pages/Rezervacija.css'
 import Navbar from '../Navbar';
 import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router-dom';

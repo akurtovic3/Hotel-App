@@ -1,0 +1,102 @@
+table{
+    width: 100%;
+    color: blue;
+
+}
+
+.maincontainer{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #eef2f3;
+    
+}
+
+.rowe{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+    
+}
+
+.column {
+    float: left;
+    width: 33%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .naslov{
+      height: 100px;
+    padding: 10px;
+    background: #eef2f3;
+    
+  }
+
+  
+
+  .filter{
+    margin: auto;
+    width: 75%;
+    padding: 20px;
+    
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    transition: background 500ms;
+   
+  }
+
+  .filter:hover{
+    
+    border-color: cadetblue;
+    background: #cbe5e9;
+  }
+
+  .animation{
+    border-bottom: rgb(190, 189, 189) solid 1px;
+    background-color:  cadetblue;
+    padding: 10px;
+    color: white;
+  }
+
+  
+
+  .container-table{
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    width: 75%;
+    margin:auto;
+    margin-top: 50px;
+    transition: background 500ms;
+  }
+  
+  .container-table:hover{
+    background: #cbe5e9;
+  }
+  
+  .modal-1{
+    border: black;
+  }
+
+  .dugmad{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+    
+  }
+
+  .title-modal{
+    
+    border-bottom: rgb(180, 177, 177) solid 1px ;
+  }
+
+  .mymodal{
+    padding: 20px;
+    text-align: left;
+  }

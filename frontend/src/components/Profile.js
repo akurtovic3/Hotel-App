@@ -1,25 +1,11 @@
 import React from 'react'
-import { BsDot } from 'react-icons/bs';
-import {GrUserManager} from 'react-icons/gr'
-import { Link } from 'react-router-dom';
+
 
 function Profile(props){
 
   return(
     <>
-    <div className="logout-edit">
-    <p><GrUserManager/>{props.polja.username}
-    <br/>
-    <Link to="/radnik-profil-edit">
-      Edit 
-    </Link>
-    <BsDot/>
-    <Link to="/">
-    Logout
-    </Link>
-    </p>
     
-    </div>
     <div class="row">
       <div class="column-left">
         

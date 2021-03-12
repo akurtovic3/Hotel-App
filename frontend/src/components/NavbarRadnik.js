@@ -58,15 +58,13 @@ function NavbarRadnik() {
                     Rezervacija
                 </DropdownToggle>
                 <DropdownMenu>
-                <Link to='/radnik-dodaj-spec-pon' style={{ textDecoration: 'none' }}>
+                <Link to='/radnik/pregled-rezervacija' style={{ textDecoration: 'none' }}>
                     <DropdownItem>Pregled rezervacija</DropdownItem>
                 </Link>
-                <Link to='/radnik-dodaj-spec-pon' style={{ textDecoration: 'none' }}>
+                <Link to='/radnik/dodaj-rezervaciju' style={{ textDecoration: 'none' }}>
                     <DropdownItem>Dodaj rezervaciju</DropdownItem>
                 </Link>
-                <Link to='/radnik-azur-spec-pon' style={{ textDecoration: 'none' }}>
-                <DropdownItem>Ažuriraj rezervaciju</DropdownItem>
-                </Link>
+                
                 </DropdownMenu>
                 </ButtonDropdown>
             </li>
@@ -76,12 +74,13 @@ function NavbarRadnik() {
                 Specijalne ponude
             </DropdownToggle>
             <DropdownMenu>
-            <Link to='/radnik-dodaj-spec-pon' style={{ textDecoration: 'none' }}>
-                <DropdownItem >Dodaj ponudu</DropdownItem>
-            </Link>
-            <Link to='/radnik-pregled-spec-pon' style={{ textDecoration: 'none' }}>
+            <Link to='/radnik/pregled-spec-pon' style={{ textDecoration: 'none' }}>
             <DropdownItem>Pregled ponuda</DropdownItem>
             </Link>
+            <Link to='/radnik/dodaj-spec-pon' style={{ textDecoration: 'none' }}>
+                <DropdownItem >Dodaj ponudu</DropdownItem>
+            </Link>
+            
             </DropdownMenu>
             </ButtonDropdown>
             

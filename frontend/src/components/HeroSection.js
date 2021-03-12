@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 import '../App.css';
 import './Button.css';
-import { Link, Route, useHistory, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import './HeroSection.css';
 import Datum from './Datum'
 import DatePicker from "react-datepicker";

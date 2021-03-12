@@ -1,6 +1,7 @@
-.naslov{
-  padding: 4rem;
+.naslov-1{
+  padding: 5rem;
   background: #fff;
+  
 }
 .cards-1 {
   display: flex;
@@ -8,8 +9,9 @@
   padding: 4rem;
   background: #5F9EA0;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 10px;
+  
 }
 
 h1 {

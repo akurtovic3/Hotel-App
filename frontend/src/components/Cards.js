@@ -7,9 +7,10 @@ import logo from '../images/logo.png';
 function Cards() {
   return (
     <div>
-      <div className="naslov">
+      <div className="naslov-1">
       <img src={logo} alt="website logo" class="center-image" width="60px" height="60px"/>
           <h1>Dobro došli u Vilu Nezirović na prelijepoj Ulcinjskoj rivijeri!</h1>
+          
       </div>
 
       <div className='cards-1'>

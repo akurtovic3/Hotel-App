@@ -1,13 +1,11 @@
 import React from "react";
-import {useState} from 'react'
-import { Link, withRouter, useHistory , Route} from "react-router-dom";
+import {  withRouter , Route} from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import {ImUser} from 'react-icons/im'
 import {TiTimes} from 'react-icons/ti'
 import {IoIosBed, IoMdBed} from 'react-icons/io'
-import { Button2 } from './Button2';
 import Popup from 'reactjs-popup';
 import '../components/PopUp.css';
 import AOS from 'aos';
