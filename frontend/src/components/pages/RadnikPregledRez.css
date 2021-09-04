@@ -13,18 +13,46 @@ table{
 }
 
 .rowe{
-    display: flex;
+  display: flex;
     justify-content: center;
-    padding: 10px;
-    
+    padding: 5px;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  align-content: center;
     
 }
 
 .column {
-    float: left;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
     width: 33%;
   }
+  .rowe-sp{
+    display: flex;
+    justify-content: center;
+      padding: 5px;
+      width: 90%;
+      padding-top: 20px;
+      margin: 0 auto;
+      align-items: center;
+    align-content: center;
+      
+  }
   
+  .column-sp {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+      float: right;
+      width: 33%;
+    }
   /* Clear floats after the columns */
   .row:after {
     content: "";

@@ -3,6 +3,9 @@ import {DayPilot, DayPilotScheduler} from "daypilot-pro-react";
 import { GrNext, GrBack } from 'react-icons/gr';
 import {IoIosArrowBack,IoIosArrowForward} from 'react-icons/io'
 import Button from 'react-bootstrap/Button';
+import Axios from "axios"
+import moment from 'moment'
+import {  Route, withRouter } from "react-router-dom";
 
 class Scheduler extends Component {
 
@@ -31,32 +34,9 @@ class Scheduler extends Component {
                 { name: "Soba 10", id: "R10"},
                 { name: "Soba 11", id: "R11"},
                 { name: "Soba 12", id: "R12"},
-                { name: "Soba 13", id: "R13"},
-                { name: "Soba 14", id: "R14"},
-                { name: "Soba 15", id: "R15"},
-                { name: "Soba 16", id: "R16"},
-                { name: "Soba 17", id: "R17"},
-                { name: "Soba 18", id: "R18"},
-                { name: "Soba 19", id: "R19"},
-                { name: "Soba 20", id: "R20"},
             ],
-            events: [
-                {
-                  id: 1,
-                  text: "Amina Kurtović",
-                  start: "2021-03-09",
-                  end: "2021-03-20",
-                  resource: "R1"
-                },
-                {
-                    id: 2,
-                    text: "Emina Zahirović",
-                    start: "2021-04-09",
-                    end: "2021-04-14",
-                    resource: "R5"
-                  },
-                // ...
-              ],
+            rezervacije:[],
+            events: [],
               timeRangeSelectedHandling: "Disabled",
                 eventMoveHandling: "Disabled",
                 eventResizeHandling: "Disabled",
@@ -64,8 +44,36 @@ class Scheduler extends Component {
                 eventClickHandling: "Disabled",
                 eventRightClickHandling: "Disabled"
         };
+        this.ucitajRezervacije();
         this.promijeniMjesecNext = this.promijeniMjesecNext.bind(this);
         this.promijeniMjesecBack = this.promijeniMjesecBack.bind(this);
+    }
+    ucitajRezervacije=()=>{
+      Axios.get("http://localhost:3001/rezervacije").then((result, fields)=>{
+      var rezerv=result.data;
+      this.setState(state => ({
+        ...state,
+        rezervacije:result.data,
+        events:[]
+      }))
+      console.log("lista rezervacija u kalendaru")
+      console.log(result.data)
+      let eventi=[];
+      rezerv.map((rez,i)=>{
+        Axios.get("http://localhost:3001/korisnik?id="+rez.id_korisnik).then((result, fields)=>{
+     //     console.log(result.data)
+     
+     this.setState(state => ({
+      ...state,
+    // rezerv[i]["ime"]=result.data[0].ime;
+    // rezerv[i]["prezime"]=result.data[0].prezime;
+      events: [...this.state.events, {id:i, text:result.data[0].ime+" "+result.data[0].prezime, start:moment(rez.start_date).format('YYYY-MM-DD'), end:moment(rez.end_Date).format('YYYY-MM-DD'), resource:"R"+rez.id_soba}]
+    }))
+    console.log(rez.id_rezervacije+" " + rez.id_korisnik+" "+result.data[0].ime)
+      })
+    })
+      
+    })
     }
     promijeniMjesecNext() {
         var d = new Date(this.state.startDate)
@@ -114,4 +122,4 @@ class Scheduler extends Component {
     }
 }
 
-export default Scheduler;
+export default withRouter(Scheduler);

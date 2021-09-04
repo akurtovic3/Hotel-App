@@ -12,12 +12,13 @@ import StepThree from './components/pages/StepThree'
 import StepFour from './components/pages/StepFour'
 import Radnik from './RadnikPrijava';
 import RadnikMojProfil from './components/pages/RadnikMojProfil'
-import RadnikPregledRez from './components/pages/RadnikPregledRez'
+import RadnikPregledRez from './RadnikPregledRez'
 import RadnikPregledSpecPon from './components/pages/RadnikPregledSpecPon'
 import RadnikDodajRez from './components/pages/RadnikDodajRez'
 import RadnikDodajPonudu from './components/pages/RadnikDodajPonudu'
 import RadnikEditProfil from './components/pages/RadnikEditProfil'
-
+import RadnikAzurirajRez from './components/pages/RadnikAzurirajRez'
+import RadnikRezInfo from './components/pages/RadnikRezInfo'
 function App() {
   return (
     <>
@@ -43,6 +44,8 @@ function App() {
           <Route path='/radnik/dodaj-rezervaciju' component={RadnikDodajRez} />
           <Route path='/radnik/dodaj-spec-pon' component={RadnikDodajPonudu} />
           <Route path='/radnik/edit-profil' component={RadnikEditProfil} />
+          <Route path='/radnik/azuriraj-rezervaciju' component={RadnikAzurirajRez}/>
+          <Route path='/radnik/info-rezervacija' component={RadnikRezInfo}/>
         </Switch>
       </Router>
     </>

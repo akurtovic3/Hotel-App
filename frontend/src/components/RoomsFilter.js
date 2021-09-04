@@ -77,7 +77,7 @@ const RoomsFilter = ({ props, rooms }) => {
           />
         </div>
         {/* end of room price*/}
-        {/* size */}
+        {/* size 
         <div className="form-group">
           <label htmlFor="price">Veličina (m²) </label>
           <div className="size-inputs">
@@ -96,9 +96,9 @@ const RoomsFilter = ({ props, rooms }) => {
               className="size-input"
             />
           </div>
-        </div>
+        </div>*/}
         {/* end of select type */}
-        {/* extras */}
+        {/* extras 
         <div className="form-group">
           
           <div className="single-extra">
@@ -110,7 +110,7 @@ const RoomsFilter = ({ props, rooms }) => {
             />
             <label htmlFor="breakfast">Kućni ljubimci</label>
           </div>
-        </div>
+        </div>*/}
         {/* end of extras type */}
       </form>
     </section>

@@ -11,25 +11,14 @@ function Footer() {
         <div className='footer-link-wrapper'>
           
           <div class='footer-link-items'>
-            <h2>Kontaktirajte nas</h2>
+            <h2 style={{textAlign:"center"}}>Kontaktirajte nas</h2>
             <div className="adresa">
             <h6 >Adresa: Doni Štoj 85360, Crna Gora</h6>
             <h6>Telefon: +382 68 226 337</h6>
             </div>
           </div>
         </div>
-        <div className='footer-link-wrapper'>
-          
-          <div class='footer-link-items'>
-            <h2>Fotogalerija</h2>
-            <Link to='/' className='footer-links'>
-              Slike hotela
-            </Link>
-            <Link to='/' className='footer-links'>
-              Slike smještaja
-            </Link>
-          </div>
-        </div>
+       
        
       </div>
       <section class='social-media'>

@@ -17,7 +17,12 @@ class StepThree extends Component {
       brojTel: props.location.state.info.brojTel ? props.location.state.info.brojTel  : '',
       specZahtj:props.location.state.info.specZahtj ? props.location.state.info.specZahtj  : '',
       korak:3,
-      error: false
+      error: false,
+      ponuda:props.location.state.info.ponuda,
+      popust:props.location.state.info.ponuda ? props.location.state.info.popust : 0,
+      period_poc: props.location.state.info.ponuda ? new Date(props.location.state.info.period_poc) : new Date(),
+      period_kraj: props.location.state.info.ponuda ? new Date(props.location.state.info.period_kraj) : new Date(),
+      idoviSobaPonude:props.location.state.info.ponuda ? props.location.state.info.idoviSobaPonude : []
     };
     this.provjeriUnos();
     this.promijeniIme = this.promijeniIme.bind(this);
@@ -86,16 +91,16 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
            <div className='multiStepContainer'>
              <div>
         <div className='multi-step-btns'>
-        <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}> <FcCheckmark/></button>
-        <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
-        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
-        <button className="multi-step-btn-style-2" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}><FcCheckmark/></button>
-        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF'} : {background: 'silver'}}></button >
-        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
-        <button className="multi-step-btn-style-3" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}>3</button>
-        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
-        <button className="linija" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}></button>
-        <button className="multi-step-btn-style-4" style={this.state.korak===4 ? {background:'#1E90FF'} : {background: 'silver'}}>4</button>
+        <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"2px"} : {background: 'silver', paddingTop:"2px"}}> <FcCheckmark/></button>
+        <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
+        <button className="multi-step-btn-style-2" style={this.state.korak===2 ? {background:'#1E90FF', paddingTop:"2px"} : {background: 'silver', paddingTop:"2px"}}><FcCheckmark/></button>
+        <button className="linija" style={this.state.korak===2 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button >
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
+        <button className="multi-step-btn-style-3" style={this.state.korak===3 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}>3</button>
+        <button className="linija" style={this.state.korak===3 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
+        <button className="linija" style={this.state.korak===4 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
+        <button className="multi-step-btn-style-4" style={this.state.korak===4 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}>4</button>
       </div>
       <div className="podnaslovi">
       <p>Informacije o boravku</p>
@@ -143,7 +148,12 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
               <div className="btn-povratak">
                       <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { history.push('/rezervacija/1', { info:this.state}
+                          onClick={() => { history.push('/rezervacija/1', { info:this.state,
+                            ponuda: this.state.ponuda,
+                            popust: this.state.popust,
+                            period_poc: this.state.period_poc,
+                            period_kraj: this.state.period_kraj,
+                            idoviSobaPonude: this.state.idoviSobaPonude}
                           );}}>
                           Povratak
                         </button>
@@ -153,7 +163,14 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
               <div className="btn-nastavak">
                       <Route render={({ history}) => (
                         <button className="btn-nastavak-povratak-style"
-                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { info:this.state}
+                          onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { 
+                            info:this.state,
+                            ponuda: this.state.ponuda,
+                            popust: this.state.popust,
+                            period_poc: this.state.period_poc,
+                            period_kraj: this.state.period_kraj,
+                            idoviSobaPonude: this.state.idoviSobaPonude
+                          }
                           ); } }}>
                           Nastavi rezervaciju
                         </button>

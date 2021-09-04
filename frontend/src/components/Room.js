@@ -22,7 +22,7 @@ import {MdKitchen  } from 'react-icons/md'
 import {FcCheckmark} from 'react-icons/fc'
 
 const Room = memo(({ room, props }) => {
-  const { name, slug, images, price, capacity, rates, size, pets, extras, pogled, tv, minibar, fridge } = room;
+  const { id, name, slug, images, price, capacity, rates, size, pets, extras, pogled, tv, minibar, fridge } = room;
   const [main, ...defaultImages] = images;
  
 
@@ -151,7 +151,7 @@ const Room = memo(({ room, props }) => {
               <button class="btn btn-outline-light"
               
                 onClick={() => { history.push('/rezervacija/2', {
-                  info:{...props, naziv:name, cijena: price}
+                  info:{...props, idSobe:id, naziv:name, cijena: price}
                 }) }}
               >
                 Rezerviši

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './NavbarRadnik.css';
 import logo from '../images/logo-navbar.png';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
-function NavbarRadnik() {
+import {  Route, withRouter } from "react-router-dom";
+function NavbarRadnik(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -31,6 +31,13 @@ function NavbarRadnik() {
     showButton();
   }, []);
 
+  const pregledPonuda=()=>{
+    this.props.history.push({
+      pathname: '/radnik/pregled-spec-pon',
+      state: { info: props.props }
+    });
+  }
+
   window.addEventListener('resize', showButton);
 
   return (
@@ -44,8 +51,13 @@ function NavbarRadnik() {
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item-not-drop'>
+
               <Link
-                to='/radnik-profil'
+                to={{
+                  pathname: '/radnik-profil',
+                  state: {
+                      info:props.props,
+                  },}}
                 onClick={closeMobileMenu}
                 style={{ textDecoration: 'none', color: '#FFF' }}
               >
@@ -58,13 +70,21 @@ function NavbarRadnik() {
                     Rezervacija
                 </DropdownToggle>
                 <DropdownMenu>
-                <Link to='/radnik/pregled-rezervacija' style={{ textDecoration: 'none' }}>
+                <Link to={{
+                    pathname: '/radnik/pregled-rezervacija',
+                    state: {
+                        info:props.props,
+                    },}} style={{ textDecoration: 'none' }}>
                     <DropdownItem>Pregled rezervacija</DropdownItem>
                 </Link>
-                <Link to='/radnik/dodaj-rezervaciju' style={{ textDecoration: 'none' }}>
+                <Link to={{
+                    pathname: '/radnik/dodaj-rezervaciju',
+                    state: {
+                        info:props.props,
+                    },}} style={{ textDecoration: 'none' }}>
                     <DropdownItem>Dodaj rezervaciju</DropdownItem>
                 </Link>
-                
+                {console.log(props)}
                 </DropdownMenu>
                 </ButtonDropdown>
             </li>
@@ -74,10 +94,18 @@ function NavbarRadnik() {
                 Specijalne ponude
             </DropdownToggle>
             <DropdownMenu>
-            <Link to='/radnik/pregled-spec-pon' style={{ textDecoration: 'none' }}>
+            <Link to={{
+                    pathname: '/radnik/pregled-spec-pon',
+                    state: {
+                        info:props.props,
+                    },}} style={{ textDecoration: 'none' }}>
             <DropdownItem>Pregled ponuda</DropdownItem>
             </Link>
-            <Link to='/radnik/dodaj-spec-pon' style={{ textDecoration: 'none' }}>
+            <Link to={{
+                    pathname: '/radnik/dodaj-spec-pon',
+                    state: {
+                        info:props.props,
+                    },}} style={{ textDecoration: 'none' }}>
                 <DropdownItem >Dodaj ponudu</DropdownItem>
             </Link>
             
@@ -98,4 +126,4 @@ function NavbarRadnik() {
   );
 }
 
-export default NavbarRadnik;
+export default withRouter(NavbarRadnik);

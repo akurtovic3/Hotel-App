@@ -4,36 +4,62 @@ import SpecPonuda from './SpecPonuda';
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import logo from '../images/logo.png';
+import Axios from "axios"
+import { useEffect, useState } from "react";
 
 function SpecPonudeContainer() {
+  const [ponude, setPonude] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/specijalnePonude")
+          .then(function (response) {
+              var niz=response.data;
+              const rows = niz.reduce(function (rows, key, index) { 
+                return (index % 2 == 0 ? rows.push([key]) 
+                  : rows[rows.length-1].push(key)) && rows;
+              }, []);
+                  setPonude(rows)
+                  console.log(rows)
+               })
+          .catch(error => {
+                  console.log(error);                        
+          })
+   }, [])
     AOS.init({
         // initialise with other settings
         duration : 2000
       });
+      const runCallback = (cb) => {
+        return cb();
+      };
+    var rows=[];
   return (
     <div className='cards' >
     <img src={logo} alt="website logo" class="center-image" width="60px" height="60px"/>
       <h2 className='cards-container-naslov'>Pronađite savršenu ponudu za vaš sljedeći odmor</h2>
       <div className='cards__container'>
         <div className='cards__wrapper'>
-        
-          <ul className='cards__items' data-aos="fade-in">
-            <SpecPonuda
-              src='images/img-9.jpg'
-              text1='Vikend odmor'
-              text2='Planirate vikend odmor za Vas i Vašeg partnera? Ne propustite  priliku!!!'
-              label='15% popusta'
-              path='/ponude/popust-vikend-odmor-2'
-            />
-            <SpecPonuda
-              src='images/early-booking.jpg'
-              text1='Rani Booking'
-              text2 = 'Uhvati svoj godišnji na vrijeme i uštedi 25%!'
-              label='25% popusta'
-              path='/ponude/popoust-rani-booking'
-            />
-          </ul>
-          <ul className='cards__items' data-aos="fade-in">
+        {
+          /*runCallback(() => {
+            var niz, size;
+              const row = [];
+            
+            for (var i = 0; i < size; i=i+2) {
+              if(i==size-1) row.push(<ul className='cards__items' data-aos="fade-in">
+                <SpecPonuda props={niz[i]} key={niz[i].id}/>
+                </ul>);
+              else row.push(<ul className='cards__items' data-aos="fade-in">
+              <SpecPonuda props={niz[i]} key={niz[i].id}/>
+              <SpecPonuda props={niz[i+1]} key={niz[i+1].id}/>
+              </ul>);*/
+              ponude.map(items => (
+                <ul className='cards__items' data-aos="fade-in">
+                  {items.map(item => (<SpecPonuda props={item} key={item.id}/>))}
+                </ul>
+              ))
+            }           
+            
+          
+       {/* <ul className='cards__items' data-aos="fade-in">
             <SpecPonuda
               src='images/student-popust.jpg'
               text1='Popust za studente'
@@ -48,7 +74,7 @@ function SpecPonudeContainer() {
               label='20% popusta'
               path='/ponude/popust-porodicni-vikend'
             />
-          </ul>
+      </ul>*/}
           
           
         </div>

@@ -1,38 +1,22 @@
 import React from 'react'
 import NavbarRadnik from '../NavbarRadnik'
-
+import Moment from "moment"
 import './RadnikEditProfil.css'
 import jane from '../../images/jane-doe.jpg';
 import john from '../../images/john-doe.png';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Axios from "axios"
 
-export default class RadnikMojProfil extends React.Component {
+import Alert from "reactstrap/lib/Alert";
+class RadnikMojProfil extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      ...props.location.state.info,
+      info:props.location.state.info,
       photoMale: john,
       photoFemale: jane,
-      spol: 0,/*0 musko, 1 zensko*/
-      profileFields: {
-        
-        username: "Nika Dangubić",
-        firstName: "Nika",
-        lastName: "Dangubić",
-        
-        id: '1312',
-        jobTitle: 'Recepcioner',
-        startDate: '23/05/2015',
-        address: 'Ul. "Zmaja od Bosne" 1',
-        city: 'Sarajevo',
-        country: 'Bosna i Hercegovina',
-        mobile: '+38762666666',
-        email: 'nesto@gmail.com',
-        jmbg: '0101980111111',
-        birthday: '01/01/1980',
-        placeOfBirth: 'Sarajevo',
-        countryOfBirth: 'Bosna i Hercegovina'
-        
-      }
+      error:false
     }
     this.provjeriUnos();
     this.promijeniIme = this.promijeniIme.bind(this);
@@ -43,10 +27,33 @@ export default class RadnikMojProfil extends React.Component {
     this.promijeniDrzavu = this.promijeniDrzavu.bind(this);
     this.promijeniBrTel = this.promijeniBrTel.bind(this);
     this.promijeniEmail = this.promijeniEmail.bind(this);
-
+    console.log("edit")
+    console.log(this.state);
     
   }
-  provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojTel!="") { this.setState(state => ({
+  upisiIzmjeneUBazu=()=>{
+    Axios.put("http://localhost:3001/updateRadnik", 
+    {
+      id:this.state.id,
+      ime: this.state.ime,
+      prezime: this.state.prezime,
+      mail:this.state.mail,
+      tel:this.state.tel,
+      username:this.state.username,
+      adresa:this.state.adresa,
+      grad:this.state.grad,
+      drzava:this.state.drzava,
+    }).then((result)=>{
+      console.log("nakon updatea")
+      Axios.get("http://localhost:3001/zaposlenik?id="+this.state.id).then(result=>{
+    console.log(result);
+    console.log(result.data); 
+    this.props.history.push("/radnik-profil", {info:result.data[0]});
+    });
+      
+    })
+  }
+  provjeriUnos=()=>{if(this.state.ime!="" && this.state.mail!="" && this.state.prezime!="" && this.state.tel!="" && this.state.username!="" && this.state.adresa!="") { this.setState(state => ({
     ...state,
     error:false
   })); return true;} else { this.setState(state => ({
@@ -57,13 +64,13 @@ export default class RadnikMojProfil extends React.Component {
   promijeniIme(e) {
     this.setState(state => ({
       ...state,
-      firstName: e.target.value,
+      ime: e.target.value,
     }))
   }
   promijeniPrezime(e) {
     this.setState(state => ({
       ...state,
-      lastName: e.target.value,
+      prezime: e.target.value,
     }))
   }
   promijeniUsername(e) {
@@ -75,31 +82,31 @@ export default class RadnikMojProfil extends React.Component {
   promijeniAdresu(e) {
     this.setState(state => ({
       ...state,
-      address: e.target.value,
+      adresa: e.target.value,
     }))
   }
   promijeniGrad(e) {
     this.setState(state => ({
       ...state,
-      city: e.target.value,
+      grad: e.target.value,
     }))
   }
   promijeniDrzavu(e) {
     this.setState(state => ({
       ...state,
-      country: e.target.value,
+      drzava: e.target.value,
     }))
   }
   promijeniBrTel(e) {
     this.setState(state => ({
       ...state,
-      mobile: e.target.value,
+      tel: e.target.value,
     }))
   }
   promijeniEmail(e) {
     this.setState(state => ({
       ...state,
-      email: e.target.value,
+      mail: e.target.value,
     }))
   }
   
@@ -107,7 +114,7 @@ export default class RadnikMojProfil extends React.Component {
   render () {
     return (
       <div className="profile-page-edit">
-        <NavbarRadnik/>
+        <NavbarRadnik props={this.state.info}/>
         <div className="edit-profil-container">
         <h2 className="naslov-edit-profil">Forma za promjenu podataka na ličnom profilu</h2>
 
@@ -115,23 +122,23 @@ export default class RadnikMojProfil extends React.Component {
         <h3>Osnovne informacije</h3>
         <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Ime:</p></div>
+            <div className="a-col-cetvrtina"><p>*Ime:</p></div>
             <div className="a-col-cetvrtina">
             <input    placeholder='Ime'
-            value={this.state.firstName} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/> </div>
+            value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/> </div>
             </div>
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Prezime:</p></div>
+            <div className="a-col-cetvrtina"><p>*Prezime:</p></div>
             <div className="a-col-cetvrtina"><input    placeholder='Prezime'
-            value={this.state.lastName} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} }/> </div>
+            value={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} }/> </div>
             </div>
         </div>
 
         
         <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Username:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Username'
+            <div className="a-col-cetvrtina"><p>*Korisničko ime:</p></div>
+            <div className="a-col-cetvrtina"><input    placeholder='Korisničko ime'
                 value={this.state.username} onChange={(e) => { this.promijeniUsername(e); this.provjeriUnos()} }/> </div>
             </div>
             <div className="a-col-pola">
@@ -158,13 +165,13 @@ export default class RadnikMojProfil extends React.Component {
          <div className="a-row">
             <div className="a-col-pola">
             <div className="a-col-cetvrtina"><p>Zaposlenje:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.profileFields.jobTitle}
+            <div className="a-col-cetvrtina"><input    placeholder={this.state.zaposlenje}
          disabled={true}/> </div>
          </div>
             <div className="a-col-pola">
 
             <div className="a-col-cetvrtina"><p>Datum zapošljavanja:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.profileFields.startDate}
+            <div className="a-col-cetvrtina"><input    placeholder={Moment(this.state.datum_zaposlj).format('DD.MM.YYYY.')}
          disabled={true}/> </div>
          </div>
          </div>
@@ -174,22 +181,22 @@ export default class RadnikMojProfil extends React.Component {
          <h3>Kontakt podaci</h3>
          <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Adresa stanovanja:</p></div>
+            <div className="a-col-cetvrtina"><p>*Adresa stanovanja:</p></div>
             <div className="a-col-cetvrtina"><input    placeholder='Adresa'
-        value={this.state.address} onChange={(e) => { this.promijeniAdresu(e); this.provjeriUnos()} }/> </div>
+        value={this.state.adresa} onChange={(e) => { this.promijeniAdresu(e); this.provjeriUnos()} }/> </div>
         </div>
         <div className="a-col-pola">
         <div className="a-col-cetvrtina"><p>Grad:</p></div>
         <div className="a-col-cetvrtina"><input    placeholder='Grad'
-        value={this.state.city} onChange={(e) => { this.promijeniGrad(e); this.provjeriUnos()} }/> </div>
+        value={this.state.grad} onChange={(e) => { this.promijeniGrad(e); this.provjeriUnos()} }/> </div>
         </div>
          </div>
 
          <div className="a-row">
             <div className="a-col-pola">
             <div className="a-col-cetvrtina"><p>Država:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Adresa'
-        value={this.state.address} onChange={(e) => { this.promijeniAdresu(e); this.provjeriUnos()} }/> </div>
+            <div className="a-col-cetvrtina"><input    placeholder='Drzava'
+        value={this.state.drzava} onChange={(e) => { this.promijeniDrzavu(e); this.provjeriUnos()} }/> </div>
         </div>
         <div className="a-col-pola">
         
@@ -199,14 +206,14 @@ export default class RadnikMojProfil extends React.Component {
 
          <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Broj telefona:</p></div>
+            <div className="a-col-cetvrtina"><p>*Broj telefona:</p></div>
             <div className="a-col-cetvrtina"><input    placeholder='Broj telefona'
-        value={this.state.mobile} onChange={(e) => { this.promijeniBrTel(e); this.provjeriUnos()} }/> </div>
+        value={this.state.tel} onChange={(e) => { this.promijeniBrTel(e); this.provjeriUnos()} }/> </div>
         </div>
         <div className="a-col-pola">
-        <div className="a-col-cetvrtina"><p>E-mail:</p></div>
+        <div className="a-col-cetvrtina"><p>*E-mail:</p></div>
         <div className="a-col-cetvrtina"><input    placeholder='E-mail'
-        value={this.state.email} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} }/> </div>
+        value={this.state.mail} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} }/> </div>
         
         </div>
          </div>
@@ -216,12 +223,12 @@ export default class RadnikMojProfil extends React.Component {
          <div className="a-row">
             <div className="a-col-pola">
             <div className="a-col-cetvrtina"><p>JMBG:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.profileFields.jmbg}
+            <div className="a-col-cetvrtina"><input    placeholder={this.state.jmbg}
          disabled={true}/> </div>
         </div>
         <div className="a-col-pola">
         <div className="a-col-cetvrtina"><p>Datum rođenja:</p></div>
-        <div className="a-col-cetvrtina"><input    placeholder={this.state.profileFields.birthday}
+        <div className="a-col-cetvrtina"><input    placeholder={Moment(this.state.dat_rodj).format('DD.MM.YYYY.')}
          disabled={true}/> </div>
         
         </div>
@@ -229,22 +236,25 @@ export default class RadnikMojProfil extends React.Component {
          <div className="a-row">
             <div className="a-col-pola">
             <div className="a-col-cetvrtina"><p>Mjesto rođenja:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.profileFields.placeOfBirth}
+            <div className="a-col-cetvrtina"><input    placeholder={this.state.mjesto_rodj}
          disabled={true}/> </div>
         </div>
         <div className="a-col-pola">
         <div className="a-col-cetvrtina"> <p>Država rođenja:</p> </div>
-        <div className="a-col-cetvrtina"> <input    placeholder={this.state.profileFields.countryOfBirth}
+        <div className="a-col-cetvrtina"> <input    placeholder={this.state.drzava_rodj}
          disabled={true}/> </div>
         </div>
         
         </div>
          </div>
-
+         <div>
+          {this.state.error && <Alert color="danger" fade={false}>
+            <p style={{color: "red", fontWeight: "bold", textAlign:"center"}}>Polja označena zvjezdicom ne smiju biti prazna!</p>
+          </Alert>}
+          </div>
          <div className="dno">
-         <Link to='/radnik-profil' style={{ textDecoration: 'none' }}>
-            <button type="button" class="btn btn-info btn-lg btn-block">Sačuvaj izmijenjeno</button>
-            </Link>
+            <button type="button" class="btn btn-info btn-lg btn-block" onClick={this.upisiIzmjeneUBazu.bind(this)}>Sačuvaj izmijenjeno</button>
+            
           </div>
          </div>
 
@@ -255,3 +265,4 @@ export default class RadnikMojProfil extends React.Component {
     )
   }
 }
+export default withRouter(RadnikMojProfil);

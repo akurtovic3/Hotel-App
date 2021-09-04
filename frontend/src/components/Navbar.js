@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../images/logo-navbar.png';
 
+import {  Route, withRouter } from "react-router-dom";
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -45,7 +47,11 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/rezervacija/0'
+                to={{
+                  pathname: '/rezervacija/0',
+                  state: {
+                      ponuda:false,
+                  },}}
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -64,15 +70,16 @@ function Navbar() {
 
             <li className='nav-item'>
               <Link
-                to='/prijava'
+                to='/radnik'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
                 <button type="button" class="btn btn-outline-light">Prijava</button>
               </Link>
-              <Link to='/prijava' className='nav-links-prijava'>
-              <button type="button" class="btn btn-outline-light">Prijava</button>
-              </Link>
+              
+              {button && <Link to='/radnik' className='nav-links-prijava'>
+              <button type="button" style={{fontSize : "18px"}} class="btn btn-outline-light">Prijava</button>
+              </Link>}
             </li>
           </ul>
           
@@ -83,4 +90,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default withRouter(Navbar);
