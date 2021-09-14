@@ -17,12 +17,12 @@ import RadnikPregledSpecPon from './components/pages/RadnikPregledSpecPon'
 import RadnikDodajRez from './components/pages/RadnikDodajRez'
 import RadnikDodajPonudu from './components/pages/RadnikDodajPonudu'
 import RadnikEditProfil from './components/pages/RadnikEditProfil'
-import RadnikAzurirajRez from './components/pages/RadnikAzurirajRez'
+import RadnikAzurirajRez from './components/pages/RadnikAzurirajRez2'
 import RadnikRezInfo from './components/pages/RadnikRezInfo'
 function App() {
   return (
     <>
-      <Router>
+      <Router onUpdate={() => window.scrollTo(0, 0)} >
         
         <Switch>
           <Route path='/' exact component={Home} />
@@ -36,7 +36,6 @@ function App() {
           <Route path='/prijava' component={Prijava} />
           <Route path='/registracija' component={Registracija} />
           <Route exact path="/rooms/:slug" component={SingleRoom} />
-          
           <Route  exact path='/radnik' component={Radnik} />
           <Route   path='/radnik-profil' component={RadnikMojProfil} />
           <Route   path='/radnik/pregled-rezervacija' component={RadnikPregledRez} />

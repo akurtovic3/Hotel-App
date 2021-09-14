@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import NavbarRadnik from '../NavbarRadnik'
-import './RadnikPregledRez.css'
+import './RadnikPregledSpecPon.css'
 
 import DatePicker from "react-datepicker";
 
@@ -44,23 +44,30 @@ class RadnikPregledSpecPon extends Component {
       this.handleChangeText1 = this.handleChangeText1.bind(this);
       console.log(this.state.specPon)
 }
+
+componentDidMount() {
+  window.scrollTo(0, 0)
+}
 Filtriraj=()=>{
   Axios.get("http://localhost:3001/filtrirajSpecijalnePonude?text1="+this.state.text1+"&start_date="+moment(this.state.startDate).format('YYYY-MM-DD')+"&end_date="+moment(this.state.endDate).format('YYYY-MM-DD')+"&mijenjanEndDate="+this.state.mijenjanEndDate).then((result, fields)=>{
     //     console.log(result.data)
     var rez=[];
     var sobe=[];
     var vrati=false;
-    console.log(this.state.brSobe)
+    //if(da)
       result.data.map((spec)=>{
       sobe=spec.idoviSoba.split(',');
       console.log(sobe)
       sobe.map((s)=>{
-        if(s===this.state.brSobe && this.state.brSobe!=="")
+        if(this.state.brSobe=="")
+          vrati=true;
+        else if(s===this.state.brSobe)
           vrati=true;
       })
       if(vrati) rez=[...rez, spec]
       vrati=false
     })
+    //else rez=[...rez, result.data]
     
     console.log(rez)
     this.setState(state => ({
@@ -132,13 +139,13 @@ handleChangeText1(event) {
         </div>
         
         <div class="rowe-sp">
-          <div class="column-sp">
+          <div class="column-sp-sp">
           <p>Pretražite po nazivu specijalne ponude</p>
           <input type="text" name="name" style={{width: "200px"}} onInput={this.handleChangeText1.bind(this)}  placeholder="Naziv specijalne ponude"/>
             
           </div>
           
-          <div class="column-sp">
+          <div class="column-sp-sp">
           <p>Pretražite da li je soba uključena u neku ponudu</p>
             <input type="text" id="brSobe" name="brSobe"    onInput={this.handleChangeBrSobe.bind(this)} style={{width: "130px"}} placeholder="Broj sobe [1,12]"></input>
           </div>
@@ -153,7 +160,7 @@ handleChangeText1(event) {
         </div>
         
         <div className="container-table">
-        <h4 className="animation">Lista</h4>
+        <h4 className="animation">Lista specijalnih ponuda</h4>
         
         <table class="table table-hover"  >
           <thead>
@@ -166,7 +173,7 @@ handleChangeText1(event) {
             </tr>
           </thead>
           <tbody>
-          { this.provjeriJeLiPrazanNiz() && <h5 style={{padding:"20px", color:"black", textAlign:"center"}}>Nema specijalnih ponuda koje zadovoljavaju unesene kriterije.</h5>}
+          
           {this.state.specPon.map((result) => {
             return (
              
@@ -184,10 +191,13 @@ handleChangeText1(event) {
             
           </tbody>
         </table>
-      
+        { this.provjeriJeLiPrazanNiz() && <h5 style={{padding:"20px", color:"black", textAlign:"center"}}>Nema specijalnih ponuda koje zadovoljavaju unesene kriterije.</h5>}
        
       </div>
-      
+      <br>
+      </br>
+      <br></br>
+      <br></br>
       </div>
         
       </>

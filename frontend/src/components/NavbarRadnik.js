@@ -5,6 +5,9 @@ import './NavbarRadnik.css';
 import logo from '../images/logo-navbar.png';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import {  Route, withRouter } from "react-router-dom";
+
+import { BsDot } from 'react-icons/bs';
+import {GrUserManager} from 'react-icons/gr'
 function NavbarRadnik(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -13,6 +16,9 @@ function NavbarRadnik(props) {
   const togglePonuda = () => setOpenPonuda(!dropdownOpenPonuda);
   const [dropdownOpenRezerv, setOpenRezerv] = useState(false);
   const toggleRezerv = () => setOpenRezerv(!dropdownOpenRezerv);
+  
+  const [dropdownOpenUser, setOpenUser] = useState(false);
+  const toggleUser = () => setOpenUser(!dropdownOpenUser);
 
 
 
@@ -50,7 +56,7 @@ function NavbarRadnik(props) {
             
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className='nav-item-not-drop'>
+       {/*}   <li className='nav-item-not-drop'>
 
               <Link
                 to={{
@@ -59,11 +65,11 @@ function NavbarRadnik(props) {
                       info:props.props,
                   },}}
                 onClick={closeMobileMenu}
-                style={{ textDecoration: 'none', color: '#FFF' }}
+                style={{ textDecoration: 'none', color: '#FFF'}}
               >
                 Moj profil
               </Link>
-            </li>
+                </li>*/}
             <li className='nav-item-dropdown'>
                 <ButtonDropdown isOpen={dropdownOpenRezerv} toggle={toggleRezerv} >
                 <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
@@ -90,7 +96,7 @@ function NavbarRadnik(props) {
             </li>
             <li className='nav-item-dropdown'>
             <ButtonDropdown isOpen={dropdownOpenPonuda} toggle={togglePonuda}>
-            <DropdownToggle caret className="davidimo" tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
+            <DropdownToggle caret tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
                 Specijalne ponude
             </DropdownToggle>
             <DropdownMenu>
@@ -114,7 +120,39 @@ function NavbarRadnik(props) {
             
             </li>
             
-
+            <li className='nav-item-dropdown-user'>
+                <ButtonDropdown isOpen={dropdownOpenUser} toggle={toggleUser} >
+                <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
+                  <label><GrUserManager className="iconn"/>{props.props.username}</label>
+                </DropdownToggle>
+                <DropdownMenu>
+                <Link to={{
+                  pathname: "/radnik-profil",
+                  state: {
+                    info:props.props,
+                  },
+                  }}style={{ textDecoration: 'none' }}>
+                  <DropdownItem>Pregledaj profil</DropdownItem>
+                </Link>
+                <Link to={{
+                  pathname: "/radnik/edit-profil",
+                  state: {
+                    info:props.props,
+                  },
+                  }}style={{ textDecoration: 'none' }}>
+                  <DropdownItem>Uredi profil</DropdownItem>
+                 
+                </Link>
+                
+                <Link to={{
+                    pathname: "/radnik"
+                    ,}} style={{ textDecoration: 'none' }}>
+                    <DropdownItem>Odjavi se</DropdownItem>
+                </Link>
+                {console.log(props)}
+                </DropdownMenu>
+                </ButtonDropdown>
+            </li>
             
           </ul>
           

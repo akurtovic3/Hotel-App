@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import Alert from "reactstrap/lib/Alert";
 import NavbarRadnik from '../NavbarRadnik';
-import './RadnikDodajRez.css'
+import './RadnikAzurirajRez.css'
 import Scheduler from '../MjesecView'
 import 'react-bootstrap'
 import DatePicker from "react-datepicker";
@@ -24,6 +24,7 @@ class RadnikAzurirajRez extends Component{
         super(props);
         console.log(props)
         this.state = {
+          stari_state: props.location.state.stari_state,
           startDate: new Date(props.location.state.rezervacija.start_date),
           endDate: new Date(props.location.state.rezervacija.end_Date),
           pocetniDatum: new Date(props.location.state.rezervacija.start_date),
@@ -170,7 +171,7 @@ class RadnikAzurirajRez extends Component{
           ...state,
           modal : false,
         }))
-        this.props.history.push('/radnik/pregled-rezervacija', {info:this.state.info});
+        this.props.history.push('/radnik/pregled-rezervacija', {info:this.state.info, stari_state: this.state.stari_state});
       }
       showModal2 = () => {
         
@@ -355,7 +356,7 @@ provjeriJeLiOznacenaSoba(){
     <>
         <NavbarRadnik props={this.state.info}/>
         
-        <div className="dodaj-rez-container">
+        <div className="azuriraj-rez-container">
 
 
           <div className="forme-dodaj-rez">
@@ -363,7 +364,7 @@ provjeriJeLiOznacenaSoba(){
           <div className="a-row">
             <div className="a-col-pola">
             <div className="simbol"><FaCalendarDay size={35}/></div>
-          <p>Datum dolaska: </p>
+          <p style={{marginTop:"20px"}}> Datum dolaska: </p>
           <div className="pom">
             <DatePicker filterDate={d => {
               return new Date() <d;
@@ -382,7 +383,7 @@ provjeriJeLiOznacenaSoba(){
             <div className="a-col-pola">
               <div className="simbol"> <FaCalendarDay size={35}/> </div>
             
-              <p>Datum odlaska: </p>
+              <p style={{marginTop:"20px"}}>Datum odlaska: </p>
           <div className="pom">
           <DatePicker filterDate={d => {
               return new Date() < this.state.startDate;
@@ -406,31 +407,35 @@ provjeriJeLiOznacenaSoba(){
           <div className="b-row">
           <div className="b-col-pola">
           <div className="simbol"><MdFace size={30}/></div>
-            <p>Broj odraslih: </p>
+            <p style={{marginTop:"2px"}}>Broj odraslih: </p>
             <div className="pom1"><input type="number" id="brOdraslih" name="brOdraslih"  min="1" max="6" value={this.state.brOdraslih} onInput={this.promijeniBrOdraslih.bind(this)} style={{width: "50px"}} ></input></div>
           </div>
           <div className="b-col-pola">
           <div className="simbol"><MdChildCare size={30}/></div>
-          <p>Broj djece: </p>
+          <p style={{marginTop:"2px"}}>Broj djece: </p>
           <div className="pom1"><input type="number" id="brDjece" name="brDjece"  min="1" max="6" value={this.state.brDjece}  onInput={this.promijeniBrDjece.bind(this)} style={{width: "50px"}} ></input></div>
           </div>
           </div>
           <hr></hr>
+          
           <div className="c-row">
+          
+          <div className="c-col-pola">
           <p style={{ textAlign:"center"}}>*Izaberite sobu:</p>
-         {/* <div className="c-col-pola">
-          <p>Broj rezerviranih soba:</p>
+          </div>
+          {/*<p>Broj rezerviranih soba:</p>
           <div className="pom1"><input type="number" id="brSoba" name="brSoba"  min="1" max="20" value={this.state.brSoba}  onChange={this.promijeniBrSoba.bind(this)} style={{width: "50px"}} ></input></div>
-            </div>
-          <div className="c-col-pola">*/}
-          <div className="c">
+            </div>*/}
+          <div className="c-col-pola">
+            <div className="c">
+            
             {
               this.state.listaSoba.map((soba) => {
                 if(this.state.brDjece+this.state.brOdraslih<=soba.capacity && !soba.reserved)
                 return (
                   <>
                     
-                     <input key={soba.id} onClick={this.handleCheckChieldElement} type="checkbox" checked={soba.isChecked} value={soba.value}  /> {soba.value}                
+                     <input key={soba.id}  onClick={this.handleCheckChieldElement} type="checkbox" checked={soba.isChecked} value={soba.value}  /> {soba.value}                
                       
                 </>
                 )
@@ -438,21 +443,58 @@ provjeriJeLiOznacenaSoba(){
               })
             }
           
+          </div>
             
-            
-            </div>
-           
+           </div>
             </div>
             <hr></hr>
-           
-            <div className="rowe">
+           {/*
+            <div className="row-check">
         
           
-                    <div className="column">  <input key="dor" onClick={this.promijeniDorucak} type="checkbox" checked={this.state.dorucak} value="dorucak"  /> dorucak  </div>       
-                    <div className="column">  <input key="ruc" onClick={this.promijeniRucak} type="checkbox" checked={this.state.rucak} value="rucak"  /> rucak  </div> 
-                    <div className="column">  <input key="vec" onClick={this.promijeniVeceru} type="checkbox" checked={this.state.vecera} value="vecera"  /> vecera </div> 
-                    <div className="column">  <input key="spa" onClick={this.promijeniSpa} type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
-                    <div className="column">  <input key="baz" onClick={this.promijeniBazen} type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
+                    <div className="column-check">  <input key="dor" onClick={this.promijeniDorucak} type="checkbox" checked={this.state.dorucak} value="dorucak"  /> dorucak  </div>       
+                    <div className="column-check">  <input key="ruc" onClick={this.promijeniRucak} type="checkbox" checked={this.state.rucak} value="rucak"  /> rucak  </div> 
+                    <div className="column-check">  <input key="vec" onClick={this.promijeniVeceru} type="checkbox" checked={this.state.vecera} value="vecera"  /> vecera </div> 
+                    <div className="column-check">  <input key="spa" onClick={this.promijeniSpa} type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
+                    <div className="column-check">  <input key="baz" onClick={this.promijeniBazen} type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
+                                  
+                     
+                      
+                    
+                     
+          
+            
+            
+            
+           </div>
+           <div className="ponude">
+        
+          
+        <div className="pon" >  <input key="dor" onClick={this.promijeniDorucak} type="checkbox" checked={this.state.dorucak} value="dorucak"  /><label htmlFor="dorucak">Doručak</label>  </div>       
+        <div >  <input key="ruc" onClick={this.promijeniRucak} type="checkbox" checked={this.state.rucak} value="rucak"  /><label htmlFor="rucak"> Ručak</label>  </div> 
+        <div >  <input key="vec" onClick={this.promijeniVeceru} type="checkbox" checked={this.state.vecera} value="vecera"  /><label htmlFor="vecera"> Večera</label></div> 
+        <div>  <input key="spa" onClick={this.promijeniSpa} type="checkbox" checked={this.state.spa} value="spa"  /> <label htmlFor="spa"> Spa</label>  </div> 
+        <div >  <input key="baz" onClick={this.promijeniBazen} type="checkbox" checked={this.state.bazen} value="bazen"  /> <label htmlFor="bazen">Bazen</label> </div>                  
+                      
+         
+          
+        
+         
+
+
+
+
+</div>
+<hr></hr>*/}
+           
+            <div className="roww">
+        
+          
+        <div className="columnn">  <input key="dor" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.promijeniDorucak} type="checkbox" checked={this.state.dorucak} value="dorucak"  /> doručak  </div>       
+                    <div className="columnn">  <input key="ruc" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.promijeniRucak} type="checkbox" checked={this.state.rucak} value="rucak"  /> ručak  </div> 
+                    <div className="columnn">  <input key="vec" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.promijeniVeceru} type="checkbox" checked={this.state.vecera} value="vecera"  /> večera </div> 
+                    <div className="columnn">  <input key="spa" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.promijeniSpa} type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
+                    <div className="columnn">  <input key="baz" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.promijeniBazen} type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
                                   
                      
                       
@@ -522,6 +564,7 @@ provjeriJeLiOznacenaSoba(){
             <button type="button" class="btn btn-info btn-lg btn-block" onClick={() =>{ 
               this.azurirajRezervaciju();
               }}>Ažuriraj rezervaciju</button>
+              
           </div>
          </div>
          

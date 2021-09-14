@@ -3,14 +3,18 @@ import './Footer.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo-navbar.png';
+
 function Footer() {
   return (
     <div className='footer-container'>
-      
       <div class='footer-links'>
+      <div style={{height:"300px", width:"450px"}}><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11876.756707464907!2d19.2774895!3d41.9102918!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbca86b0e60365485!2sVila%20Nezirovic!5e0!3m2!1sen!2sba!4v1631578368984!5m2!1sen!2sba" width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy"></iframe></div>
         <div className='footer-link-wrapper'>
           
           <div class='footer-link-items'>
+            <br></br>
+            <br></br>
+            <br></br>
             <h2 style={{textAlign:"center"}}>Kontaktirajte nas</h2>
             <div className="adresa">
             <h6 >Adresa: Doni Štoj 85360, Crna Gora</h6>
@@ -62,6 +66,7 @@ function Footer() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }

@@ -22,18 +22,18 @@ class Scheduler extends Component {
                 { groupBy: "Day", format: "d"}
             ],
             resources: [
-                { name: "Soba 1", id: "R1"},
-                { name: "Soba 2", id: "R2"},
-                { name: "Soba 3", id: "R3"},
-                { name: "Soba 4", id: "R4"},
-                { name: "Soba 5", id: "R5"},
-                { name: "Soba 6", id: "R6"},
-                { name: "Soba 7", id: "R7"},
-                { name: "Soba 8", id: "R8"},
-                { name: "Soba 9", id: "R9"},
-                { name: "Soba 10", id: "R10"},
-                { name: "Soba 11", id: "R11"},
-                { name: "Soba 12", id: "R12"},
+                { name: "Soba 1 - kap: 1, 50€", id: "R1"},
+                { name: "Soba 2 - kap: 1, 70€", id: "R2"},
+                { name: "Soba 3 - kap: 2, 100€", id: "R3"},
+                { name: "Soba 4 - kap: 3, 300€", id: "R4"},
+                { name: "Soba 5 - kap: 4, 200€", id: "R5"},
+                { name: "Soba 6 - kap: 3, 150€", id: "R6"},
+                { name: "Soba 7 - kap: 1, 120€", id: "R7"},
+                { name: "Soba 8 - kap: 2, 240€", id: "R8"},
+                { name: "Soba 9 - kap: 3, 250€", id: "R9"},
+                { name: "Soba 10 - kap: 4, 300€", id: "R10"},
+                { name: "Soba 11 - kap: 5, 500€", id: "R11"},
+                { name: "Soba 12 - kap: 6, 400€", id: "R12"},
             ],
             rezervacije:[],
             events: [],
@@ -69,7 +69,7 @@ class Scheduler extends Component {
     // rezerv[i]["prezime"]=result.data[0].prezime;
       events: [...this.state.events, {id:i, text:result.data[0].ime+" "+result.data[0].prezime, start:moment(rez.start_date).format('YYYY-MM-DD'), end:moment(rez.end_Date).format('YYYY-MM-DD'), resource:"R"+rez.id_soba}]
     }))
-    console.log(rez.id_rezervacije+" " + rez.id_korisnik+" "+result.data[0].ime)
+    //console.log(rez.id_rezervacije+" " + rez.id_korisnik+" "+result.data[0].ime)
       })
     })
       

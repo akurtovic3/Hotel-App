@@ -1,12 +1,39 @@
-.dodaj-rez-container{
+.dodaj-pon-container{
     background-color: #eef2f3;
     padding-top: 40px;
+    height: 100%;
 }
 
+.dodaj-pon-container .zauzetost-container{
+  background-color: #eef2f3;
+  margin: auto;
+  width: 1327px;
+  border:  rgb(180, 177, 177) solid 1px;
+  padding: 20px;
+  transition: background 500ms;
+  height: 100%;
+}
 
-.forme-dodaj-rez{
+.dodaj-pon-container .zauzetost-container:hover{
+  background: #cbe5e9;
+}
+
+.dodaj-pon-container .naslov-zauzetost{
+  
+  border-bottom: rgb(190, 189, 189) solid 1px;
+  background-color:  cadetblue;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.dodaj-pon-container .no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.dodaj-pon-container .forme-dodaj-rez{
     margin: auto;
-    margin-top: 20px;
     width: 1000px;
     border:  rgb(180, 177, 177) solid 1px;
     padding: 1px;
@@ -16,40 +43,82 @@
     
 }
 
-.forme-dodaj-rez:hover{
+.dodaj-pon-container .forme-dodaj-rez:hover{
     background: #cbe5e9;
 }
-  .a-row{
-
-    display: flex;
-    justify-content: space-around;
+.dodaj-pon-container .pon-row{
+display: flex;
+    justify-content: space-between;
     padding: 10px;
     margin:auto;
-    width: 80%;
+    float: left;
+}
+.dodaj-pon-container .pon-col-pola{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+float: left;
+width: 40%;
+  }
+.dodaj-pon-container .a-row{
+
+    display: flex;
+    
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    margin:auto;
+    width: 60%;
   }
 
-  .a-col-pola{
-      display: flex;
-      flex-direction:row;
-      align-items: flex-start;
-
-    width: 40%;
+  .dodaj-pon-container .a-col-pola{
+    display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  padding-left: 0px;
+    width: 50%;
+  }
+  
+  .dodaj-pon-container .a-col-pola-sobe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
   }
 
-  .simbol{
+  .dodaj-pon-container .simbol{
       padding-right: 5px;
   }
 
-  .pom{
+  .dodaj-pon-container .pom{
       padding-top: 17px;
       padding-left: 5px;
   }
 
-  .pom1{
-      padding-left: 10px;
+  .dodaj-pon-container .pom1{
+      padding-left: 2px;
+      margin-bottom: 14px;
+  }
+  	
+  .dodaj-pon-container .b-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin:auto;
+    width: 53%;
+  }
+  .dodaj-pon-container .b-col-pola{
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+    width: 50%;
   }
 
-  .c-row{
+  .dodaj-pon-container  .c-row{
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -57,25 +126,29 @@
     width: 60%;
 
   }
-  .c-col-pola{
+  .dodaj-pon-container  .c-col-pola{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     width: 50%;
   }
 
-  .c{
+  .dodaj-pon-container .c{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
     flex-wrap: wrap;
-    width: 1000px;
-    height: 150px;
-    
+    width: 100px;
+    height: 120px;
+    margin-right: 10px;
   }
 
  
-  .speci{
+  .dodaj-pon-container  .speci{
       display: flex;
       align-items: baseline;
     text-align: center;
@@ -84,35 +157,123 @@
     
   }
   
-  .c-col-pola-pom{
+  .dodaj-pon-container .c-col-pola-pom{
     display: flex;
     flex-direction: row;
     width: 50%;
     justify-content: flex-end;
   }
   
-  .dno{
+  .dodaj-pon-container .dno{
     width: 100%;
     padding: 20px;
   }
 
-  .naslov{
+  .dodaj-pon-container .naslov{
     height: 100px;
-  padding: 10px;
   background: #eef2f3;
   
 }
 
-.upload-dio{
+.dodaj-pon-container .upload-dio{
     
     width: 45%;
     justify-content: space-around;
     margin: auto;
-    
+    padding:20px;
 }
 
-.cijena-dio{
+.dodaj-pon-container .cijena-dio{
   display: flex;
   margin: auto;
   align-items: baseline;
+  padding:20px;
 }
+.dodaj-pon-container .rowe{
+  display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  align-content: center;
+    
+}
+
+.dodaj-pon-container .columne {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+  }
+  .dodaj-pon-container .column {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+    width: 33%;
+  }
+  .dodaj-pon-container .columnc {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+      float: right;
+    }
+    .dodaj-pon-container .dugmad{
+      display: flex;
+      justify-content: space-around;
+      padding-top: 40px;
+      
+    }
+  
+    .dodaj-pon-container .title-modal{
+      
+      border-bottom: rgb(180, 177, 177) solid 1px ;
+    }
+  
+    .dodaj-pon-container .mymodal{
+      padding: 50px;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-color: black;
+    }
+    .dodaj-pon-container .spec{
+        margin: 30px 0;
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+      
+        justify-content: space-evenly;
+        
+        align-items: center;
+    }
+    .dodaj-pon-container .Modal {
+      height: 100%;
+      width: 100%;
+    
+      background-color: #ffffff;
+      overflow: auto;
+    }
+    
+    .dodaj-pon-container .Overlay {
+      position: fixed;
+    
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    
+      background-color: rgba(0, 0, 0, 0.4);
+    }

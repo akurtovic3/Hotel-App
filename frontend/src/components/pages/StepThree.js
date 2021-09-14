@@ -5,6 +5,7 @@ import {FcCheckmark} from 'react-icons/fc'
 import React, { Component } from 'react'
 import Alert from "reactstrap/lib/Alert";
 import Navbar from '../Navbar';
+import '../../components/pages/Rezervacija.css'
 
 class StepThree extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class StepThree extends Component {
       period_kraj: props.location.state.info.ponuda ? new Date(props.location.state.info.period_kraj) : new Date(),
       idoviSobaPonude:props.location.state.info.ponuda ? props.location.state.info.idoviSobaPonude : []
     };
-    this.provjeriUnos();
+    //this.provjeriUnos();
     this.promijeniIme = this.promijeniIme.bind(this);
     this.promijeniPrezime = this.promijeniPrezime.bind(this);
     this.promijeniEmail = this.promijeniEmail.bind(this);
@@ -32,7 +33,9 @@ class StepThree extends Component {
     this.promijeniSpecZahtj = this.promijeniSpecZahtj.bind(this);
     console.log(props);
   }
-  
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
 provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojTel!="") { this.setState(state => ({
   ...state,
   error:false
@@ -51,25 +54,21 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
       ...state,
       prezime: e.target.value
     }))
-    this.provjeriUnos()
   }
   promijeniEmail(e) {
     this.setState(state => ({
       ...state,
       email: e.target.value}))
-      this.provjeriUnos()
   }
   promijeniBrojTel(e) {
     this.setState(state => ({
       ...state,
       brojTel: e.target.value}))
-      this.provjeriUnos()
   }
   promijeniSpecZahtj(e) {
     this.setState(state => ({
       ...state,
       specZahtj: e.target.value}))
-      this.provjeriUnos()
   }
  
   postaviKorak(indx) {
@@ -113,22 +112,22 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                 <div className='row-step-3'>
                   <div className='first-column-3'>
                       <input   className='input-form' placeholder='*Ime'
-                        value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/>
+                        value={this.state.ime} onChange={(e) => { this.promijeniIme(e); if(this.state.error) this.provjeriUnos()} }/>
                   </div>
                   <div className='second-column-3'>
                       <input   className='input-form' placeholder='*Prezime' 
-                      value={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} } />
+                      value={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); if(this.state.error)  this.provjeriUnos()} } />
                   </div>
                 </div>
                 <div className='row-step-3'>
                   <div className='first-column-3'>
                     <input    className='input-form' placeholder='*E-mail' 
-                    value={this.state.email} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} } /> 
+                    value={this.state.email} onChange={(e) => { this.promijeniEmail(e); if(this.state.error)  this.provjeriUnos()} } /> 
                     <p className="napomena">Ovo je e-mail na koji ćemo vam poslati informacije o rezervaciji.</p>
                   </div>
                   <div className='second-column-3'>
                     <input    className='input-form' placeholder='*Broj telefona' 
-                    value={this.state.brojTel} onChange={(e) => { this.promijeniBrojTel(e); this.provjeriUnos()} } />  
+                    value={this.state.brojTel} onChange={(e) => { this.promijeniBrojTel(e); if(this.state.error)  this.provjeriUnos()} } />  
                     
                   </div>
                 </div>
@@ -143,11 +142,11 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                 {this.state.error && <Alert color="danger" fade={false}>
             <p style={{color: "red", fontWeight: "bold"}}>Morate popuniti sva polja označena zvjezdicom!</p>
           </Alert>}
-              </div>
-              <div>
-              <div className="btn-povratak">
+          <br></br>
+          <div className="row-step-3">
+              <div className="first-column-3">
                       <Route render={({ history}) => (
-                        <button className="btn-nastavak-povratak-style"
+                        <button className="btn-nastavak-povratak-style-L"
                           onClick={() => { history.push('/rezervacija/1', { info:this.state,
                             ponuda: this.state.ponuda,
                             popust: this.state.popust,
@@ -160,9 +159,9 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                       )}
                     />
               </div>
-              <div className="btn-nastavak">
+              <div className="second-column-3">
                       <Route render={({ history}) => (
-                        <button className="btn-nastavak-povratak-style"
+                        <button className="btn-nastavak-povratak-style-R"
                           onClick={() => { if(this.provjeriUnos()) {history.push('/rezervacija/3', { 
                             info:this.state,
                             ponuda: this.state.ponuda,
@@ -179,6 +178,8 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
 
               </div>
               </div>
+              </div>
+              
               </div>
 
               

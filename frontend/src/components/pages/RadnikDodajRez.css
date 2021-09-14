@@ -4,7 +4,7 @@
 }
 
 /*MjesecView css*/
-.zauzetost-container{
+.dodaj-rez-container .zauzetost-container{
     background-color: #eef2f3;
     margin: auto;
     width: 1327px;
@@ -14,20 +14,21 @@
     
 }
 
-.zauzetost-container:hover{
+.dodaj-rez-container .zauzetost-container:hover{
     background: #cbe5e9;
 }
 
-.naslov-zauzetost{
+.dodaj-rez-container .naslov-zauzetost{
     
     border-bottom: rgb(190, 189, 189) solid 1px;
     background-color:  cadetblue;
     padding: 10px;
     color: white;
+    text-align: center;
 }
 /*kraj mjesecView*/
 
-.forme-dodaj-rez{
+.dodaj-rez-container .forme-dodaj-rez{
     margin: auto;
     margin-top: 20px;
     width: 1000px;
@@ -39,24 +40,24 @@
     
 }
 
-.forme-dodaj-rez:hover{
+.dodaj-rez-container .forme-dodaj-rez:hover{
     background: #cbe5e9;
 }
-.no-bullets {
+.dodaj-rez-container .no-bullets {
     list-style-type: none; /* Remove bullets */
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
   }
 
-  .a-row{
+  .dodaj-rez-container .a-row{
 
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
     margin:auto;
   }
 
-  .a-col-pola{
+  .dodaj-rez-container .a-col-pola{
       display: flex;
       flex-direction:row;
       align-items: center;
@@ -64,62 +65,75 @@
     width: 40%;
   }
 
-  .simbol{
+  .dodaj-rez-container .simbol{
       padding-right: 5px;
   }
 
-  .pom{
-      padding-top: 17px;
+  .dodaj-rez-container .pom{
+      padding-top: 7px;
       padding-left: 5px;
   }
 
-  .b-row{
+  .dodaj-rez-container .b-row{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
     margin:auto;
     width: 53%;
 
   }
 
-  .b-col-pola{
+  .dodaj-rez-container .b-col-pola{
     display: flex;
     flex-direction:row;
     align-items: flex-start;
     width: 50%;
   }
 
-  .pom1{
+  .dodaj-rez-container .pom1{
       padding-left: 10px;
   }
 
-  .c-row{
+  .dodaj-rez-container .c-row{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    padding: 15px;
     margin:auto;
-    width: 90%;
+    width: 60%;
 
   }
-  .c-col-pola{
+  .dodaj-rez-container  .c-col-pola-p{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    width: 50%;
+    align-items: center;
+    width: 30%;
+    margin-right: 10px;
   }
-
-  .c{
+  .dodaj-rez-container  .c-col-pola{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+    margin-right: 10px;
+  }
+  .dodaj-rez-container .c{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
     align-items: center;
+    align-self: center;
     flex-wrap: wrap;
-    width: 1000px;
-    height: 150px;
-    
+    width: 100px;
+    height: 120px;
+    margin-right: 10px;
   }
 
-  .d-row{
+  .dodaj-rez-container .d-row{
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
@@ -128,7 +142,7 @@
 
   }
 
-  .d-col-pola{
+  .dodaj-rez-container .d-col-pola{
     display: flex;
    flex-direction:row;
    align-items: flex-start;
@@ -137,47 +151,47 @@
 
   }
 
-  .speci{
+  .dodaj-rez-container .speci{
     margin-left: 150px;
     padding-bottom: 30px;
     
     
   }
-  .input-form2{
+  .dodaj-rez-container .input-form2{
     width: 80%;
     height: 100px;
     
     
     box-sizing: border-box;
   }
-  .c-col-pola-pom{
+  .dodaj-rez-container .c-col-pola-pom{
     display: flex;
     flex-direction: row;
     width: 50%;
     justify-content: flex-end;
   }
 
-  .pom5{
+  .dodaj-rez-container .pom5{
     padding-left: 30px;
   }
 
-  .pom6{
+  .dodaj-rez-container .pom6{
     padding-left: 40px;
   }
   
-  .dno{
+  .dodaj-rez-container .dno{
     width: 100%;
     padding: 20px;
   }
 
-  .naslov{
+  .dodaj-rez-container .naslov{
     height: 100px;
   padding: 10px;
   background: #eef2f3;
   
 
 }
-.rowe{
+.dodaj-rez-container .rowe{
   display: flex;
     justify-content: center;
     padding: 5px;
@@ -188,7 +202,7 @@
     
 }
 
-.columne {
+.dodaj-rez-container .columne {
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -196,7 +210,7 @@
   align-content: center;
     float: right;
   }
-.column {
+  .dodaj-rez-container .column {
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -205,23 +219,27 @@
     float: right;
     width: 33%;
   }
-  .dugmad{
+  .dodaj-rez-container .dugmad{
     display: flex;
     justify-content: space-around;
     padding-top: 40px;
     
   }
 
-  .title-modal{
+  .dodaj-rez-container .title-modal{
     
     border-bottom: rgb(180, 177, 177) solid 1px ;
   }
 
-  .mymodal{
-    padding: 20px;
-    text-align: left;
+  .dodaj-rez-container .mymodal{
+    padding: 50px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-color: black;
   }
-  .spec{
+  .dodaj-rez-container .spec{
       margin: 30px 0;
       font-weight: bold;
       display: flex;
@@ -231,3 +249,66 @@
       
       align-items: center;
   }
+  .dodaj-rez-container .Modal {
+    height: 100%;
+    width: 100%;
+  
+    background-color: #ffffff;
+    overflow: auto;
+  }
+  
+  .dodaj-rez-container .Overlay {
+    position: fixed;
+  
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .dodaj-rez-container .columnccc {
+    display:flex;
+    flex-direction: row;
+      float: left;
+      width: 15%;
+    }
+  .dodaj-rez-container .ponude{
+      display: flex;
+      margin: auto;
+      justify-content: space-around;
+      
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+      padding-top:15px;
+      width:100%;
+    }
+    .dodaj-rez-container .ponude input{
+      margin: auto;
+    }
+    .dodaj-rez-container  .columnn{
+      display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 20%;
+  
+      }
+      .dodaj-rez-container .roww{
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        width: 90%;
+        margin: 0 auto;
+        align-items: center;
+      align-content: center;
+            
+        }

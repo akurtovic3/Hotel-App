@@ -1,4 +1,6 @@
-
+.profile-page{
+  background-color: #eef2f3;
+}
 
 .profile-photo {
     padding: 20px;
@@ -6,7 +8,7 @@
     height: 200px;
     text-align: center;
     border-radius: 50%;
-    margin-left: 90px;
+    margin:auto;
     background: linear-gradient(to bottom, #8e9eab, #eef2f3);
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.44);
     float: center;
@@ -22,7 +24,6 @@
     justify-content: space-around;
 }
 .column-left {
-    
     width: 30%;
   }
   .column-right {
@@ -109,4 +110,6 @@
   border-width: 1px;
   margin: 20px 40px;
   padding: 5px;
+  padding-top: 15px;
+  width: 10%;
 }

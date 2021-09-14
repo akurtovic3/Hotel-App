@@ -6,7 +6,9 @@ import jane from '../../images/jane-doe.jpg';
 import john from '../../images/john-doe.png';
 import { Link, withRouter } from 'react-router-dom';
 import Axios from "axios"
+import Modal from 'react-modal';
 
+import { Button } from 'react-bootstrap';
 import Alert from "reactstrap/lib/Alert";
 class RadnikMojProfil extends React.Component {
   constructor (props) {
@@ -16,7 +18,9 @@ class RadnikMojProfil extends React.Component {
       info:props.location.state.info,
       photoMale: john,
       photoFemale: jane,
-      error:false
+      error:false,
+      modal:false,
+      podaci:props.location.state.info
     }
     this.provjeriUnos();
     this.promijeniIme = this.promijeniIme.bind(this);
@@ -27,6 +31,9 @@ class RadnikMojProfil extends React.Component {
     this.promijeniDrzavu = this.promijeniDrzavu.bind(this);
     this.promijeniBrTel = this.promijeniBrTel.bind(this);
     this.promijeniEmail = this.promijeniEmail.bind(this);
+    
+    this.hideModal=this.hideModal.bind(this);
+    this.showModal2=this.showModal2.bind(this);
     console.log("edit")
     console.log(this.state);
     
@@ -48,7 +55,8 @@ class RadnikMojProfil extends React.Component {
       Axios.get("http://localhost:3001/zaposlenik?id="+this.state.id).then(result=>{
     console.log(result);
     console.log(result.data); 
-    this.props.history.push("/radnik-profil", {info:result.data[0]});
+    this.setState({podaci:result.data[0]})
+    this.showModal2();
     });
       
     })
@@ -109,7 +117,25 @@ class RadnikMojProfil extends React.Component {
       mail: e.target.value,
     }))
   }
+  hideModal = () => {
+    this.setState(state => ({
+      ...state,
+      modal : false,
+    }))
+    this.props.history.push("/radnik-profil", {info:this.state.podaci});
+  }
   
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+  showModal2 = () => {
+    
+    this.setState(state => ({
+      ...state,
+      modal: true
+    }))
+    
+  }
 
   render () {
     return (
@@ -122,40 +148,26 @@ class RadnikMojProfil extends React.Component {
         <h3>Osnovne informacije</h3>
         <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>*Ime:</p></div>
-            <div className="a-col-cetvrtina">
+            <p>*Ime: </p>
             <input    placeholder='Ime'
-            value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/> </div>
+            value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/> 
             </div>
+           
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>*Prezime:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Prezime'
+              <p>*Prezime:</p>
+              <input    placeholder='Prezime'
             value={this.state.prezime} onChange={(e) => { this.promijeniPrezime(e); this.provjeriUnos()} }/> </div>
-            </div>
+            
         </div>
 
         
         <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>*Korisničko ime:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Korisničko ime'
-                value={this.state.username} onChange={(e) => { this.promijeniUsername(e); this.provjeriUnos()} }/> </div>
+              <p>*Korisničko ime:</p><input    placeholder='Korisničko ime'
+                value={this.state.username} style={{marginLeft:"10px"}} onChange={(e) => { this.promijeniUsername(e); this.provjeriUnos()} }/> 
             </div>
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>ID zaposlenika:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='ID može promijeniti samo admin' size={30}
-                disabled={true}/> </div>
-         </div>
-         </div>
-
-         <div className="a-row">
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Spol:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.spol ? "Ženski":"Muški"}
-         disabled={true}/> </div>
-         </div>
-            <div className="a-col-pola">
-
+            <div className="a-col-pola"><p>ID zaposlenika:</p><input    placeholder={this.state.id} size={30}
+                disabled={true}/> 
          </div>
          </div>
          </div>
@@ -164,15 +176,10 @@ class RadnikMojProfil extends React.Component {
          <h3>Informacije o zaposlenju</h3>
          <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Zaposlenje:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.zaposlenje}
-         disabled={true}/> </div>
+              <p>Zaposlenje:</p> <input    placeholder={this.state.zaposlenje} disabled={true}/> 
          </div>
             <div className="a-col-pola">
-
-            <div className="a-col-cetvrtina"><p>Datum zapošljavanja:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={Moment(this.state.datum_zaposlj).format('DD.MM.YYYY.')}
-         disabled={true}/> </div>
+              <p>Datum zapošljavanja:</p> <input    placeholder={Moment(this.state.datum_zaposlj).format('DD.MM.YYYY.')} disabled={true}/> 
          </div>
          </div>
          </div>
@@ -180,69 +187,54 @@ class RadnikMojProfil extends React.Component {
          <div className="odjeljak">
          <h3>Kontakt podaci</h3>
          <div className="a-row">
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>*Adresa stanovanja:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Adresa'
-        value={this.state.adresa} onChange={(e) => { this.promijeniAdresu(e); this.provjeriUnos()} }/> </div>
+            <div className="a-col-pola"><p>*Adresa stanovanja:</p>
+            <input    placeholder='Adresa'
+        value={this.state.adresa} onChange={(e) => { this.promijeniAdresu(e); this.provjeriUnos()} }/> 
         </div>
-        <div className="a-col-pola">
-        <div className="a-col-cetvrtina"><p>Grad:</p></div>
-        <div className="a-col-cetvrtina"><input    placeholder='Grad'
+        <div className="a-col-pola"><p>Grad:</p>
+        <input    placeholder='Grad'
         value={this.state.grad} onChange={(e) => { this.promijeniGrad(e); this.provjeriUnos()} }/> </div>
-        </div>
+        
          </div>
 
          <div className="a-row">
             <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Država:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Drzava'
-        value={this.state.drzava} onChange={(e) => { this.promijeniDrzavu(e); this.provjeriUnos()} }/> </div>
+              <p>Država:</p> <input    placeholder='Drzava'
+        value={this.state.drzava} onChange={(e) => { this.promijeniDrzavu(e); this.provjeriUnos()} }/> 
         </div>
         <div className="a-col-pola">
-        
+        <p>*Broj telefona:</p><input    placeholder='Broj telefona'
+        value={this.state.tel} onChange={(e) => { this.promijeniBrTel(e); this.provjeriUnos()} }/>
+       
         
         </div>
          </div>
 
-         <div className="a-row">
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>*Broj telefona:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder='Broj telefona'
-        value={this.state.tel} onChange={(e) => { this.promijeniBrTel(e); this.provjeriUnos()} }/> </div>
+         <div className="rowe">
+            <div className="a-col-pola"> <p>*E-mail:</p><input    placeholder='E-mail'
+        value={this.state.mail} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} }/>  </div>
         </div>
-        <div className="a-col-pola">
-        <div className="a-col-cetvrtina"><p>*E-mail:</p></div>
-        <div className="a-col-cetvrtina"><input    placeholder='E-mail'
-        value={this.state.mail} onChange={(e) => { this.promijeniEmail(e); this.provjeriUnos()} }/> </div>
         
         </div>
-         </div>
-        </div>
-        <div className="odjeljak">
+        <div className="odjeljak-zadnji">
          <h3>Lični podaci</h3>
          <div className="a-row">
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>JMBG:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.jmbg}
-         disabled={true}/> </div>
+            <div className="a-col-pola"><p>JMBG:</p><input    placeholder={this.state.jmbg}
+         disabled={true}/> 
         </div>
-        <div className="a-col-pola">
-        <div className="a-col-cetvrtina"><p>Datum rođenja:</p></div>
-        <div className="a-col-cetvrtina"><input    placeholder={Moment(this.state.dat_rodj).format('DD.MM.YYYY.')}
-         disabled={true}/> </div>
+        <div className="a-col-pola"><p>Datum rođenja:</p><input    placeholder={Moment(this.state.dat_rodj).format('DD.MM.YYYY.')}
+         disabled={true}/>
         
         </div>
          </div>
          <div className="a-row">
-            <div className="a-col-pola">
-            <div className="a-col-cetvrtina"><p>Mjesto rođenja:</p></div>
-            <div className="a-col-cetvrtina"><input    placeholder={this.state.mjesto_rodj}
-         disabled={true}/> </div>
+            <div className="a-col-pola"><p>Mjesto rođenja:</p><input    placeholder={this.state.mjesto_rodj}
+         disabled={true}/>
         </div>
         <div className="a-col-pola">
-        <div className="a-col-cetvrtina"> <p>Država rođenja:</p> </div>
-        <div className="a-col-cetvrtina"> <input    placeholder={this.state.drzava_rodj}
-         disabled={true}/> </div>
+          <p>Država rođenja:</p>  <input    placeholder={this.state.drzava_rodj}
+         disabled={true}/>
+          
         </div>
         
         </div>
@@ -256,12 +248,28 @@ class RadnikMojProfil extends React.Component {
             <button type="button" class="btn btn-info btn-lg btn-block" onClick={this.upisiIzmjeneUBazu.bind(this)}>Sačuvaj izmijenjeno</button>
             
           </div>
-         </div>
+          <Modal
+                    isOpen={this.state.modal}
+                    onRequestClose={this.showModal2.bind(this)}
+                    contentLabel="My dialog"
+                    className="mymodal"
+                     overlayClassName="myoverlay"
+                    closeTimeoutMS={200}
+                  >
+                    
 
-         
+                      <h4>Uspješno ste ažurirali vaše podatke!</h4>
+                      <div className="dugmad">
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      </div>
+                  </Modal>
+         </div>
+        <br></br>
+         <br></br>
          
        
       </div>
+
     )
   }
 }

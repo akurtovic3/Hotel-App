@@ -48,6 +48,9 @@ class StepFour extends React.Component {
   roundToTwo(num) {    
     return +(Math.round(num + "e+2")  + "e-2");
   }
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
   promijeniKod(e) {
     if(e.target.value!="")
     this.setState(state => ({
@@ -182,7 +185,7 @@ submitRezervaciju=()=>{
     start_date:this.state.startDate,
     end_date:this.state.endDate,
     id_sobe:this.state.naziv,
-    kod: this.state.kod_uneseni,
+    kod: this.state.kod,
     specZahtj:this.state.specZahtj
 
   }).then(()=>{
@@ -305,7 +308,7 @@ izracunajCijenu(){
     return (
       <>
       <Navbar/>
-      <div className="multiStepContainer">
+      <div className="multiStepContainer-four">
          <div className="header-step-4"> 
         <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"2px"} : {background: 'silver', paddingTop:"2px"}}> <FcCheckmark/></button>
@@ -329,27 +332,28 @@ izracunajCijenu(){
              
         <h5>Odraslih osoba: {this.state.brOdraslih}</h5>
         <h5>Djece: {this.state.brDjece}</h5> <br/>
-        <hr></hr>
+        <hr color="gray"></hr>
         <h3>Informacije o sobi</h3> 
         <h5>Naziv sobe : {this.state.naziv}</h5>  <br/>
-        <hr></hr>
+        <hr color="gray"></hr>
         <h3>Pogodnosti koje su uključene u rezervaciju:</h3>
-        <h5>Cijena svake od pogodnosti zasebno: </h5>
-        <h5>odrasla osoba - 3€, dijete - 1.5 €</h5>
+        <h6>Cijena svake od pogodnosti zasebno: </h6>
+        <h6>odrasla osoba - 3€, dijete - 1.5 €</h6>
+        {this.provjeriImaLiPogodnosti() && <div>
         <h5>{this.state.dorucak&&"Doručak"}</h5>
         <h5>{this.state.rucak&&"Ručak"}</h5>
         <h5>{this.state.vecera&&"Večera"}</h5>
         <h5>{this.state.spa&&"Spa"}</h5>
-        <h5>{this.state.bazen&&"Bazen"}</h5><br/>
-        <p>{!this.provjeriImaLiPogodnosti()&&"Niste izabrali niti jednu od posebnih pogodnosti."}</p><br/>
-        <hr></hr>
-        <h4>Vaši lični podaci</h4>
+        <h5>{this.state.bazen&&"Bazen"}</h5></div>}
+        <h5>{!this.provjeriImaLiPogodnosti()&&"Niste izabrali niti jednu od posebnih pogodnosti."}</h5><br/>
+        <hr color="gray"></hr>
+        <h3>Vaši lični podaci</h3>
         <h5>Ime: {this.state.ime}</h5>
         <h5>Prezime: {this.state.prezime}</h5>
         <h5>E-mail: {this.state.email}</h5>
         <h5>Broj telefona: {this.state.brojTel}</h5>
         <br/>
-        <hr></hr>
+        <hr color="gray"></hr>
         {!this.state.ponuda && <div><input    className='input-form' placeholder='Kod za proračun popusta' 
         value={this.state.kod_unos} onChange={(e) => { this.promijeniKod(e);} } /> 
          <h5 className="napomena">Ovdje upišite kod koji ste dobili unutar konfirmacijskog email-a za vašu prethodnu rezervaciju.</h5>
@@ -360,7 +364,7 @@ izracunajCijenu(){
                 onClick={() => { this.provjeriKod();}}>
                 Uračunaj popust
               </button>
-        <hr></hr>
+        <hr color="gray"></hr>
         </div>}
         
         {(this.state.ponuda || this.state.tacan_kod) && <div><h3>Cijena bez popusta: </h3> <h3 style={{fontWeight: "bold"}}>{this.state.cijena_bez_popusta} €</h3>
@@ -371,11 +375,11 @@ izracunajCijenu(){
         <p style={{color: "grey", fontWeight: "bold"}}>Ukoliko želite promijeniti/popraviti neku od stavki rezervacije vratite se na odgovarajući prethodni korak klikom na dugme "Povratak"!</p>
         
       
-            </div>
-            <div>
-            <div className="btn-povratak">
+            
+            <div className="row-step-3">
+            <div className="first-column-3">
             <Route render={({ history}) => (
-              <button className="btn-nastavak-povratak-style" 
+              <button className="btn-nastavak-povratak-style-L" 
                 onClick={() => { history.push('/rezervacija/2', { info:this.state
                   
                 });}}>
@@ -384,8 +388,9 @@ izracunajCijenu(){
             )}
           />
             </div> 
-            <div className="btn-nastavak">
-            <button className="btn-nastavak-povratak-style"  onClick={this.showModal.bind(this)}>Potvrdi rezervaciju</button>
+            <div className="second-column-3">
+            <button className="btn-nastavak-povratak-style-R"  onClick={this.showModal.bind(this)}>Potvrdi rezervaciju</button>
+            </div>
             </div>
             <div className="modal">
 
@@ -400,7 +405,8 @@ izracunajCijenu(){
               overlayClassName="myoverlay"
               closeTimeoutMS={500}
               >
-                <div className="potvrda">Rezervacija potvrđena! </div>
+                <div className="potvrda">Uspješno ste izvršili rezervaciju! </div>
+                <h5>Informacije u vezi vaše rezervacije su Vam poslane na e-mail koji ste unijeli.</h5>
                   <h6>Vidimo se uskoro!</h6>
                 <Route render={({ history}) => (
                     <button className="btn-nastavak-povratak-style" 
@@ -410,7 +416,7 @@ izracunajCijenu(){
                   )}
                 />
               </Modal>
-            
+              
            </div>
            {/*}
             <div className="btn-povratak">

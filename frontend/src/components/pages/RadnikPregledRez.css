@@ -9,7 +9,8 @@ table{
     justify-content: center;
     flex-direction: column;
     background: #eef2f3;
-    
+    width: 100%;
+    padding-top: 20px;
 }
 
 .rowe{
@@ -53,6 +54,15 @@ table{
       float: right;
       width: 33%;
     }
+    .column-sp-sp {
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+        float: right;
+        width: 50%;
+      }
   /* Clear floats after the columns */
   .row:after {
     content: "";
@@ -62,9 +72,9 @@ table{
 
   .naslov{
       height: 100px;
-    padding: 10px;
+    padding: 5px;
     background: #eef2f3;
-    
+    text-align: center;
   }
 
   
@@ -72,8 +82,8 @@ table{
   .filter{
     margin: auto;
     width: 75%;
-    padding: 20px;
-    
+    padding: 10px;
+    text-align: center;
     border:  rgb(180, 177, 177) solid 1px;
     padding: 1px;
     transition: background 500ms;
@@ -91,6 +101,7 @@ table{
     background-color:  cadetblue;
     padding: 10px;
     color: white;
+    text-align: center;
   }
 
   
@@ -127,4 +138,39 @@ table{
   .mymodal{
     padding: 20px;
     text-align: left;
+  }
+
+  .maincontainer .Modal {
+    height: 100%;
+    width: 100%;
+  
+    background-color: #ffffff;
+    overflow: auto;
+  }
+  
+  .maincontainer .Overlay {
+    position: fixed;
+  
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .logout-edit{
+  
+    background: #eef2f3;
+    float: right;
+    border: solid;
+    border-color: rgb(91, 91, 138);
+    border-width: 1px;
+    margin: 20px 40px;
+    padding: 5px;
+    padding-top: 15px;
+    width: 10%;
   }

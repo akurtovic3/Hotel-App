@@ -1,0 +1,377 @@
+.azuriraj-rez-container{
+
+    background-color: #eef2f3;
+    padding-top: 40px;
+}
+
+/*MjesecView css*/
+.azuriraj-rez-container .zauzetost-container{
+    background-color: #eef2f3;
+    margin: auto;
+    width: 1327px;
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    transition: background 500ms;
+    
+}
+
+.azuriraj-rez-container .zauzetost-container:hover{
+    background: #cbe5e9;
+}
+
+.azuriraj-rez-container .naslov-zauzetost{
+    
+    border-bottom: rgb(190, 189, 189) solid 1px;
+    background-color:  cadetblue;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+/*kraj mjesecView*/
+
+.azuriraj-rez-container .forme-dodaj-rez{
+    margin: auto;
+    margin-top: 20px;
+    width:  1000px;
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    transition: background 500ms;
+    display:flex;
+    flex-direction:column;
+    
+}
+
+.azuriraj-rez-container .forme-dodaj-rez:hover{
+    background: #cbe5e9;
+}
+.azuriraj-rez-container .no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+
+  .azuriraj-rez-container .a-row{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+  }
+
+  .azuriraj-rez-container .a-col-pola{
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+
+    width: 40%;
+  }
+
+  .azuriraj-rez-container .simbol{
+      padding-right: 5px;
+  }
+
+  .azuriraj-rez-container .pom{
+      padding-top: 5px;
+      padding-left: 5px;
+  }
+
+  .azuriraj-rez-container .b-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+    width: 53%;
+
+  }
+
+  .azuriraj-rez-container .b-col-pola{
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+    width: 50%;
+  }
+
+  .azuriraj-rez-container .pom1{
+      padding-left: 10px;
+  }
+
+  .azuriraj-rez-container .c-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+    width: 60%;
+
+  }
+  .azuriraj-rez-container .c-row-novo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    padding: 15px;
+    margin:auto;
+    width: 60%;
+
+  }
+  .azuriraj-rez-container .c-col-pola{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+  }
+  .azuriraj-rez-container .c{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
+    width: 100px;
+    height: 120px;
+    margin-right: 10px;
+  }
+
+  .azuriraj-rez-container .c-staro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100px;
+    height: 150px;
+    
+  }
+
+  .azuriraj-rez-container .d-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 10px;
+    margin:auto;
+    width: 60%;
+
+  }
+
+  .azuriraj-rez-container .d-col-pola{
+    display: flex;
+   flex-direction:row;
+   align-items: flex-start;
+
+    width: 50%;
+
+  }
+  
+  .azuriraj-rez-container .sobe-row{
+    display: inline-block;
+    padding-top: 10px;
+    margin:auto;
+    width: 60%;
+    height: 300px;
+    align-items: center;
+    
+    justify-content: center;
+  }
+
+  .azuriraj-rez-container .sobe-col-pola{
+    padding: 10px;
+    background-color: antiquewhite;
+    width: 100%;
+
+  }
+  .azuriraj-rez-container .sobe-col-pola-sobe{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 150px;
+    width: 100%;
+  }
+  .azuriraj-rez-container .speci{
+    margin-left: 150px;
+    padding-bottom: 30px;
+    
+    
+  }
+  .azuriraj-rez-container .input-form2{
+    width: 80%;
+    height: 100px;
+    
+    
+    box-sizing: border-box;
+  }
+  .azuriraj-rez-container  .c-col-pola-pom{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: flex-end;
+  }
+
+  .azuriraj-rez-container .pom5{
+    padding-left: 30px;
+  }
+
+  .azuriraj-rez-container .pom6{
+    padding-left: 40px;
+  }
+  
+  .azuriraj-rez-container .dno{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .azuriraj-rez-container .naslov{
+    height: 100px;
+  padding: 10px;
+  background: #eef2f3;
+  
+
+}
+.azuriraj-rez-container .rowe{
+  display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  align-content: center;
+    
+}
+
+.azuriraj-rez-container .columne {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+  }
+  .azuriraj-rez-container .column {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+    width: 33%;
+  }
+  .azuriraj-rez-container .dugmad{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+    
+  }
+
+  .azuriraj-rez-container .title-modal{
+    
+    border-bottom: rgb(180, 177, 177) solid 1px ;
+  }
+
+  .azuriraj-rez-container .mymodal{
+    padding: 50px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-color: black;
+  }
+  .azuriraj-rez-container .spec{
+      margin: 30px 0;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+    
+      justify-content: space-evenly;
+      
+      align-items: center;
+  }
+  .azuriraj-rez-container .Modal {
+    height: 100%;
+    width: 100%;
+  
+    background-color: #ffffff;
+    overflow: auto;
+  }
+  
+  .azuriraj-rez-container .Overlay {
+    position: fixed;
+  
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .azuriraj-rez-container  .columnc {
+    display:flex;
+  flex-direction: row;
+   align-self: start;
+   padding-left: 0;
+  width: 20%;
+
+    }
+    .azuriraj-rez-container  .columnsp {
+        display:flex;
+        flex-direction: row;
+        align-items: center; /*vertikalno*/
+        column-gap: 1px;
+        width:20%;
+        }
+.azuriraj-rez-container    .row-check{
+            display: flex;
+              justify-content: center;
+              padding: 5px;
+              width: 90%;
+              margin: 0 auto;
+              align-items: center;
+            align-content: center;
+              
+          }
+ .azuriraj-rez-container .column-check {
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+              float: right;
+              width: 20%;
+            }
+            .azuriraj-rez-container .ponude{
+                display: flex;
+                margin: auto;
+                justify-content: space-around;
+                
+              justify-items: center;
+              justify-self: center;
+              align-items: center;
+              align-self: center;
+                padding-top:15px;
+                width:100%;
+              }
+              .azuriraj-rez-container .ponude input{
+                margin: auto;
+              }
+.azuriraj-rez-container  .columnn{
+    display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 20%;
+
+    }
+    .azuriraj-rez-container .roww{
+        display: flex;
+          justify-content: center;
+          padding: 5px;
+          width: 90%;
+          margin: 0 auto;
+          align-items: center;
+        align-content: center;
+          
+      }

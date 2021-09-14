@@ -65,7 +65,8 @@
       background-color: transparent;
       color: white;
       border: none;
-      font-size: 18px;
+      font-size: 20px;
+      margin:auto
   }
  
 
@@ -82,10 +83,22 @@
     padding-top:25px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 18px;
+    font-size: 20px;
   }
   .nav-item-not-drop:hover{
     background-color: gray;
     
   }
+  .iconn path{
+    stroke: white;
+  }
+  .nav-item-dropdown-user{
+    padding-top: 20px;
+    margin: auto
+   
+}
+.nav-item-dropdown-user:hover{
+  background-color: gray;
+}
+
   

@@ -4,7 +4,7 @@
 .edit-profil-container{
     margin: auto;
     margin-top: 20px;
-    width: 900px;
+    width: 1000px;
     border:  rgb(180, 177, 177) solid 1px;
     padding: 1px;
     
@@ -16,6 +16,7 @@
 .odjeljak{
     transition: background 500ms;
     border-bottom:  rgb(180, 177, 177) solid 1px;
+    padding-bottom: 20px;
 }
 .odjeljak:hover{
     background: #cbe5e9;
@@ -24,30 +25,132 @@
 .naslov-edit-profil{
     border-bottom: rgb(190, 189, 189) solid 1px;
     background-color:  cadetblue;
-    padding: 10px;
+    text-align: center;
     color: white;
+    padding: 10px;
 }
 
 .a-row{
 
     display: flex;
-    
+    width:90%;
     margin:auto;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
   }
-
+input{
+    margin-left: 10px;
+    width:100%;
+    margin-right: 20px;
+}
   .a-col-pola{
       display: flex;
       flex-direction:row;
       align-items: baseline;
+      align-content: center;
+      
         width: 50%;
   }
 
   .a-col-cetvrtina{
-      width: 25%;
+      width: 100%;
 }
 
 .dno{
     width: 100%;
     padding-bottom: 20px;
   }
+  .rowe{
+    display: flex;
+      justify-content: center;
+      padding: 5px;
+      width: 90%;
+      margin: 0 auto;
+      align-items: center;
+    align-content: center;
+      
+  }
+  .columne {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+      float: right;
+      width: 50%;
+    }
+    p{
+        min-width: fit-content;
+        text-align: center;
+
+    }
+    h3{
+        padding:20px;
+        text-align: center;
+    }
+    .dugmad{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 40px;
+        
+      }
+    
+      .title-modal{
+        
+        border-bottom: rgb(180, 177, 177) solid 1px ;
+      }
+    
+      .mymodal{
+        padding: 50px;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-color: black;
+      }
+      .spec{
+          margin: 30px 0;
+          font-weight: bold;
+          display: flex;
+          flex-direction: row;
+        
+          justify-content: space-evenly;
+          
+          align-items: center;
+      }
+     .Modal {
+        height: 100%;
+        width: 100%;
+      
+        background-color: #ffffff;
+        overflow: auto;
+      }
+      
+      .Overlay {
+        position: fixed;
+      
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .profile-page-edit .dno{
+        width: 90%;
+        padding-bottom: 20px;
+        float: center;
+        margin: auto;
+      }
+      .profile-page-edit .odjeljak-zadnji{
+        transition: background 500ms;
+        padding-bottom: 20px;
+    }
+    .profile-page-edit .odjeljak-zadnji:hover{
+        background: #cbe5e9;
+    }

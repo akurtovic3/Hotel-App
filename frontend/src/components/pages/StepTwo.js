@@ -7,6 +7,8 @@ import '../../components/pages/Rezervacija.css'
 import Moment from "moment"
 import Navbar from '../Navbar';
 
+import moment from 'moment'
+
 class Rooms extends Component{
   constructor(props) {
     super(props);
@@ -36,6 +38,7 @@ class Rooms extends Component{
     this.handleChangeVecera = this.handleChangeVecera.bind(this);
     this.handleChangeSpa = this.handleChangeSpa.bind(this);
     this.handleChangeBazen = this.handleChangeBazen.bind(this);
+    /*
     console.log(props);
     var niz;
     var idoviNiz=[];
@@ -110,10 +113,73 @@ class Rooms extends Component{
         
         }
       });
-      
+      */
+     const items=[{id:1, reserved:false},
+      {id:2, reserved:false},{id:3, reserved:false},
+      {id:4, reserved:false},{id:5, reserved:false},
+      {id:6, reserved:false},{id:7, reserved:false},
+      {id:8, reserved:false},{id:9, reserved:false},
+      {id:10, reserved:false},{id:11, reserved:false},
+      {id:12, reserved:false}]
+     Axios.get("http://localhost:3001/zauzeteSobe?start_date="+moment(this.state.startDate? this.state.startDate : new Date()).format('YYYY-MM-DD')+"&end_date="+moment(this.state.endDate ? this.state.endDate : new Date()).format('YYYY-MM-DD')).then((res, fields)=>{
+            var rez=res.data;
+            
+            //console.log("zauzete")
+            console.log(rez)
+            console.log(rez.length)
+            if(rez.length)
+            rez.map((rezervacija)=> {
+            // console.log(rezervacija.id_soba)
+              // 2. Make a shallow copy of the item you want to mutate
+              if(rezervacija.id_soba<13 && rezervacija.id_soba>0)
+              items[rezervacija.id_soba-1].reserved = true;
+              // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+              // 5. Set the state to our new copy
+              
+          })
+          var finalni_niz=[];
+        if(this.state.ponuda){
+          var idoviPonude=[]
+        idoviPonude= this.state.idoviSobaPonude.split(',');
+          idoviPonude.map((id)=>{
+            items.forEach(item1 => {
+            //  console.log(item1 + " "+ id + " " ); console.log(item1==id);
+              if(item1.reserved==false && item1.id==id) finalni_niz.push(item1.id);
+            });
+            
+          });
+          console.log("idovi sa onim kojih nema u bazi i filtrirano po ponudi")
+          console.log(finalni_niz)
+          this.setState({idovi: Object.assign([], finalni_niz)})
+        }
+        else{
+          items.forEach(item1 => {
+            //  console.log(item1 + " "+ id + " " ); console.log(item1==id);
+              if(item1.reserved==false) finalni_niz.push(item1.id);
+            });
+          console.log("finalni idovi sa onim kojih nema u bazi ")
+          //console.log(idoviNiz)
+          this.setState({idovi: Object.assign([], finalni_niz)})}
+        /*this.setState({
+          listaSoba:[... items]
+        });*/
+        /*
+        listaSoba0.map((soba)=>{
+          soba.reserved=false;
+          soba.isChecked=false;
+        })*/
+        console.log("kraj")
+        console.log(items)
+       // this.forceUpdate()
+        //return items;
+          
+        });
+        
   console.log(this.state)
   }
-  
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
 
   handleChangeDorucak(e) {
     this.setState(state => ({
@@ -188,10 +254,12 @@ class Rooms extends Component{
       </div>
       <div className="ponude-container">
       <div className="paragr">Izaberite dodatnu uslugu po želji:</div>
+      
           <div className="ponude-select-group">
           
           <div className="selekcija-dorucka">
             <input
+            style={{minWidth: "5px", maxWidth: "13px"}}
               type="checkbox"
               name="dorucak"
               defaultChecked={this.state.dorucak}
@@ -201,6 +269,7 @@ class Rooms extends Component{
           </div>
           <div className="selekcija-rucka">
             <input
+            style={{minWidth: "5px", maxWidth: "13px"}}
               type="checkbox"
               name="rucak"
               defaultChecked={this.state.rucak}
@@ -210,6 +279,7 @@ class Rooms extends Component{
           </div>
           <div className="selekcija-vecera">
             <input
+            style={{minWidth: "5px", maxWidth: "13px"}}
               type="checkbox"
               name="vecera"
               defaultChecked={this.state.vecera}
@@ -219,6 +289,7 @@ class Rooms extends Component{
           </div>
           <div className="selekcija-spa">
             <input
+            style={{minWidth: "5px", maxWidth: "13px"}}
               type="checkbox"
               name="spa"
               defaultChecked={this.state.spa}
@@ -228,22 +299,41 @@ class Rooms extends Component{
           </div>
           <div className="selekcija-bazen">
             <input
+            style={{minWidth: "5px", maxWidth: "13px"}}
               type="checkbox"
               name="bazen"
               defaultChecked={this.state.bazen}
               onChange={this.handleChangeBazen}
             />
             <label htmlFor="bazen"> Bazen</label>
+      </div>
           </div>
-          </div>
+      {/*     <div className="roww">
+        
+          
+        <div className="columnn">  <input key="dor" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.handleChangeDorucak} type="checkbox" checked={this.state.dorucak} value="dorucak"  /> doručak  </div>       
+                    <div className="columnn">  <input key="ruc" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.handleChangeRucak} type="checkbox" checked={this.state.rucak} value="rucak"  /> ručak  </div> 
+                    <div className="columnn">  <input key="vec" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.handleChangeVecera} type="checkbox" checked={this.state.vecera} value="vecera"  /> večera </div> 
+                    <div className="columnn">  <input key="spa" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.handleChangeSpa} type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
+                    <div className="columnn">  <input key="baz" style={{minWidth: "5px", maxWidth: "13px"}} onClick={this.handleChangeBazen} type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
+                                  
+                     
+                      
+                    
+                     
+          
+            
+            
+            
+            </div>*/}
         </div>
+       <div style={{backgroundColor:"#f0f8ff"}}>
           <div className="step-two-container">
           
             <RoomsContainer props={this.state} idovi={this.state.idovi} brGostiju={this.state.brDjece+this.state.brOdraslih}/>
-          </div>
-  <div>
+            <div className="rowe">
   
-          <div className="btn-povratak">
+          <div className="column">
             <Route render={({ history}) => (
               <button className="btn-nastavak-povratak-style" 
                 onClick={() =>{ //this.props.history.goBack
@@ -260,8 +350,11 @@ class Rooms extends Component{
             )}
           />
             </div>
-          
+            
+            </div> 
     </div>
+          </div>
+  
     </>
   );
   }

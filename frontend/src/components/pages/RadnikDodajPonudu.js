@@ -22,7 +22,7 @@ class RadnikDodajPonudu extends Component{
         this.state = {
           info:props.location.state.info,
           startDate: new Date(),
-          endDate: new Date(),
+          endDate: moment(moment(new Date())).add(1, 'd')._d,
           counter: 0,
           brSoba: 0,
           ime: '',
@@ -49,7 +49,7 @@ class RadnikDodajPonudu extends Component{
 
         };
 
-        this.provjeriUnos();
+        //this.provjeriUnos();
         this.promijeniBrSoba = this.promijeniBrSoba.bind(this);
         this.promijeniIme = this.promijeniIme.bind(this);
         this.promijeniOpisPonude = this.promijeniOpisPonude.bind(this);
@@ -58,7 +58,7 @@ class RadnikDodajPonudu extends Component{
         
       }
     
-      provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.prezime!="" && this.state.brojTel!="" && this.state.counter==this.state.brSoba) { this.setState(state => ({
+      provjeriUnos=()=>{if(this.state.ime!="" && this.state.opisPonude!="" && this.state.popust!=0 && this.state.src!="" && this.state.counter==this.state.brSoba) { this.setState(state => ({
         ...state,
         error:false
       })); return true;} else { this.setState(state => ({
@@ -94,11 +94,13 @@ class RadnikDodajPonudu extends Component{
               soba.isChecked =  event.target.checked      
         })
        counter = this.state.listaSoba.filter(soba => soba.isChecked===true).length;
+       
        console.log(this.state.brSoba)
         this.setState(state => ({
           ...state,
           listaSoba: listaSoba, counter: counter
         }))
+        if(this.state.error) this.provjeriUnos()
       }
 
       uncheckAll = (event) => {
@@ -130,6 +132,7 @@ class RadnikDodajPonudu extends Component{
       .then(res => { // then print response status
         console.log(res)
         this.setState(state =>({...state, src:res.data}));
+        if(this.state.error) this.provjeriUnos()
       })
     }
     hideModal = () => {
@@ -140,7 +143,7 @@ class RadnikDodajPonudu extends Component{
       
     }
     showModal2 = () => {
-      
+     
       this.setState(state => ({
         ...state,
         startDate: new Date(),
@@ -168,13 +171,14 @@ class RadnikDodajPonudu extends Component{
           {id: 12, value: "Soba 12", isChecked: false},
         ],
       }))
-      
     }
     promijeniPopust( maskedvalue){
       this.setState(state =>({...state, popust: maskedvalue}));
   }
     kreirajPonudu=()=>{
       if(this.provjeriUnos()){
+      //  if(this.state.selectedFile!=null && this.state.src!=="")
+      //  this.onClickHandler();
       var stringSobe="";
       var broji=0;
       this.state.listaSoba.map((soba)=>{
@@ -198,23 +202,26 @@ class RadnikDodajPonudu extends Component{
         }
     }
     
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+    
       render() {
         return (
     <>
         <NavbarRadnik props={this.state.info}/>
         
-        <div className="dodaj-rez-container">
-        <h1 className="naslov">Dodaj specijalnu ponudu</h1>
+        <div className="dodaj-pon-container">
 
           <div className="forme-dodaj-rez">
               
-          <h2 className="naslov-zauzetost">Forma za rezervaciju</h2>
+          <h2 className="naslov-zauzetost">Forma za dodavanje specijalne ponude</h2>
           
           <div className="rowe">
     <div className="columne">
             <p style={{marginTop:"9px", marginRight:"3px"}}>*Naziv specijalne ponude:</p>
              <input  style={{marginBottom:"9px"}} size={20} placeholder='Naziv specijalne ponude'
-            value={this.state.ime} onChange={(e) => { this.promijeniIme(e); this.provjeriUnos()} }/> </div>
+            value={this.state.ime} onChange={(e) => { this.promijeniIme(e); if(this.state.error) this.provjeriUnos()} }/> </div>
           </div>
           
           
@@ -223,8 +230,8 @@ class RadnikDodajPonudu extends Component{
           <div className="columne">
           <div style={{marginBottom: "8px"}} className="simbol"><CgNotes size={30}/></div>
             <p style={{marginTop:"10px", marginRight:"3px"}}>*Opis specijalne ponude:</p>
-            <input  style={{marginBottom:"5px"}}  type="text"  size={60} placeholder='Navedite opis specijalne ponude' 
-            value={this.state.opisPonude} onChange={this.promijeniOpisPonude} /> 
+            <input  style={{marginBottom:"5px",  minWidth:"fit-content"}}  type="text"  size={60} placeholder='Navedite opis specijalne ponude' 
+            value={this.state.opisPonude} onChange={(e) => { this.promijeniOpisPonude(e); if(this.state.error) this.provjeriUnos()} } /> 
           </div></div>
 
           <div className="row">
@@ -240,7 +247,8 @@ class RadnikDodajPonudu extends Component{
               startDate={this.state.startDate}
               endDate={this.state.endDate} 
               onChange={date => this.setState(state => ({
-                startDate: date
+                startDate: date,
+                endDate: this.state.endDate<=date ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
               }))}
             />
             </div>
@@ -268,10 +276,10 @@ class RadnikDodajPonudu extends Component{
           
           <div className="a-row">
           <div className="a-col-pola">
-          <p>*Broj soba koje ulaze u ponudu:</p>
-          <div className="pom1"><input type="number" id="brSoba" name="brSoba"  min="1" max="20" value={this.state.brSoba}  onChange={this.promijeniBrSoba.bind(this)} style={{width: "50px"}} ></input></div>
+          <p style={{minWidth:"fit-content", maxWidth:"fit-content"}}>*Broj soba koje ulaze u ponudu:</p>
+          <div className="pom1"><input type="number" id="brSoba" name="brSoba"  min="1" max="12" value={this.state.brSoba}  onChange={this.promijeniBrSoba.bind(this)} style={{width: "50px"}} ></input></div>
           </div>
-          <div className="a-col-pola">
+          <div className="a-col-pola-sobe">
           <div className="c">
             {
               this.state.listaSoba.map((soba) => {
@@ -312,15 +320,18 @@ class RadnikDodajPonudu extends Component{
                 <p style={{marginRight:"3px"}}> *Popust specijalne ponude:</p>
               <CurrencyInput  prefix="%" 
               defaultValue={this.state.popust}
-               onValueChange={this.promijeniPopust}/>
+               onValueChange={(e) => { this.promijeniPopust(e); if(this.state.error) this.provjeriUnos()} }/>
               
 
             </div>
 
-            <div className="upload-dio">
-                <p>*Odaberite sliku koja će se prikazivati uz specijalnu ponudu </p>
-                <input type="file" name="file"  accept="image/png, image/jpeg" onChange={this.onChangeHandler}/>
-            <Button  variant="info" onClick={this.onClickHandler}>Upload</Button> 
+            <div className="rowe">
+                <p>*Odaberite sliku koja će se prikazivati uz specijalnu ponudu: </p>
+                </div>
+                <div className="rowe"> 
+                <div className="columnc">
+                <input type="file" id="files" name="file"  accept="image/png, image/jpeg, image/jpg" onChange={this.onChangeHandler}/></div>
+                <div className="columnc"><Button  variant="info" onClick={this.onClickHandler}>Sačuvaj sliku za ovu ponudu</Button></div> 
 
             </div>
             <div>
@@ -350,6 +361,8 @@ class RadnikDodajPonudu extends Component{
                   </Modal>
 
           
+          <p></p>
+          <br></br>
         </div>
         
         

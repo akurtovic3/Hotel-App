@@ -21,6 +21,9 @@ class Prijava extends Component {
     
   }
  
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
   validateForm() {
     return this.state.userName.length > 0 && this.state.password.length > 0;
   }

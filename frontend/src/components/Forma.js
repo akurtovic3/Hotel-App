@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+const opcije=[0, 1, 2, 3, 4, 5, 6]
 export default class FlavorForm extends React.Component {
     constructor(props) {
       super(props);
@@ -31,17 +31,15 @@ export default class FlavorForm extends React.Component {
                                                             else this.props.promijeniBrOdraslih(e.target.value)
                                                           this.handleChange(e) }
                                                             }>
-              {this.props.id==="djeca"&&<option value="0">0</option>}
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+              {opcije.map((op)=>{
+                if(this.props.id==="djeca" && op<=6-this.state.valueOdrasli )
+                  return <option value={op}>{op}</option>
+                else if(this.props.id!=="djeca" && op<=6-this.state.valueDjeca&& op>0)
+                return <option value={op}>{op}</option>
+              })
+                
+              }
+              
             </select>
           </label>
          

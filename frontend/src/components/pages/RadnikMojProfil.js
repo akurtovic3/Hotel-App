@@ -56,30 +56,15 @@ class RadnikMojProfil extends React.Component {
 
     
   }
+  
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
   render () {
     return (
       <div className="profile-page">
         <NavbarRadnik props={this.state.profileFields}/>
-        <div className="logout-edit">
-          <p><GrUserManager/>{this.state.profileFields.username}
-          <br/>
-          <Link to={{
-            pathname: "/radnik/edit-profil",
-            state: {
-              info:this.state.profileFields,
-            },
-            }}>
-            Edit 
-          </Link>
-          <BsDot/>
-          <Link to={{
-            pathname: "/radnik",
-            }}>
-          Logout
-          </Link>
-          </p>
-          
-          </div>
+        
         <Profile spol={this.state.spol} polja={this.state.profileFields} photo={this.state.spol ?  this.state.photoFemale : this.state.photoMale} />
       </div>
     )

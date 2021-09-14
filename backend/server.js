@@ -84,7 +84,7 @@ function sortFunction(a,b){
 app.get("/zauzeteSobe", (req, res) => {
   console.log(req.query.start_date);
   console.log(req.query.end_date)
-  db.query("SELECT * FROM rezervacija WHERE (start_date>=? AND start_date<=?) OR (start_date<=? AND end_Date>=?) or (start_date<=? AND end_Date>=?)", [req.query.start_date,req.query.end_date, req.query.start_date, req.query.start_date, req.query.start_date, req.query.end_date],(err, result) => {
+  db.query("SELECT * FROM rezervacija WHERE (start_date<=? AND end_Date<=? AND end_Date>?) OR (start_date<? AND end_Date>?) OR (start_date>=? AND end_Date<=?) OR (start_date<=? AND end_Date>=?)", [req.query.start_date,req.query.end_date, req.query.start_date, req.query.end_date, req.query.end_date, req.query.start_date, req.query.end_date, req.query.start_date, req.query.end_date],(err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -338,15 +338,17 @@ app.get("/filtrirajPregledRezervacija",  (req, res) => {
     niz=[...niz, req.query.id_soba];
   }
   if (typeof req.query.ime !== 'undefined' && req.query.ime !== null && req.query.ime !== ""){
-    sql=sql+" AND (id_korisnik IN (SELECT id_korisnika FROM korisnik WHERE ime=?))"
-    niz=[...niz, req.query.ime];
+    var text='%'+req.query.ime+'%';
+    sql=sql+" AND (id_korisnik IN (SELECT id_korisnika FROM korisnik WHERE ime LIKE ?))"
+    niz=[...niz, text];
   }
   if (typeof req.query.prezime !== 'undefined' && req.query.prezime !== null && req.query.prezime !== ""){
-    sql=sql+" AND (id_korisnik IN (SELECT id_korisnika FROM korisnik WHERE prezime=?))"
-    niz=[...niz, req.query.prezime];
+    var text='%'+req.query.prezime+'%';
+    sql=sql+" AND (id_korisnik IN (SELECT id_korisnika FROM korisnik WHERE prezime LIKE ?))"
+    niz=[...niz, text];
   }
   
-  if (typeof req.query.br_gostiju !== 'undefined' && req.query.br_gostiju !== null && req.query.br_gostiju != -1){
+  if (typeof req.query.br_gostiju !== 'undefined' && req.query.br_gostiju !== null && req.query.br_gostiju != -1 && req.query.br_gostiju !==""){
     sql=sql+" AND (br_djece+br_odraslih)=?"
     niz=[...niz, req.query.br_gostiju];
   }
@@ -374,16 +376,10 @@ app.get("/filtrirajSpecijalnePonude",  (req, res) => {
   let niz=[]
   let sql=""
   console.log("uslo")
-  if (typeof req.query.end_date !== 'undefined' && req.query.end_date !== null && req.query.mijenjanEndDate && req.query.end_date>req.query.start_date){
-    sql="SELECT * FROM specijalne_ponude WHERE ((startDatePonude>=? AND startDatePonude<=?) OR (startDatePonude<=? AND endDatePonude>=?) OR (startDatePonude<=? AND endDatePonude>=?) OR (startDatePonude>=? AND endDatePonude<=?))";
-    niz=[...niz, start_date, req.query.end_date, start_date, start_date, start_date, req.query.end_date, start_date, req.query.end_date];
-    
-    
-  }
-  else{
-    niz=[...niz, start_date, start_date, start_date];
-    sql="SELECT * FROM specijalne_ponude WHERE (startDatePonude>=? OR (startDatePonude<? AND endDatePonude>=?))";
-  }
+  //if (typeof req.query.end_date !== 'undefined' && req.query.end_date !== null && req.query.mijenjanEndDate && req.query.end_date>req.query.start_date){
+    sql="SELECT * FROM specijalne_ponude WHERE ((startDatePonude<=? AND endDatePonude<=? AND endDatePonude>?) OR (startDatePonude<? AND endDatePonude>?) OR (startDatePonude>=? AND endDatePonude<=?) OR (startDatePonude<=? AND endDatePonude>=?))";
+    niz=[...niz, start_date,req.query.end_date, start_date, req.query.end_date, req.query.end_date, start_date, req.query.end_date, start_date, req.query.end_date];
+  
   if (typeof req.query.text1 !== 'undefined'   && req.query.text1 !== null && req.query.text1 !=="" ){
     var text='%'+req.query.text1+'%';
     sql=sql+" AND text1 LIKE ?"
@@ -463,10 +459,13 @@ app.put("/azurirajRezervaciju",(req, res) => {
   const spa = req.body.spa;
   const bazen = req.body.bazen;
   const cijena = req.body.cijena;
+  const popust= req.body.popust;
+  const kod= req.body.kod;
+  const specZahtj=req.body.specZahtj;
   console.log(id_korisnik)
   db.query(
-    "UPDATE rezervacija SET id_korisnik=?, id_soba=?, start_date=?, end_Date=?, br_djece=?,br_odraslih=?, dorucak=?, rucak=?, vecera=?, spa=?, bazen=?, cijena=?  WHERE id_rezervacije=?",
-    [id_korisnik, id_soba, start_date, end_date, br_djece,br_odraslih, dorucak, rucak, vecera, spa, bazen, cijena, id_rezervacije],
+    "UPDATE rezervacija SET id_korisnik=?, id_soba=?, start_date=?, end_Date=?, br_djece=?,br_odraslih=?, dorucak=?, rucak=?, vecera=?, spa=?, bazen=?, cijena=?, kod=?, popust=?, specijalni_zahtjevi=?  WHERE id_rezervacije=?",
+    [id_korisnik, id_soba, start_date, end_date, br_djece,br_odraslih, dorucak, rucak, vecera, spa, bazen, cijena,  kod, popust, specZahtj, id_rezervacije],
     (err, result, fields) => {
       if (err) {
         console.log(err);
@@ -486,7 +485,7 @@ app.post("/kreirajSpecijalnuPonudu", (req, res) => {
   const src =req.body.src;
   const popust =req.body.popust;
   const label=popust + "% popusta";
-
+  const opis=
   db.query("INSERT INTO specijalne_ponude (idoviSoba, startDatePonude, endDatePonude, text1, text2, src, popust, label) VALUES (?,?,?,?,?,?,?,?)",
   [idjeviSoba, startDatePonude, endDatePonude, text1, text2, src, popust, label],
   (err, result, fields) => {
@@ -559,12 +558,33 @@ app.delete('/obrisiRezervaciju', function (req, res) {
 ); 
    })
    app.post('/posaljiMail', (req, res) => {
-    const {to, subject, ime, id_sobe, start_date, end_date, spec_zahtj, kod } = req.body;
+    const {to, subject, ime, id_sobe, start_date, end_date, specZahtj, kod } = req.body;
+    var spec = specZahtj!=="" ? specZahtj : "--"
+    console.log(specZahtj)
     const mailData = {
         from: "icrmail2021@gmail.com",
         to: to,
         subject: subject,
-        text: "Pozdrav "+ime+", \n\nHvala Vam što ste izabrali Vilu Nezirović. Iščekujemo Vaš dolazak.\n\nDetalji vaše rezervacije:\nDatum prijave: "+moment(start_date).format('DD.MM.YYYY')+"\nDatum odjave: "+moment(end_date).format('DD.MM.YYYY')+"\nBroj sobe: "+id_sobe+"\nSpecijalni zahtjevi: "+spec_zahtj+"\n\nPrilikom sljedeće rezervacije naših usluga unesite sljedeći kod i iskoristite popust od 10% na cjelokupnu cijenu rezervacije:\n "+kod+"\n\nAdresa hotela: Doni Štoj 85360, Crna Gora\nBroj telefona: +382 68 226 337\nUkoliko želite izvršiti izmjene ili Vam je potrebna naša asistencija, molimo Vas da pozovete broj +382 68 226 337. \n\nIščekujemo Vaš dolazak!\nVila Nezirović",
+        text: "Pozdrav "+ime+", \n\nHvala Vam što ste izabrali Vilu Nezirović. Nadamo se da ćemo ispuniti Vaša iščekivanja i upotpuniti Vaš odmor našim uslugama!\n\nDetalji vaše rezervacije:\nDatum prijave: "+moment(start_date).format('DD.MM.YYYY')+"\nDatum odjave: "+moment(end_date).format('DD.MM.YYYY')+"\nSoba: "+id_sobe+"\nSpecijalni zahtjevi: "+spec+"\n\nPrilikom sljedeće rezervacije naših usluga unesite sljedeći kod i iskoristite popust od 10% na cjelokupnu cijenu rezervacije:\n\n"+kod+"\n\nAdresa hotela: Doni Štoj 85360, Crna Gora\nBroj telefona: +382 68 226 337\nUkoliko želite izvršiti izmjene ili Vam je potrebna naša asistencija, molimo Vas da pozovete broj +382 68 226 337. \n\nIščekujemo Vaš dolazak!\nVila Nezirović",
+        
+    };
+  
+    transporter.sendMail(mailData, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        res.status(200).send({ message: "Mail send", message_id: info.messageId });
+    });
+  });
+  app.post('/posaljiUpdateMail', (req, res) => {
+    const {to, subject, ime, id_sobe, start_date, end_date, specZahtj } = req.body;
+    var spec = (specZahtj!=="" && specZahtj!==null) ? specZahtj : "--"
+    console.log(specZahtj)
+    const mailData = {
+        from: "icrmail2021@gmail.com",
+        to: to,
+        subject: subject,
+        text: "Pozdrav "+ime+", \n\nHvala Vam što ste izabrali Vilu Nezirović. Nadamo se da ćemo ispuniti Vaša iščekivanja i upotpuniti Vaš odmor našim uslugama!\n\nDetalji vaše rezervacije:\nDatum prijave: "+moment(start_date).format('DD.MM.YYYY')+"\nDatum odjave: "+moment(end_date).format('DD.MM.YYYY')+"\nSoba: "+id_sobe+"\nSpecijalni zahtjevi: "+spec+"\n\nNaravno, i dalje možete iskoristiti kod iz prethodnog e-mail-a kako bi iskoristili popust od 10% na cjelokupnu cijenu rezervacije.\n\nAdresa hotela: Doni Štoj 85360, Crna Gora\nBroj telefona: +382 68 226 337\nUkoliko želite izvršiti nove izmjene ili Vam je potrebna naša asistencija, molimo Vas da pozovete broj +382 68 226 337. \n\nIščekujemo Vaš dolazak!\nVila Nezirović",
         
     };
   

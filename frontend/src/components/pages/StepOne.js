@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react'
 import FlavorForm from '../../components/Forma'
 import Datum2 from '../../components/Datum2'
 
+import moment from 'moment'
 import '../../components/pages/Rezervacija.css'
 import Navbar from '../Navbar';
 import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router-dom';
@@ -9,7 +10,8 @@ import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router
 
 import 'react-bootstrap'
 import { Fragment } from 'react'
-
+const opcije=[0,1,2,3,4,5,6]
+const opcije2=[0,1,2,3,4,5,6]
 const prevStyle = {'background': '#33c3f0', 'border-width': '2px'}
 const nextStyle = {'background': '#33c3f0',  'border-width': '2px'}
 class StepOne extends Component{
@@ -19,7 +21,7 @@ class StepOne extends Component{
           this.state = {
             ...props.location.state.info,
             startDate: props.location.state.info ? new Date(props.location.state.info.startDate)  : new Date(),
-            endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : new Date(),
+            endDate: props.location.state.info ? new Date(props.location.state.info.endDate)  : moment(moment(new Date())).add(1, 'd')._d,
             brOdraslih: props.location.state.info.brOdraslih ? props.location.state.info.brOdraslih  : 1,
             brDjece:props.location.state.info.brDjece ? props.location.state.info.brDjece  : 0,
             korak:1,
@@ -27,13 +29,14 @@ class StepOne extends Component{
             popust:props.location.state.ponuda ? props.location.state.popust : 0,
             period_poc: props.location.state.ponuda ? new Date(props.location.state.period_poc) : new Date(),
             period_kraj: props.location.state.ponuda ? new Date(props.location.state.period_kraj) : new Date(),
-            idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : []
+            idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : [],
+            error:false
           };
         }
         catch{
           this.state = {
             startDate: new Date(),
-            endDate: new Date(),
+            endDate: moment(moment(new Date())).add(1, 'd')._d,
             brOdraslih:  1,
             brDjece: 0,
             korak:1,
@@ -41,12 +44,16 @@ class StepOne extends Component{
             popust:props.location.state.ponuda ? props.location.state.popust : 0,
             period_poc: props.location.state.ponuda ? new Date(props.location.state.period_poc) : new Date(),
             period_kraj: props.location.state.ponuda ? new Date(props.location.state.period_kraj) : new Date(),
-            idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : []
+            idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : [],
+            error:false
           };
         }
-        
+        console.log("prvi")
       console.log(this.state)
         console.log(props);
+      }
+      componentDidMount() {
+        window.scrollTo(0, 0)
       }
       postaviKorak(indx) {
         this.setState(state => ({
@@ -130,22 +137,61 @@ class StepOne extends Component{
             <div className="columnPick">
             <i class="far fa-user"></i>
                 <p>Broj odraslih:</p>
-                <FlavorForm id="odrasli" pocetniOdrasli={this.state.brOdraslih}  promijeniBrOdraslih={this.promijeniBrOdraslih}/>
+                <form >
+          <label>
+            
+            <select value={this.state.brOdraslih} onChange={e =>{this.promijeniBrOdraslih(e.target.value) }
+                                                            }>
+              {opcije.map((op)=>{
+                
+                 if( op<=6-this.state.brDjece&& op>0)
+                return <option value={op}>{op}</option>
+              })
+                
+              }
+              
+            </select>
+          </label>
+         
+        </form>
             </div>
             <div className="columnPick">
             <i class="fas fa-baby"></i>
                 <p>Broj djece:</p>
-                <FlavorForm id="djeca" pocetniDjeca={this.state.brDjece} promijeniBrDjece={this.promijeniBrDjece}/>
+                <form >
+          <label>
+            
+            <select value={this.state.brDjece} onChange={e =>{this.promijeniBrDjece(e.target.value) }
+                                                            }>
+              {opcije2.map((op)=>{
+                
+                 if( op<=6-this.state.brOdraslih)
+                return <option value={op}>{op}</option>
+              })
+                
+              }
+              
+            </select>
+          </label>
+         
+        </form>
             </div>
             
         </div>
-    </div>
-    <div>
-      
-        
-    <div className="btn-nastavak">
-      <Route render={({ history}) => (
-        <button  className="btn-nastavak-povratak-style"
+        <br></br>
+          <div className="row-step-3">
+              <div className="first-column-3">
+                      <Route render={({ history}) => (
+                        <button className="btn-nastavak-povratak-style-L"
+                          onClick={() => { history.push('/');}}>
+                          Povratak
+                        </button>
+                      )}
+                    />
+              </div>
+              <div className="second-column-3">
+              <Route render={({ history}) => (
+        <button  className="btn-nastavak-povratak-style-R"
           onClick={() => { history.push('/rezervacija/1', { info: this.state,
             ponuda: this.state.ponuda,
             popust: this.state.popust,
@@ -158,8 +204,11 @@ class StepOne extends Component{
       )}
     />
 
+              </div>
+              </div>
+              <br></br>
     </div>
-  </div>
+   
     </Fragment>
     </div></div> 
     </>

@@ -7,12 +7,18 @@ import logo from '../images/logo.png';
 import Axios from "axios"
 import { useEffect, useState } from "react";
 
+import moment from "moment"
 function SpecPonudeContainer() {
   const [ponude, setPonude] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/specijalnePonude")
           .then(function (response) {
-              var niz=response.data;
+              var niz_p=response.data;
+              var niz=[]
+              niz_p.map((pon)=>{
+                if(moment(pon.endDatePonude).format('YYYY-MM-DD')>moment().format('YYYY-MM-DD'))
+                  niz=[...niz, pon]
+              })
               const rows = niz.reduce(function (rows, key, index) { 
                 return (index % 2 == 0 ? rows.push([key]) 
                   : rows[rows.length-1].push(key)) && rows;

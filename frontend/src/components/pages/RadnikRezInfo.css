@@ -1,0 +1,271 @@
+.rez-info-container{
+    background-color: #eef2f3;
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+/*MjesecView css*/
+.rez-info-container .zauzetost-container{
+    background-color: #eef2f3;
+    margin: auto;
+    width: 1327px;
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    transition: background 500ms;
+    
+}
+
+.rez-info-container .zauzetost-container:hover{
+    background: #cbe5e9;
+}
+
+.rez-info-container .naslov-zauzetost{
+    
+    border-bottom: rgb(190, 189, 189) solid 1px;
+    background-color:  cadetblue;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+/*kraj mjesecView*/
+
+.rez-info-container .forme-dodaj-rez{
+    margin: auto;
+    margin-top: 20px;
+    width: 60%;
+    border:  rgb(180, 177, 177) solid 1px;
+    padding: 1px;
+    transition: background 500ms;
+    display:flex;
+    flex-direction:column;
+    
+}
+
+.rez-info-container .forme-dodaj-rez:hover{
+    background: #cbe5e9;
+}
+.rez-info-container .no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+
+  .rez-info-container .a-row{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+  }
+
+  .rez-info-container .a-col-pola{
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+
+    width: 40%;
+  }
+
+  .rez-info-container .simbol{
+      padding-right: 5px;
+  }
+
+  .rez-info-container .pom{
+      padding-top: 17px;
+      padding-left: 5px;
+  }
+
+  .rez-info-container .b-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+    width: 53%;
+
+  }
+
+  .rez-info-container .b-col-pola{
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+    width: 50%;
+  }
+
+  .rez-info-container .pom1{
+      padding-left: 10px;
+  }
+
+  .rez-info-container .c-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:auto;
+    width: 90%;
+
+  }
+  .rez-info-container  .c-col-pola{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 50%;
+  }
+
+  .rez-info-container .c{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1000px;
+    height: 150px;
+    
+  }
+
+  .rez-info-container .d-row{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin:auto;
+    width: 60%;
+
+  }
+
+  .rez-info-container .d-col-pola{
+    display: flex;
+   flex-direction:row;
+   align-items: flex-start;
+
+    width: 50%;
+
+  }
+
+  .rez-info-container .speci{
+    margin-left: 150px;
+    padding-bottom: 30px;
+    
+    
+  }
+  .rez-info-container  .input-form2{
+    width: 80%;
+    height: 100px;
+    
+    
+    box-sizing: border-box;
+  }
+  .rez-info-container .c-col-pola-pom{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: flex-end;
+  }
+
+  .rez-info-container .pom5{
+    padding-left: 30px;
+  }
+
+  .rez-info-container .pom6{
+    padding-left: 40px;
+  }
+  
+  .rez-info-container .dno{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .rez-info-container .naslov{
+    height: 100px;
+  padding: 10px;
+  background: #eef2f3;
+  
+
+}
+.rez-info-container .rowe{
+  display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  align-content: center;
+    
+}
+
+.rez-info-container .columne {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+  }
+  .rez-info-container .column {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+    float: right;
+    width: 33%;
+  }
+  .rez-info-container .dugmad{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+    
+  }
+
+  .rez-info-container .title-modal{
+    
+    border-bottom: rgb(180, 177, 177) solid 1px ;
+  }
+
+  .rez-info-container  .mymodal{
+    padding: 50px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-color: black;
+  }
+  .rez-info-container .spec{
+      margin: 30px 0;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+    
+      justify-content: space-evenly;
+      
+      align-items: center;
+  }
+  .rez-info-container .Modal {
+    height: 100%;
+    width: 100%;
+  
+    background-color: #ffffff;
+    overflow: auto;
+  }
+  
+  .rez-info-container .Overlay {
+    position: fixed;
+  
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .rez-info-container .columnc {
+    display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 20%;
+
+    }

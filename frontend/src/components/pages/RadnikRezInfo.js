@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import Alert from "reactstrap/lib/Alert";
 import NavbarRadnik from '../NavbarRadnik';
-import './RadnikDodajRez.css'
+import './RadnikRezInfo.css'
 import Scheduler from '../MjesecView'
 import 'react-bootstrap'
 import DatePicker from "react-datepicker";
@@ -24,6 +24,7 @@ class RadnikRezInfo extends Component{
         super(props);
         console.log(props)
         this.state = {
+          stari_state:props.location.state.stari_state,
           startDate: new Date(props.location.state.rezervacija.start_date),
           endDate: new Date(props.location.state.rezervacija.end_Date),
           pocetniDatum: new Date(props.location.state.rezervacija.start_date),
@@ -72,14 +73,20 @@ class RadnikRezInfo extends Component{
  
        
       }
+      povratak = () => {
+        this.props.history.push('/radnik/pregled-rezervacija', {info:this.state.info, stari_state:this.state.stari_state});
+      }
       
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
     
       render() {
         return (
     <>
         <NavbarRadnik props={this.state.info}/>
         
-        <div className="dodaj-rez-container">
+        <div className="rez-info-container">
 
 
           <div className="forme-dodaj-rez">
@@ -126,11 +133,11 @@ class RadnikRezInfo extends Component{
             <div className="rowe">
         
           
-        <div className="column">  <input key="dor" disabled={true}  type="checkbox" checked={this.state.dorucak} value="dorucak"  /> dorucak  </div>       
-                    <div className="column">  <input key="ruc" disabled={true}  type="checkbox" checked={this.state.rucak} value="rucak"  /> rucak  </div> 
-                    <div className="column">  <input key="vec"  disabled={true} type="checkbox" checked={this.state.vecera} value="vecera"  /> vecera </div> 
-                    <div className="column">  <input key="spa" disabled={true}  type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
-                    <div className="column">  <input key="baz" disabled={true}  type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
+        <div className="columnc">  <input key="dor" style={{minWidth: "5px", maxWidth: "13px"}} disabled={true}  type="checkbox" checked={this.state.dorucak} value="dorucak"  /> dorucak  </div>       
+                    <div className="columnc">  <input key="ruc" style={{minWidth: "5px", maxWidth: "13px"}} disabled={true}  type="checkbox" checked={this.state.rucak} value="rucak"  /> rucak  </div> 
+                    <div className="columnc">  <input key="vec" style={{minWidth: "5px", maxWidth: "13px"}} disabled={true} type="checkbox" checked={this.state.vecera} value="vecera"  /> vecera </div> 
+                    <div className="columnc">  <input key="spa" style={{minWidth: "5px", maxWidth: "13px"}} disabled={true}  type="checkbox" checked={this.state.spa} value="spa"  /> spa  </div> 
+                    <div className="columnc">  <input key="baz" style={{minWidth: "5px", maxWidth: "13px"}} disabled={true}  type="checkbox" checked={this.state.bazen} value="bazen"  /> bazen </div>                  
                                   
                      
                       
@@ -200,10 +207,17 @@ class RadnikRezInfo extends Component{
           <div className="columne">
         <h5 >{this.state.opis_cijena}</h5>
           </div> </div>
-          
+          <div className="dno">
+            <button type="button" class="btn btn-info btn-lg btn-block" onClick={() =>{ 
+              this.povratak();
+              }}>Povratak</button>
+          </div>
         </div>
-        </div>
+        
         <br></br>  
+        <br></br>  
+        </div>
+        
     </>
         );
       }

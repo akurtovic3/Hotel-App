@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from "moment"
 import {  Route, withRouter } from "react-router-dom";
-
+import './pages/RadnikMojProfil.css'
 function Profile(props){
 
   return(
