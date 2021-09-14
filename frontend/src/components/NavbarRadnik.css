@@ -42,6 +42,8 @@
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
+    
+    cursor: pointer;
   }
   
   .nav-item {
@@ -59,6 +61,7 @@
   .nav-item-dropdown{
       padding-top: 20px;
      
+    cursor: pointer;
   }
 
   .davidimo{
@@ -92,10 +95,13 @@
   .iconn path{
     stroke: white;
   }
+  .iconn{
+    margin-bottom: 3px;
+  }
   .nav-item-dropdown-user{
     padding-top: 20px;
-    margin: auto
    
+    cursor: pointer;
 }
 .nav-item-dropdown-user:hover{
   background-color: gray;

@@ -113,7 +113,7 @@ export default class RoomProvider extends Component {
     capacity = parseInt(capacity);
     price = parseInt(price);
     // filter by type
-    if (type !== "all") {
+    if (type !== "svi tipovi") {
       tempRooms = tempRooms.filter(room => room.type === type);
     }
     // filter by capacity

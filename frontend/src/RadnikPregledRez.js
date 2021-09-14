@@ -14,6 +14,7 @@ import items from "./data";
 import {  Route, withRouter } from "react-router-dom";
 import Icon from '@ant-design/icons';
 
+import {GrClose} from 'react-icons/gr'
 import { BsDot } from 'react-icons/bs';
 import {GrUserManager} from 'react-icons/gr'
 import DetailsSvg from './icon/details.svg'; 
@@ -26,7 +27,7 @@ class RadnikPregledRez extends Component {
       ...props.location.state.info,
       rezervacije:props.location.state.stari_state ? props.location.state.stari_state.rezervacije : [],
       startDate: props.location.state.stari_state ? props.location.state.stari_state.startDate : new Date(),
-      endDate: props.location.state.stari_state ? props.location.state.stari_state.endDate : new Date(),
+      endDate: props.location.state.stari_state ? props.location.state.stari_state.endDate : new Date("2021-12-31"),
       mijanjanEndDate:props.location.state.stari_state ? props.location.state.stari_state.mijenjanEndDate : false,
       brSobe: props.location.state.stari_state ? props.location.state.stari_state.brSobe : "",
       ime: props.location.state.stari_state ? props.location.state.stari_state.ime : "",
@@ -41,6 +42,8 @@ class RadnikPregledRez extends Component {
       itemi: this.formatData(items), 
       brisanje_id: -1
     }
+    this.Filtriraj();
+    /*
     console.log("info u pregledu rez")
     console.log(this.state.info)
     //var itemi=this.formatData(items)
@@ -68,12 +71,12 @@ class RadnikPregledRez extends Component {
      rez["brojTel"]=result.data[0].br_tel;
      var niz=[...this.state.rezervacije, rez]
        niz.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
         return new Date(a.start_date) - new Date(b.start_date);
       });
        this.setState({rezervacije:niz}) 
-    }
+    }})
+     })
+  });*/
  /*    this.setState(state => ({
       ...state,
      //rezerv[i]["ime"]=result.data[0].ime;
@@ -83,7 +86,7 @@ class RadnikPregledRez extends Component {
      sobe:[...this.state.sobe, this.state.itemi[rez.id_soba-1].name]
     }))*/
     
-      })
+      
      
     /*  var itemi=this.formatData(items)
       itemi.map((soba)=>{
@@ -98,8 +101,7 @@ class RadnikPregledRez extends Component {
       }
       })
       console.log(this.state.sobe)*/
-    })
-  });
+   
 
      
       this.handleChangeBrSobe = this.handleChangeBrSobe.bind(this);
@@ -136,6 +138,16 @@ if(this.state.brisanje_id!=-1)
   
   })
 
+}
+ponistiFiltere=()=>{
+  this.setState({
+    startDate:  new Date(),
+      endDate:new Date("2021-12-31"),
+      brSobe:  "",
+      ime:  "",
+      prezime:  "",
+      brGostiju: -1,
+  })
 }
 Filtriraj=()=>{
   //var itemi=this.formatData(items)
@@ -275,7 +287,8 @@ provjeriJeLiPrazanNiz(){
                 endDate={this.state.endDate} 
                 onChange={date => this.setState(state => ({
                   ...state,
-                  startDate: date
+                  startDate: date,
+                  endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
                 }))}
               />
           </div>
@@ -319,10 +332,16 @@ provjeriJeLiPrazanNiz(){
 
         </div>
         <div class="rowe">
+           <div class="column"> 
+        <button type="button"  style={{ padding:"5px", width:"40%", height:"35px", color:"#17a2b8", background:"transparent", cursor: "pointer"}} class="btn" onClick={this.ponistiFiltere.bind(this)}><label style={{cursor:"pointer"}}><GrClose className="iconn"/> Poništi filtere</label></button>
+        </div>
+        </div>
+        <div class="rowe">
         <div class="column"> 
         <button type="button" class="btn btn-info btn-lg btn-block" onClick={this.Filtriraj.bind(this)}>Filtriraj</button>
         </div>
         </div>
+        <p textAlign="center" style={{marginBottom:"0px", fontSize:"12px"}}>*U listi se nalaze rezervacije čiji je datum dolaska veći ili jednak unesenom početnom datumu, a manji ili jednak krajnjem datumu u filteru!</p>
         </div>
         
         <div className="container-table">

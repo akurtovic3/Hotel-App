@@ -32,7 +32,7 @@ let transporter = nodemailer.createTransport({
   requireTLS: true,
   auth: {
       user: 'icrmail2021@gmail.com',
-      pass: 'icrmail1234'
+      pass: 'Icrmail1234!'
   }
 });
 
@@ -329,7 +329,7 @@ app.get("/filtrirajPregledRezervacija",  (req, res) => {
   niz=[...niz, start_date];
   let sql="SELECT * FROM rezervacija WHERE start_date>=?";
   console.log(req.query.mijenjanEndDate)
-  if (typeof req.query.end_date !== 'undefined' && req.query.end_date !== null && req.query.mijenjanEndDate && req.query.end_date>req.query.start_date){
+  if (typeof req.query.end_date !== 'undefined' && req.query.end_date !== null  && req.query.end_date>req.query.start_date){
     sql=sql+" AND start_date<=?"
     niz=[...niz, req.query.end_date];
   }
@@ -377,7 +377,7 @@ app.get("/filtrirajSpecijalnePonude",  (req, res) => {
   let sql=""
   console.log("uslo")
   //if (typeof req.query.end_date !== 'undefined' && req.query.end_date !== null && req.query.mijenjanEndDate && req.query.end_date>req.query.start_date){
-    sql="SELECT * FROM specijalne_ponude WHERE ((startDatePonude<=? AND endDatePonude<=? AND endDatePonude>?) OR (startDatePonude<? AND endDatePonude>?) OR (startDatePonude>=? AND endDatePonude<=?) OR (startDatePonude<=? AND endDatePonude>=?))";
+    sql="SELECT * FROM specijalne_ponude WHERE ((startDatePonude<=? AND endDatePonude<=? AND endDatePonude>?) OR (startDatePonude<=? AND endDatePonude>=?) OR (startDatePonude>=? AND endDatePonude<=?) OR (startDatePonude<=? AND endDatePonude>=?))";
     niz=[...niz, start_date,req.query.end_date, start_date, req.query.end_date, req.query.end_date, start_date, req.query.end_date, start_date, req.query.end_date];
   
   if (typeof req.query.text1 !== 'undefined'   && req.query.text1 !== null && req.query.text1 !=="" ){

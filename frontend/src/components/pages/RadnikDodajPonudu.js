@@ -239,16 +239,16 @@ class RadnikDodajPonudu extends Component{
             <div className="simbol"><FaCalendarDay size={35}/></div>
           <p style={{marginTop:"29px"}}>*Ponuda važi od datuma:</p>
           <div className="pom">
-            <DatePicker filterDate={d => {
-              return new Date() <d;
-                  }}
+            <DatePicker 
               selected={this.state.startDate}
               selectsStart
               startDate={this.state.startDate}
               endDate={this.state.endDate} 
+              minDate={new Date()}
               onChange={date => this.setState(state => ({
+                ...state,
                 startDate: date,
-                endDate: this.state.endDate<=date ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
+                endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
               }))}
             />
             </div>
@@ -258,16 +258,14 @@ class RadnikDodajPonudu extends Component{
             
               <p style={{marginTop:"29px"}}>*Ponuda važi do datuma:</p>
           <div className="pom">
-          <DatePicker  filterDate={d => {
-              return new Date() < this.state.startDate;
-                  }}
+          <DatePicker 
               selected={this.state.endDate}
               selectsEnd
               startDate={this.state.startDate}
               endDate={this.state.startDate}
               minDate={this.state.startDate}
               onChange={date => this.setState(state => ({
-                endDate: date
+                endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
               }))}
             />
             </div> 

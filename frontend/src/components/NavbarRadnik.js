@@ -81,7 +81,7 @@ function NavbarRadnik(props) {
                     state: {
                         info:props.props,
                     },}} style={{ textDecoration: 'none' }}>
-                    <DropdownItem>Pregled rezervacija</DropdownItem>
+                    <DropdownItem>Pregledaj rezervacije</DropdownItem>
                 </Link>
                 <Link to={{
                     pathname: '/radnik/dodaj-rezervaciju',
@@ -105,7 +105,7 @@ function NavbarRadnik(props) {
                     state: {
                         info:props.props,
                     },}} style={{ textDecoration: 'none' }}>
-            <DropdownItem>Pregled ponuda</DropdownItem>
+            <DropdownItem>Pregledaj ponude</DropdownItem>
             </Link>
             <Link to={{
                     pathname: '/radnik/dodaj-spec-pon',
@@ -120,7 +120,7 @@ function NavbarRadnik(props) {
             
             </li>
             
-            <li className='nav-item-dropdown-user'>
+            <li className='nav-item-dropdown'>
                 <ButtonDropdown isOpen={dropdownOpenUser} toggle={toggleUser} >
                 <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
                   <label><GrUserManager className="iconn"/>{props.props.username}</label>

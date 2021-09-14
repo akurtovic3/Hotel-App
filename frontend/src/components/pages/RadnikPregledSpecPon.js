@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 
 import Axios from "axios"
 import {  Route, withRouter } from "react-router-dom";
-
+import {GrClose} from 'react-icons/gr'
 
 const today = moment().format('YYYY-MM-DD')
 class RadnikPregledSpecPon extends Component {
@@ -21,13 +21,13 @@ class RadnikPregledSpecPon extends Component {
 
     this.state = { 
       startDate: new Date(),
-      endDate: new Date(),
+      endDate: new Date("2021-12-31"),
       text1:"",
       mijenjanEndDate: false,
       info:props.location.state.info,
       brSobe: "", //Za pretraživanje broja sobe koja je spada u spec ponudu
       specPon: [] };
-
+/*
       var specPon = [];
       Axios.get("http://localhost:3001/pregledSpecijalnihPonuda").then((result, fields)=>{
         specPon=result.data;
@@ -39,12 +39,21 @@ class RadnikPregledSpecPon extends Component {
           ...state,
           specPon:specPon
         }))
-      })
+      })*/ 
+      this.Filtriraj()
       this.handleChangeBrSobe = this.handleChangeBrSobe.bind(this);
       this.handleChangeText1 = this.handleChangeText1.bind(this);
       console.log(this.state.specPon)
 }
-
+ponistiFiltere=()=>{
+  this.setState({
+    startDate: new Date(),
+      endDate: new Date("2021-12-31"),
+      text1:"",
+      mijenjanEndDate: false,
+      brSobe: "",
+  })
+}
 componentDidMount() {
   window.scrollTo(0, 0)
 }
@@ -112,9 +121,11 @@ handleChangeText1(event) {
                 selectsStart
                 startDate={this.state.startDate}
                 endDate={this.state.endDate} 
+                minDate={new Date()}
                 onChange={date => this.setState(state => ({
                   ...state,
-                  startDate: date
+                  startDate: date,
+                  endDate:moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
                 }))}
               />
           </div>
@@ -129,7 +140,7 @@ handleChangeText1(event) {
                 minDate={this.state.startDate}
                 onChange={date => this.setState(state => ({
                   ...state,
-                  endDate: date,
+                  endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
                   
                   mijenjanEndDate:true
                 }))}
@@ -141,21 +152,28 @@ handleChangeText1(event) {
         <div class="rowe-sp">
           <div class="column-sp-sp">
           <p>Pretražite po nazivu specijalne ponude</p>
-          <input type="text" name="name" style={{width: "200px"}} onInput={this.handleChangeText1.bind(this)}  placeholder="Naziv specijalne ponude"/>
+          <input type="text" name="name"  value={this.state.text1} style={{width: "200px"}} onInput={this.handleChangeText1.bind(this)}  placeholder="Naziv specijalne ponude"/>
             
           </div>
           
           <div class="column-sp-sp">
           <p>Pretražite da li je soba uključena u neku ponudu</p>
-            <input type="text" id="brSobe" name="brSobe"    onInput={this.handleChangeBrSobe.bind(this)} style={{width: "130px"}} placeholder="Broj sobe [1,12]"></input>
+            <input type="text" id="brSobe" name="brSobe" value={this.state.brSobe}   onInput={this.handleChangeBrSobe.bind(this)} style={{width: "130px"}} placeholder="Broj sobe [1,12]"></input>
           </div>
 
 
         </div>
+        <div class="rowe">
+           <div class="column"> 
+        <button type="button" id="btn-x" style={{ padding:"5px", width:"20%", height:"35px", color:"#17a2b8", background:"transparent", cursor: "pointer"}} class="btn" onClick={this.ponistiFiltere.bind(this)}><label style={{cursor:"pointer"}}><GrClose className="iconn"/> Poništi filtere</label></button>
+        </div>
+        </div>
            <div class="rowe">
         <div class="column"> 
-        <button type="button" style={{marginTop: "20px", marginBottom: "20px"}} class="btn btn-info btn-lg btn-block" onClick={this.Filtriraj.bind(this)}>Filtriraj</button>
+
+        <button type="button" style={{marginTop: "0px", marginBottom: "0px"}} class="btn btn-info btn-lg btn-block" onClick={this.Filtriraj.bind(this)}>Filtriraj</button>
         </div>
+        
         </div> 
         </div>
         

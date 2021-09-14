@@ -13,7 +13,7 @@ class Datum2 extends React.Component{
       poc=new Date(props.period_poc)
     this.state = {
       startDate: props.ponuda?  (new Date(props.period_poc)>new Date(props.startDate) ?  new Date(props.period_poc) : new Date(props.startDate) ): new Date(props.startDate),
-      endDate: props.ponuda?  (new Date(props.period_poc)>new Date(props.startDate) ? moment(moment(new Date(props.period_poc))).add(1, 'd')._d  : moment(moment(new Date(props.startDate))).add(1, 'd')._d ):moment(moment(new Date(props.startDate))).add(1, 'd')._d ,
+      endDate: props.ponuda?  (new Date(props.period_poc)>new Date(props.startDate) ? moment(moment(new Date(props.period_poc))).add(1, 'd')._d  : moment(moment(new Date(props.startDate))).add(1, 'd')._d ):moment(props.startDate).format('YYYY-MM-DD')===moment(props.endDate).format('YYYY-MM-DD') ? moment(moment(new Date(props.startDate))).add(1, 'd')._d : props.endDate,
       period_poc: props.ponuda? poc : new Date(),
       period_kraj: props.ponuda? new Date(props.period_kraj) : new Date(),
       ponuda : props? props.ponuda : false
@@ -31,9 +31,7 @@ class Datum2 extends React.Component{
       <i class="far fa-calendar-alt"></i>
         <p>Datum dolaska:</p>
         
-       {this.state.ponuda && <DatePicker filterDate={d => {
-          return new Date() <d;
-              }}
+       {this.state.ponuda && <DatePicker 
           format="dd-MM-yyyy"
           selected={this.state.startDate}
           selectsStart
@@ -43,16 +41,14 @@ class Datum2 extends React.Component{
           endDate={this.state.endDate} // add the endDate to your startDate DatePicker now that it is defined
           onChange={date => {this.setState(state => ({
             ...state,
-            startDate: (date>=this.state.period_poc) ? date : this.state.period_poc,
-            endDate: (date>=this.state.period_poc) ? this.state.endDate<=date ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate: moment(moment(new Date(this.state.period_poc))).add(1, 'd')._d,
+            startDate:(moment(date).format('YYYY-MM-DD')>=moment(this.state.period_poc).format('YYYY-MM-DD')) ? date : this.state.period_poc,
+            endDate: (moment(date).format('YYYY-MM-DD')>=moment(this.state.period_poc).format('YYYY-MM-DD'))  ? moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate: moment(moment(new Date(this.state.period_poc))).add(1, 'd')._d,
           }));
           console.log("your value 2 -->", (date>=this.state.period_poc) ? date : this.state.period_poc)
-          this.props.handle1((date>=this.state.period_poc) ? date : this.state.period_poc);
+          this.props.handle1(this.state.startDate);
           }}
         />}
-        {!this.state.ponuda && <DatePicker filterDate={d => {
-          return new Date() <d;
-              }}
+        {!this.state.ponuda && <DatePicker 
           format="dd-MM-yyyy"
           selected={this.state.startDate}
           selectsStart
@@ -62,7 +58,7 @@ class Datum2 extends React.Component{
           onChange={date => {this.setState(state => ({
             ...state,
             startDate: date,
-            endDate: this.state.endDate<=date ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
+            endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
           }));
           this.props.handle1(this.state.startDate);
           }}
@@ -83,9 +79,9 @@ class Datum2 extends React.Component{
           minDate={this.state.startDate}
           maxDate={this.state.period_kraj}
           onChange={date => {this.setState(state => ({
-            endDate: (date<=this.state.period_kraj) ? date : this.state.period_kraj,
+            endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
           })); 
-          this.props.handle2((date<=this.state.period_kraj) ? date : this.state.period_kraj, this.state.startDate);
+          this.props.handle2(date , this.state.startDate);
           console.log("-----------------------------------")
           console.log(this.state.endDate)
           console.log(this.state.startDate)
@@ -101,7 +97,7 @@ class Datum2 extends React.Component{
           endDate={this.state.startDate}
           minDate={this.state.startDate}
           onChange={date => {this.setState(state => ({
-            endDate: date
+            endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
           })); 
           this.props.handle2(date, this.state.startDate);
         }}

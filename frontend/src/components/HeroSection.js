@@ -21,6 +21,7 @@ class HeroSection extends React.Component{
       endDate: moment(moment(new Date())).add(1, 'd')._d
     };
   }
+  
   render() {
   return (
     <div className='hero-container'>
@@ -38,7 +39,7 @@ class HeroSection extends React.Component{
           endDate={this.state.endDate} // add the endDate to your startDate DatePicker now that it is defined
           onChange={date => this.setState(state => ({
             startDate: date,
-            endDate: this.state.endDate<date? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
+            endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
           }))}
         />
       </div>
@@ -55,7 +56,7 @@ class HeroSection extends React.Component{
           endDate={this.state.startDate}
           minDate={this.state.startDate}
           onChange={date => this.setState(state => ({
-            endDate: date
+            endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
           }))}
         />
       </div>
@@ -64,8 +65,8 @@ class HeroSection extends React.Component{
     <button
     className={`btn btn--outline`}
     id="rezervisi-btn"
-    style={{ backgroundColor:"#5F9EA0", opacity:"80%", border: "2px solid white", color:"white", fontWeight: "1px", marginTop:"19px", fontSize:"20px",textShadow:"-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000;"}}
-      onClick={() => { history.push('/rezervacija/0', {
+    style={{ backgroundColor:"#5F9EA0", opacity:"80%", border: "2px solid white", color:"white", fontWeight: "1px", cursor:"pointer", marginTop:"19px", fontSize:"20px",textShadow:"-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000;"}}
+      onClick={() => {history.push('/rezervacija/0', {
         ponuda:false,
         info:{startDate:this.state.startDate, endDate:this.state.endDate}
       }) }}

@@ -32,6 +32,22 @@ table{
     float: right;
     width: 33%;
   }
+  .maincontainer .iconn path{
+    stroke:#17a2b8
+  }
+  .maincontainer #btn-x:hover .iconn path{
+    stroke:#17a2b8;
+    stroke-width: 2px;
+  }
+  
+  .maincontainer #btn-x:hover .label{
+    font-weight: bold;
+  }
+  .maincontainer #btn-x{
+    min-width: fit-content;
+    height: 30px;
+    background-color: green;
+  }
   .rowe-sp{
     display: flex;
     justify-content: center;

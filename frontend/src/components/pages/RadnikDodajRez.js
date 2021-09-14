@@ -579,7 +579,7 @@ izracunajCijenu(){
               onChange={date =>{ this.setState(state => ({
                 ...state,
                 startDate: date,
-                endDate: this.state.endDate<=date ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
+                endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
                 //listaSoba: this.provjeriZauzetostSoba(date, (this.state.endDate<date) ? date : this.state.endDate )
                 //listaSoba: listaSoba0
               }))
@@ -611,7 +611,7 @@ izracunajCijenu(){
               minDate={this.state.startDate}
               onChange={date =>{ this.setState(state => ({
                 ...state,
-                endDate: date,
+                endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
               }));
               if(this.state.prikazi_cijenu)
               this.setState({cijena_bez_popusta:0, cijena_s_popustom:0, prikazi_cijenu:false, prikazi_cijenu_s_pop: false})

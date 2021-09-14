@@ -78,7 +78,7 @@ function Navbar() {
               </Link>
               
               {button && <Link to='/radnik' className='nav-links-prijava'>
-              <button type="button" style={{fontSize : "18px"}} class="btn btn-outline-light">Prijava</button>
+              <button type="button" style={{fontSize : "18px"}} class="btn btn-outline-light">Prijava osoblja</button>
               </Link>}
             </li>
           </ul>

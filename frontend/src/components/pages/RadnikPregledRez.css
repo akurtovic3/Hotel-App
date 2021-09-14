@@ -147,6 +147,9 @@ table{
     background-color: #ffffff;
     overflow: auto;
   }
+  .maincontainer .iconn path{
+    stroke:#17a2b8
+  }
   
   .maincontainer .Overlay {
     position: fixed;
