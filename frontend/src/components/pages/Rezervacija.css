@@ -4,6 +4,9 @@
   padding: 0;
   font-family: 'Playfair Display', serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 .hero-container-rezerv {
   background: url('../../images/rezervacija.jpg') center center/cover repeat; 
   height: 100vh;
@@ -32,6 +35,7 @@
   text-align: center;
   width: 900px;
   margin: auto;
+  height: 70vh;
   background-color: rgba(255, 255, 255, 0.74);
   
 }
@@ -41,11 +45,19 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.step-one-container .row-s1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0px;
+  margin-bottom: 0;
+}
 .date-container-2{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 4rem;
+  padding: 1rem;
+  padding-top: 2rem;
   justify-content: center;
   color: black;
   font-size: x-large;
@@ -179,13 +191,37 @@
   border: 2px solid;
   
 }
+.multiStepContainer-one{
+  background: url('../../images/rezervacija.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 98vh;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid;
+  
+}
+.multiStepContainer-three{
+  background: url('../../images/rezervacija.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 120vh;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid;
+  
+}
 .multiStepContainer-four{
   background: url('../../images/rezervacija.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 200vh;
+  height: 230vh;
   width: 100%;
   justify-content: center;
   text-align: center;
@@ -630,10 +666,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 0px;
   width: 100%;
   justify-content: center;
-
   color: black;
   
 }
@@ -872,4 +907,50 @@
         border-color: gray;
         transition: 0.1s;
       }
+      .dugmad{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 40px;
+        
+      }
+      .title-modal{
+    
+        border-bottom: rgb(180, 177, 177) solid 1px ;
+      }
+    
+      .mymodal{
+        padding: 50px;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-color: black;
+      }
+      .Overlay {
+        position: fixed;
+      
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .swal-footer {
+        text-align: center;
+      }
+
+      .react-slideshow-container .default-nav:hover,
+.react-slideshow-container .default-nav:focus {
+  background: #fff;
+  color: #fff!important;
+}
+.react-slideshow-container .default-nav {
+  background-color: transparent!important;
+}
+      
       

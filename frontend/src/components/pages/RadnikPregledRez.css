@@ -3,7 +3,9 @@ table{
     color: blue;
 
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .maincontainer{
     display:flex;
     justify-content: center;
@@ -11,6 +13,7 @@ table{
     background: #eef2f3;
     width: 100%;
     padding-top: 20px;
+    min-height: 92vh;
 }
 
 .rowe{

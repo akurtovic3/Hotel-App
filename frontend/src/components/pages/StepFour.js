@@ -336,7 +336,7 @@ izracunajCijenu(){
         <h3>Informacije o sobi</h3> 
         <h5>Naziv sobe : {this.state.naziv}</h5>  <br/>
         <hr color="gray"></hr>
-        <h3>Pogodnosti koje su uključene u rezervaciju:</h3>
+        <h3>Pogodnosti koje su uključene u rezervaciju</h3>
         <h6>Cijena svake od pogodnosti zasebno: </h6>
         <h6>odrasla osoba - 3€, dijete - 1.5 €</h6>
         {this.provjeriImaLiPogodnosti() && <div>
@@ -354,9 +354,10 @@ izracunajCijenu(){
         <h5>Broj telefona: {this.state.brojTel}</h5>
         <br/>
         <hr color="gray"></hr>
-        {!this.state.ponuda && <div><input    className='input-form' placeholder='Kod za proračun popusta' 
+        {!this.state.ponuda && <div>
+        <h3>Unos koda za proračun popusta: </h3><input    className='input-form' placeholder='Kod za proračun popusta' 
         value={this.state.kod_unos} onChange={(e) => { this.promijeniKod(e);} } /> 
-         <h5 className="napomena">Ovdje upišite kod koji ste dobili unutar konfirmacijskog email-a za vašu prethodnu rezervaciju.</h5>
+         <h6>Ukoliko ste ranije vršili rezervaciju kod nas, unesite kod koji smo Vam poslali unutar konfirmacijskog email-a i ostvarite popust.</h6>
         {this.state.ispisi_error && <Alert color="danger" fade={false}>
             <p style={{color: "red", fontWeight: "bold"}}>Kod nije ispravan, pokušajte ponovo!</p>
           </Alert>}

@@ -1,7 +1,10 @@
 .profile-page{
   background-color: #eef2f3;
+  min-height: 98vh;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .profile-photo {
     padding: 20px;
     width: 200px;

@@ -39,6 +39,7 @@ class RadnikMojProfil extends React.Component {
     
   }
   upisiIzmjeneUBazu=()=>{
+    if(this.provjeriUnos()){
     Axios.put("http://localhost:3001/updateRadnik", 
     {
       id:this.state.id,
@@ -61,7 +62,8 @@ class RadnikMojProfil extends React.Component {
       
     })
   }
-  provjeriUnos=()=>{if(this.state.ime!="" && this.state.mail!="" && this.state.prezime!="" && this.state.tel!="" && this.state.username!="" && this.state.adresa!="") { this.setState(state => ({
+  }
+  provjeriUnos=()=>{if(this.state.ime!=="" && this.state.mail!=="" && this.state.prezime!=="" && this.state.tel!=="" && this.state.username!=="" && this.state.adresa!=="") { this.setState(state => ({
     ...state,
     error:false
   })); return true;} else { this.setState(state => ({
@@ -260,7 +262,7 @@ class RadnikMojProfil extends React.Component {
 
                       <h4>Uspješno ste ažurirali vaše podatke!</h4>
                       <div className="dugmad">
-                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Uredu</Button>
                       </div>
                   </Modal>
          </div>

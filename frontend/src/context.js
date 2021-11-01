@@ -11,7 +11,7 @@ export default class RoomProvider extends Component {
     featuredRooms: [],
     loading: true,
     //
-    type: "all",
+    type: "svi tipovi",
     capacity: 1,
     price: 0,
     minPrice: 0,

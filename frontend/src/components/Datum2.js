@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-
+import { alert } from 'react-alert'
 import moment from 'moment'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -39,13 +39,15 @@ class Datum2 extends React.Component{
           minDate={this.state.period_poc}
           maxDate={this.state.period_kraj}
           endDate={this.state.endDate} // add the endDate to your startDate DatePicker now that it is defined
-          onChange={date => {this.setState(state => ({
+          onChange={date => {
+            var izmjena=moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD')? true : false;
+            this.setState(state => ({
             ...state,
             startDate:(moment(date).format('YYYY-MM-DD')>=moment(this.state.period_poc).format('YYYY-MM-DD')) ? date : this.state.period_poc,
             endDate: (moment(date).format('YYYY-MM-DD')>=moment(this.state.period_poc).format('YYYY-MM-DD'))  ? moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate: moment(moment(new Date(this.state.period_poc))).add(1, 'd')._d,
           }));
           console.log("your value 2 -->", (date>=this.state.period_poc) ? date : this.state.period_poc)
-          this.props.handle1(this.state.startDate);
+          this.props.handle1(this.state.startDate, this.state.endDate, izmjena);
           }}
         />}
         {!this.state.ponuda && <DatePicker 
@@ -55,12 +57,14 @@ class Datum2 extends React.Component{
           startDate={this.state.startDate}
           minDate={this.state.ponuda? this.state.period_poc:new Date()}
           endDate={this.state.endDate} // add the endDate to your startDate DatePicker now that it is defined
-          onChange={date => {this.setState(state => ({
+          onChange={date => {
+            var izmjena=moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD')? true : false;
+            this.setState(state => ({
             ...state,
             startDate: date,
             endDate: moment(this.state.endDate).format('YYYY-MM-DD')<=moment(date).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : this.state.endDate
           }));
-          this.props.handle1(this.state.startDate);
+          this.props.handle1(this.state.startDate, this.state.endDate, izmjena);
           }}
         />}
       </div>
@@ -96,7 +100,9 @@ class Datum2 extends React.Component{
           startDate={this.state.startDate}
           endDate={this.state.startDate}
           minDate={this.state.startDate}
-          onChange={date => {this.setState(state => ({
+          onChange={date => {
+            
+            this.setState(state => ({
             endDate: moment(date).format('YYYY-MM-DD')===moment(this.state.startDate).format('YYYY-MM-DD') ? moment(moment(new Date(date))).add(1, 'd')._d : date,
           })); 
           this.props.handle2(date, this.state.startDate);

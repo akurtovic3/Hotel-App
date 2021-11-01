@@ -1,6 +1,7 @@
 .dodaj-rez-container{
     background-color: #eef2f3;
     padding-top: 40px;
+    min-height: 220vh;
 }
 
 /*MjesecView css*/
@@ -13,7 +14,9 @@
     transition: background 500ms;
     
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .dodaj-rez-container .zauzetost-container:hover{
     background: #cbe5e9;
 }

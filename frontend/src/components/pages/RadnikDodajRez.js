@@ -830,18 +830,16 @@ izracunajCijenu(){
 
                       <h4 style={{color:"green"}}>Rezervacija uspješno izvršena!</h4>
                       <div className="dugmad">
-                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Uredu</Button>
                       </div>
                   </Modal>
                   
 
           
         </div>
-        <div>   </div>
-        <p> </p>
-        <p>  </p>
-        <p> </p>
-        <p>  </p>
+        <div>  </div>
+        
+        
     </>
         );
       }

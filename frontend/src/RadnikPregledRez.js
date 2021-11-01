@@ -171,7 +171,7 @@ Filtriraj=()=>{
         rez["ime"]=result.data[0].ime;
         
        rez["prezime"]=result.data[0].prezime;
-       rez["soba"]=this.state.itemi[rez.id_soba-1].name;
+       rez["soba"]=this.state.itemi[rez.id_soba-1].name + " - S" + rez.id_soba;
        rez["email"]=result.data[0].email;
        rez["brojTel"]=result.data[0].br_tel;
        var niz=[...this.state.rezervacije, rez]
@@ -406,12 +406,13 @@ provjeriJeLiPrazanNiz(){
                     closeTimeoutMS={200}
                   >
                     <div className="modal-1">
-                    <h4 className="title-modal">Brisanje rezervacije</h4>
+                    <h4 className="title-modal" >Brisanje rezervacije</h4>
                       <h5>Da li zaista želite obrisati izabranu rezervaciju?</h5>
                       <div className="dugmad">
+                      
+                      <Button variant="outline-secondary"  size="lg" onClick={this.hideModal.bind(this)}>Ipak ne želim</Button>
                       <Button variant="danger" size="lg" onClick={() => {this.obrisiRezervaciju();
                       }}>Da</Button>
-                      <Button variant="outline-secondary"  size="lg" onClick={this.hideModal.bind(this)}>Cancel</Button>
                       </div>
                       </div>
                   </Modal>
@@ -428,7 +429,7 @@ provjeriJeLiPrazanNiz(){
 
                       <h4>Rezervacija pobrisana!</h4>
                       <div className="dugmad">
-                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Uredu</Button>
                       </div>
                   </Modal>
                   </td>

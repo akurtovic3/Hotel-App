@@ -32,6 +32,9 @@ table{
     float: right;
     width: 33%;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   .maincontainer .iconn path{
     stroke:#17a2b8
   }

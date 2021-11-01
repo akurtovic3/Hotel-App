@@ -73,7 +73,7 @@ function NavbarRadnik(props) {
             <li className='nav-item-dropdown'>
                 <ButtonDropdown isOpen={dropdownOpenRezerv} toggle={toggleRezerv} >
                 <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
-                    Rezervacija
+                    Rezervacije
                 </DropdownToggle>
                 <DropdownMenu>
                 <Link to={{
@@ -81,7 +81,7 @@ function NavbarRadnik(props) {
                     state: {
                         info:props.props,
                     },}} style={{ textDecoration: 'none' }}>
-                    <DropdownItem>Pregledaj rezervacije</DropdownItem>
+                    <DropdownItem>Pregledaj i upravljaj rezervacijama</DropdownItem>
                 </Link>
                 <Link to={{
                     pathname: '/radnik/dodaj-rezervaciju',
@@ -123,7 +123,7 @@ function NavbarRadnik(props) {
             <li className='nav-item-dropdown'>
                 <ButtonDropdown isOpen={dropdownOpenUser} toggle={toggleUser} >
                 <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
-                  <label><GrUserManager className="iconn"/>{props.props.username}</label>
+                  <label style={{cursor: "pointer"}}><GrUserManager className="iconn"/>{props.props.username}</label>
                 </DropdownToggle>
                 <DropdownMenu>
                 <Link to={{

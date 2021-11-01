@@ -33,7 +33,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           <img src={logo} alt="website logo" class="logo-navbar" width="60px" height="60px"/>
-            Vila Nezirović
+           Vila Nezirović 
             
           </Link>
           <div className='menu-icon' onClick={handleClick}>

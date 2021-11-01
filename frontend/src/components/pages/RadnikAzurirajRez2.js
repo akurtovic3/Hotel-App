@@ -82,7 +82,8 @@ class RadnikAzurirajRez2 extends Component{
           popust: props.location.state.rezervacija.popust,
           prikazi_cijenu_s_pop:props.location.state.rezervacija.popust? true: false,
           id_korisnik:props.location.state.rezervacija.id_korisnik,
-          prvi:true
+          prvi:true,
+          pocetni_popust:props.location.state.rezervacija.popust
         };
         this.provjeriZauzetostSoba(this.state.startDate, this.state.endDate)
         //this.provjeriUnos();
@@ -293,7 +294,7 @@ promijeniKod(e) {
 }
 provjeriKod=()=>{
   Axios.get("http://localhost:3001/provjeraKodaZaPopust?kod="+this.state.kod_unos).then((result, fields)=>{
-    if(!result.data.length){
+    if(!result.data.length || this.state.kod_unos===this.state.rezervacija.kod){
       //console.log("proslo rezervaciju")
       Axios.get("http://localhost:3001/kodZaPopust?kod="+this.state.kod_unos).then((result, fields)=>{
         if(result.data.length){
@@ -770,7 +771,7 @@ izracunajCijenu(){
           <div className="rowe" ><h5 className="napomena">Nakon završetka unosa korisnikovih želja ili izmjene podataka, proračunajte cijenu.</h5> </div>
 <hr></hr>
 
-          <div className="rowe" ><input  disabled={!this.state.izracunata_cijena} className='input-form' placeholder='Kod za proračun popusta' 
+        <div className="rowe" ><input  disabled={!this.state.izracunata_cijena} className='input-form' placeholder='Kod za proračun popusta' 
         value={this.state.kod_unos} onChange={(e) => { this.promijeniKod(e);} } />  </div>
          <div className="rowe" ><h5 className="napomena">Upišite kod prethodne rezervacije korisnika kako bi ostvario odgovarajući popust.</h5> </div>
         {this.state.ispisi_error && <Alert color="danger" fade={false}>
@@ -782,7 +783,7 @@ izracunajCijenu(){
               </button>
         <hr></hr>
         </div>
-        
+       
         {this.state.tacan_kod && this.state.prikazi_cijenu_s_pop && <div className="rowe"> <h3> Cijena s popustom od {this.state.popust}%: <b>{this.state.cijena_s_popustom} €</b></h3></div>}
          
 
@@ -810,7 +811,7 @@ izracunajCijenu(){
 
                       <h4 style={{color:"green"}}>Rezervacija uspješno ažurirana!</h4>
                       <div className="dugmad">
-                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Uredu</Button>
                       </div>
                   </Modal>
                   

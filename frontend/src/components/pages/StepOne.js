@@ -1,17 +1,20 @@
 import React, { useState, Component } from 'react'
 import FlavorForm from '../../components/Forma'
 import Datum2 from '../../components/Datum2'
-
+import { useAlert, positions, Provider as AlertProvider } from 'react-alert'
 import moment from 'moment'
 import '../../components/pages/Rezervacija.css'
 import Navbar from '../Navbar';
 import { Switch, Route, Link ,Router, useHistory, withRouter} from 'react-router-dom';
-
-
+import Alert from 'react-popup-alert'
+import Modal from 'react-modal';
+import swal from 'sweetalert';
+import { Button } from 'react-bootstrap';
 import 'react-bootstrap'
 import { Fragment } from 'react'
 const opcije=[0,1,2,3,4,5,6]
 const opcije2=[0,1,2,3,4,5,6]
+
 const prevStyle = {'background': '#33c3f0', 'border-width': '2px'}
 const nextStyle = {'background': '#33c3f0',  'border-width': '2px'}
 class StepOne extends Component{
@@ -30,7 +33,9 @@ class StepOne extends Component{
             period_poc: props.location.state.ponuda ? new Date(props.location.state.period_poc) : new Date(),
             period_kraj: props.location.state.ponuda ? new Date(props.location.state.period_kraj) : new Date(),
             idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : [],
-            error:false
+            error:false, 
+            prva_izmjena:true,
+            modal:false,
           };
         }
         catch{
@@ -45,7 +50,9 @@ class StepOne extends Component{
             period_poc: props.location.state.ponuda ? new Date(props.location.state.period_poc) : new Date(),
             period_kraj: props.location.state.ponuda ? new Date(props.location.state.period_kraj) : new Date(),
             idoviSobaPonude:props.location.state.ponuda ? props.location.state.idoviSobaPonude : [],
-            error:false
+            error:false,
+            prva_izmjena:true,
+            modal:false,
           };
         }
         console.log("prvi")
@@ -54,6 +61,22 @@ class StepOne extends Component{
       }
       componentDidMount() {
         window.scrollTo(0, 0)
+      }
+      hideModal = () => {
+        
+        this.setState(state => ({
+          ...state,
+          modal: false
+        }))
+        
+      }
+      showModal2 = () => {
+        
+        this.setState(state => ({
+          ...state,
+          modal: true
+        }))
+        
       }
       postaviKorak(indx) {
         this.setState(state => ({
@@ -80,10 +103,11 @@ class StepOne extends Component{
         korak:this.state.korak+1
       }))}
   render(){
+    
   return (
     <>
     <Navbar />
-    <div className="multiStepContainer">
+    <div className="multiStepContainer-one">
       <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}> 1</button>
         <button className="linija" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"5px"} : {background: 'silver', paddingTop:"5px"}}></button>
@@ -110,15 +134,19 @@ class StepOne extends Component{
         <div className="row-s1">
                 <Datum2 
                 
-                handle1={(value1)=>{
+                handle1={(value1, value2, izmjena)=>{
+                  if(izmjena && !this.state.prva_izmjena) swal("Datum odlaska je automatski postavljen na dan iza datuma dolaska!");
                console.log("your value -->",value1);
                this.setState(state => ({
                 ...state,
                 startDate:value1,
+                endDate:value2,
+                prva_izmjena: this.state.prva_izmjena? false:false
               }))
              }}  
              handle2={(value1, value2)=>{
                 //console.log("your value -->",value);
+                
                 this.setState(state => ({
                     ...state,
                     endDate:value1,
@@ -178,7 +206,8 @@ class StepOne extends Component{
             </div>
             
         </div>
-        <br></br>
+        <p textAlign="center">*Maksimalni ukupni broj gostiju za jednu rezervaciju može biti 6.</p> 
+        <p textAlign="center">*Datum dolaska i odlaska ne mogu biti na isti dan.</p> 
           <div className="row-step-3">
               <div className="first-column-3">
                       <Route render={({ history}) => (
@@ -208,7 +237,7 @@ class StepOne extends Component{
               </div>
               <br></br>
     </div>
-   
+    
     </Fragment>
     </div></div> 
     </>

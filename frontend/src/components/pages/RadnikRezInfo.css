@@ -180,6 +180,9 @@
   
 
 }
+html {
+  scroll-behavior: smooth;
+}
 .rez-info-container .rowe{
   display: flex;
     justify-content: center;

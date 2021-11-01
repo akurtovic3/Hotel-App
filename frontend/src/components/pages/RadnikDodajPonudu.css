@@ -13,7 +13,9 @@
   transition: background 500ms;
   height: 100%;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .dodaj-pon-container .zauzetost-container:hover{
   background: #cbe5e9;
 }

@@ -87,7 +87,7 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
       <>
       <Navbar/>
       
-           <div className='multiStepContainer'>
+           <div className='multiStepContainer-three'>
              <div>
         <div className='multi-step-btns'>
         <button className="multi-step-btn-style-1" style={this.state.korak===1 ? {background:'#1E90FF', paddingTop:"2px"} : {background: 'silver', paddingTop:"2px"}}> <FcCheckmark/></button>
@@ -140,9 +140,9 @@ provjeriUnos=()=>{if(this.state.ime!="" && this.state.email!="" && this.state.pr
                   </div>
                 </div>
                 {this.state.error && <Alert color="danger" fade={false}>
-            <p style={{color: "red", fontWeight: "bold"}}>Morate popuniti sva polja označena zvjezdicom!</p>
+            <p style={{color: "red", fontWeight: "bold"}}>Niste popunili sva polja označena zvjezdicom!</p>
           </Alert>}
-          <br></br>
+         <p textAlign="center">Polja označena zvjezdicom moraju biti popunjena.</p>
           <div className="row-step-3">
               <div className="first-column-3">
                       <Route render={({ history}) => (

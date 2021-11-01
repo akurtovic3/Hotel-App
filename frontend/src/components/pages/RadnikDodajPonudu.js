@@ -123,6 +123,14 @@ class RadnikDodajPonudu extends Component{
           selectedFile: event.target.files[0],
           loaded: 0,
         }))
+        const data = new FormData() 
+        data.append('file', event.target.files[0])
+        Axios.post("http://localhost:3001/uploadSliku", data)
+      .then(res => { // then print response status
+        console.log(res)
+        this.setState(state =>({...state, src:res.data}));
+        if(this.state.error) this.provjeriUnos()
+      })
       }
 
       onClickHandler = () => {
@@ -233,7 +241,7 @@ class RadnikDodajPonudu extends Component{
             <input  style={{marginBottom:"5px",  minWidth:"fit-content"}}  type="text"  size={60} placeholder='Navedite opis specijalne ponude' 
             value={this.state.opisPonude} onChange={(e) => { this.promijeniOpisPonude(e); if(this.state.error) this.provjeriUnos()} } /> 
           </div></div>
-
+<hr></hr>
           <div className="row">
             <div className="columne">
             <div className="simbol"><FaCalendarDay size={35}/></div>
@@ -271,7 +279,7 @@ class RadnikDodajPonudu extends Component{
             </div> 
             </div>
             </div>
-          
+          <hr></hr>
           <div className="a-row">
           <div className="a-col-pola">
           <p style={{minWidth:"fit-content", maxWidth:"fit-content"}}>*Broj soba koje ulaze u ponudu:</p>
@@ -312,7 +320,7 @@ class RadnikDodajPonudu extends Component{
               
               </div>
             </div>
-
+<hr></hr>
             <div className="cijena-dio">
               
                 <p style={{marginRight:"3px"}}> *Popust specijalne ponude:</p>
@@ -322,14 +330,14 @@ class RadnikDodajPonudu extends Component{
               
 
             </div>
-
+<hr></hr>
             <div className="rowe">
                 <p>*Odaberite sliku koja će se prikazivati uz specijalnu ponudu: </p>
                 </div>
                 <div className="rowe"> 
-                <div className="columnc">
+                <div className="column">
                 <input type="file" id="files" name="file"  accept="image/png, image/jpeg, image/jpg" onChange={this.onChangeHandler}/></div>
-                <div className="columnc"><Button  variant="info" onClick={this.onClickHandler}>Sačuvaj sliku za ovu ponudu</Button></div> 
+               {/* <div className="columnc"><Button  variant="info" onClick={this.onClickHandler}>Sačuvaj sliku za ovu ponudu</Button></div> */}
 
             </div>
             <div>
@@ -354,7 +362,7 @@ class RadnikDodajPonudu extends Component{
 
                       <h4>Specijalna ponuda uspješno dodana!</h4>
                       <div className="dugmad">
-                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Ok</Button>
+                      <Button variant="info" size="lg" onClick={this.hideModal.bind(this) }>Uredu</Button>
                       </div>
                   </Modal>
 

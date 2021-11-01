@@ -2,7 +2,9 @@
     background-color: #eef2f3;
     padding-top: 40px;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /*MjesecView css*/
 .azuriraj-rez-2-container .zauzetost-container{
     background-color: #eef2f3;

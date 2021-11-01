@@ -3,11 +3,17 @@ import './Cards.css';
 import {GrLinkDown} from 'react-icons/gr'
 import logo from '../images/logo.png';
 
-
+import AOS from 'aos';
+import "aos/dist/aos.css";
+import '../components/pages/Rezervacija.css'
+import 'react-slideshow-image/dist/styles.css'
+import './Button.css';
+import { Slide } from 'react-slideshow-image';
+import Slike from '../Slike'
 function Cards() {
   return (
     <div>
-      <div className="scroll-dio" style={{height:"20px",  backgroundColor:"white"}}><label onClick={() => {document.getElementsByClassName('scroll-dio')[0].scrollIntoView();}} style={{marginTop:"15px", marginRight:"20px", float:"right", cursor:"pointer"}}><GrLinkDown size={30}/></label></div>
+     {/*<div className="scroll-dio" style={{height:"20px",  backgroundColor:"white"}}><label onClick={() => {document.getElementsByClassName('scroll-dio')[0].scrollIntoView();}} style={{marginTop:"15px", marginRight:"20px", float:"right", cursor:"pointer"}}><GrLinkDown size={30}/></label></div>*/}
       <div className="naslov-1">
       <img src={logo} alt="website logo" class="center-image" width="60px" height="60px"/>
           <h1>Dobro došli u Vilu Nezirović na prelijepoj Ulcinjskoj rivijeri!</h1>
@@ -42,7 +48,7 @@ function Cards() {
 
       <div className='cards-1'>
           <div class="first-column">
-          <img src='../images/smjestaj.jpg'  width="620px" height="350px"/>
+         <Slike/>
           </div>
           <div class="second-column">
             
