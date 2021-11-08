@@ -9,7 +9,7 @@ export const user = {
 // createContext matches the shape that the consumers expect!
 export const UserContext = React.createContext({
   user,
-  getUserStatus: () => {},
-  postUserLogin: () => {},
-  getUserLogout: () => {}
+  getUserStatus: () => { },
+  postUserLogin: () => { },
+  getUserLogout: () => { }
 })

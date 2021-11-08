@@ -23,28 +23,28 @@ function App() {
   return (
     <>
       <Router onUpdate={() => window.scrollTo(0, 0)} >
-        
+
         <Switch>
           <Route path='/' exact component={Home} />
-         
+
           <Route path='/rezervacija/0' component={StepOne} />
           <Route path='/rezervacija/1' component={StepTwo} />
           <Route path='/rezervacija/2' component={StepThree} />
           <Route path='/rezervacija/3' component={StepFour} />
-          
+
           <Route path='/ponude' exact component={Ponude} />
           <Route path='/prijava' component={Prijava} />
           <Route path='/registracija' component={Registracija} />
           <Route exact path="/rooms/:slug" component={SingleRoom} />
-          <Route  exact path='/radnik' component={Radnik} />
-          <Route   path='/radnik-profil' component={RadnikMojProfil} />
-          <Route   path='/radnik/pregled-rezervacija' component={RadnikPregledRez} />
-          <Route   path='/radnik/pregled-spec-pon' component={RadnikPregledSpecPon} />
+          <Route exact path='/radnik' component={Radnik} />
+          <Route path='/radnik-profil' component={RadnikMojProfil} />
+          <Route path='/radnik/pregled-rezervacija' component={RadnikPregledRez} />
+          <Route path='/radnik/pregled-spec-pon' component={RadnikPregledSpecPon} />
           <Route path='/radnik/dodaj-rezervaciju' component={RadnikDodajRez} />
           <Route path='/radnik/dodaj-spec-pon' component={RadnikDodajPonudu} />
           <Route path='/radnik/edit-profil' component={RadnikEditProfil} />
-          <Route path='/radnik/azuriraj-rezervaciju' component={RadnikAzurirajRez}/>
-          <Route path='/radnik/info-rezervacija' component={RadnikRezInfo}/>
+          <Route path='/radnik/azuriraj-rezervaciju' component={RadnikAzurirajRez} />
+          <Route path='/radnik/info-rezervacija' component={RadnikRezInfo} />
         </Switch>
       </Router>
     </>

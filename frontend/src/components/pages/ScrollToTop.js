@@ -27,12 +27,12 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-//scroll-to-top classes: fixed, bottom:0, right:0
+  //scroll-to-top classes: fixed, bottom:0, right:0
   return (
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop}>
-          <h3 color= "white">Go up!</h3>
+          <h3 color="white">Go up!</h3>
         </div>
       )}
     </div>

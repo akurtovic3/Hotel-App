@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import './NavbarRadnik.css';
 import logo from '../images/logo-navbar.png';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import {  Route, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 import { BsDot } from 'react-icons/bs';
-import {GrUserManager} from 'react-icons/gr'
+import { GrUserManager } from 'react-icons/gr'
 function NavbarRadnik(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -16,7 +16,7 @@ function NavbarRadnik(props) {
   const togglePonuda = () => setOpenPonuda(!dropdownOpenPonuda);
   const [dropdownOpenRezerv, setOpenRezerv] = useState(false);
   const toggleRezerv = () => setOpenRezerv(!dropdownOpenRezerv);
-  
+
   const [dropdownOpenUser, setOpenUser] = useState(false);
   const toggleUser = () => setOpenUser(!dropdownOpenUser);
 
@@ -37,7 +37,7 @@ function NavbarRadnik(props) {
     showButton();
   }, []);
 
-  const pregledPonuda=()=>{
+  const pregledPonuda = () => {
     this.props.history.push({
       pathname: '/radnik/pregled-spec-pon',
       state: { info: props.props }
@@ -51,12 +51,12 @@ function NavbarRadnik(props) {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu} style={{ textDecoration: 'none' }}>
-          <img src={logo} alt="website logo" class="logo-navbar" width="60px" height="60px"/>
+            <img src={logo} alt="website logo" class="logo-navbar" width="60px" height="60px" />
             Vila Nezirović
-            
+
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-       {/*}   <li className='nav-item-not-drop'>
+            {/*}   <li className='nav-item-not-drop'>
 
               <Link
                 to={{
@@ -71,93 +71,98 @@ function NavbarRadnik(props) {
               </Link>
                 </li>*/}
             <li className='nav-item-dropdown'>
-                <ButtonDropdown isOpen={dropdownOpenRezerv} toggle={toggleRezerv} >
-                <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
-                    Rezervacije
+              <ButtonDropdown isOpen={dropdownOpenRezerv} toggle={toggleRezerv} >
+                <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none', color: '#FFF' }}>
+                  Rezervacije
                 </DropdownToggle>
                 <DropdownMenu>
-                <Link to={{
+                  <Link to={{
                     pathname: '/radnik/pregled-rezervacija',
                     state: {
-                        info:props.props,
-                    },}} style={{ textDecoration: 'none' }}>
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
                     <DropdownItem>Pregledaj i upravljaj rezervacijama</DropdownItem>
-                </Link>
-                <Link to={{
+                  </Link>
+                  <Link to={{
                     pathname: '/radnik/dodaj-rezervaciju',
                     state: {
-                        info:props.props,
-                    },}} style={{ textDecoration: 'none' }}>
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
                     <DropdownItem>Dodaj rezervaciju</DropdownItem>
-                </Link>
-                {console.log(props)}
+                  </Link>
+                  {console.log(props)}
                 </DropdownMenu>
-                </ButtonDropdown>
+              </ButtonDropdown>
             </li>
             <li className='nav-item-dropdown'>
-            <ButtonDropdown isOpen={dropdownOpenPonuda} toggle={togglePonuda}>
-            <DropdownToggle caret tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
-                Specijalne ponude
+              <ButtonDropdown isOpen={dropdownOpenPonuda} toggle={togglePonuda}>
+                <DropdownToggle caret tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none', color: '#FFF' }}>
+                  Specijalne ponude
             </DropdownToggle>
-            <DropdownMenu>
-            <Link to={{
+                <DropdownMenu>
+                  <Link to={{
                     pathname: '/radnik/pregled-spec-pon',
                     state: {
-                        info:props.props,
-                    },}} style={{ textDecoration: 'none' }}>
-            <DropdownItem>Pregledaj ponude</DropdownItem>
-            </Link>
-            <Link to={{
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
+                    <DropdownItem>Pregledaj ponude</DropdownItem>
+                  </Link>
+                  <Link to={{
                     pathname: '/radnik/dodaj-spec-pon',
                     state: {
-                        info:props.props,
-                    },}} style={{ textDecoration: 'none' }}>
-                <DropdownItem >Dodaj ponudu</DropdownItem>
-            </Link>
-            
-            </DropdownMenu>
-            </ButtonDropdown>
-            
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
+                    <DropdownItem >Dodaj ponudu</DropdownItem>
+                  </Link>
+
+                </DropdownMenu>
+              </ButtonDropdown>
+
             </li>
-            
+
             <li className='nav-item-dropdown'>
-                <ButtonDropdown isOpen={dropdownOpenUser} toggle={toggleUser} >
-                <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none',color: '#FFF' }}>
-                  <label style={{cursor: "pointer"}}><GrUserManager className="iconn"/>{props.props.username}</label>
+              <ButtonDropdown isOpen={dropdownOpenUser} toggle={toggleUser} >
+                <DropdownToggle tag="a" className="nav-link" caret className="davidimo" style={{ textDecoration: 'none', color: '#FFF' }}>
+                  <label style={{ cursor: "pointer" }}><GrUserManager className="iconn" />{props.props.username}</label>
                 </DropdownToggle>
                 <DropdownMenu>
-                <Link to={{
-                  pathname: "/radnik-profil",
-                  state: {
-                    info:props.props,
-                  },
-                  }}style={{ textDecoration: 'none' }}>
-                  <DropdownItem>Pregledaj profil</DropdownItem>
-                </Link>
-                <Link to={{
-                  pathname: "/radnik/edit-profil",
-                  state: {
-                    info:props.props,
-                  },
-                  }}style={{ textDecoration: 'none' }}>
-                  <DropdownItem>Uredi profil</DropdownItem>
-                 
-                </Link>
-                
-                <Link to={{
+                  <Link to={{
+                    pathname: "/radnik-profil",
+                    state: {
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
+                    <DropdownItem>Pregledaj profil</DropdownItem>
+                  </Link>
+                  <Link to={{
+                    pathname: "/radnik/edit-profil",
+                    state: {
+                      info: props.props,
+                    },
+                  }} style={{ textDecoration: 'none' }}>
+                    <DropdownItem>Uredi profil</DropdownItem>
+
+                  </Link>
+
+                  <Link to={{
                     pathname: "/radnik"
-                    ,}} style={{ textDecoration: 'none' }}>
+                    ,
+                  }} style={{ textDecoration: 'none' }}>
                     <DropdownItem>Odjavi se</DropdownItem>
-                </Link>
-                {console.log(props)}
+                  </Link>
+                  {console.log(props)}
                 </DropdownMenu>
-                </ButtonDropdown>
+              </ButtonDropdown>
             </li>
-            
+
           </ul>
-          
-          
-          
+
+
+
         </div>
       </nav>
     </>

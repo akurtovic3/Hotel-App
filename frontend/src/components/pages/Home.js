@@ -7,7 +7,7 @@ import Navbar from '../Navbar';
 import ScrollToTop from './ScrollToTop'
 
 
-import {  Route, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 class Home extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0)
@@ -18,10 +18,10 @@ class Home extends React.Component {
         <Navbar />
         <HeroSection />
         <Cards />
-        
-        
+
+
         <Footer />
-       
+
       </>
     );
   }

@@ -7,7 +7,7 @@ import RoomsList from "./RoomsList";
 function RoomContainer({ context, props, idovi, brGostiju }) {
   const { loading, sortedRooms, rooms } = context;
   if (loading) {
-    
+
     return <Loading />;
   }
   console.log(props)
@@ -15,7 +15,7 @@ function RoomContainer({ context, props, idovi, brGostiju }) {
   return (
     <>
       <RoomsFilter props={props} rooms={rooms} />
-      <RoomsList props={props} rooms={sortedRooms} idovi={idovi} brGostiju={brGostiju}/>
+      <RoomsList props={props} rooms={sortedRooms} idovi={idovi} brGostiju={brGostiju} />
     </>
   );
 }

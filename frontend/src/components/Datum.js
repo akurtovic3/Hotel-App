@@ -10,15 +10,15 @@ function Datum() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  
+
   return (
-      <div className="date-container">
-      <div className="column"> 
-      
+    <div className="date-container">
+      <div className="column">
+
         <p>Datum dolaska:</p>
         <DatePicker filterDate={d => {
-          return new Date() <d;
-              }}
+          return new Date() < d;
+        }}
           selected={startDate}
           selectsStart
           startDate={startDate}
@@ -26,13 +26,13 @@ function Datum() {
           onChange={date => setStartDate(date)}
         />
       </div>
-      
+
       <div className="column">
-      
-      <p>Datum odlaska:</p>
-       <DatePicker filterDate={d => {
+
+        <p>Datum odlaska:</p>
+        <DatePicker filterDate={d => {
           return new Date() < startDate;
-              }}
+        }}
           selected={endDate}
           selectsEnd
           startDate={startDate}
@@ -42,14 +42,14 @@ function Datum() {
         />
       </div>
       <div className="column">
-      <Button buttonStyle='btn--outline'>Rezerviši sada</Button>
+        <Button buttonStyle='btn--outline'>Rezerviši sada</Button>
       </div>
-      
-      </div>
-    );
-     
-   
-  
+
+    </div>
+  );
+
+
+
 }
 
 export default Datum;

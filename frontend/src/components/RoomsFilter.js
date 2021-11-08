@@ -21,7 +21,7 @@ const RoomsFilter = ({ props, rooms }) => {
     breakfast,
     pets
   } = context;
-  var capacity=props.brOdraslih+props.brDjece;
+  var capacity = props.brOdraslih + props.brDjece;
   // get unique types
   let types = getUnique(rooms, "type");
   // add all
@@ -39,10 +39,10 @@ const RoomsFilter = ({ props, rooms }) => {
       {item}
     </option>
   ));
-  
+
   return (
     <section className="filter-container">
-     
+
 
       <form className="filter-form">
         {/* select type */}
@@ -60,7 +60,7 @@ const RoomsFilter = ({ props, rooms }) => {
         </div>
         {/* end of select type */}
         {/* guests  */}
-        
+
         {/* end of guests */}
         {/* room price */}
         <div className="form-group">

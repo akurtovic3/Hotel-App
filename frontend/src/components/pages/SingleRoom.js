@@ -17,7 +17,7 @@ export default class SingleRoom extends Component {
   }
   static contextType = RoomContext;
 
-  
+
 
   // componentDidMount() {
   //   console.log(this.props);
@@ -52,16 +52,16 @@ export default class SingleRoom extends Component {
 
     return (
       <>
-        
-        <img src={images[0] || defaultBcg} class="image-single"  alt="single room" width="490px" />
-          
-            <Link exact to="/rezervacija/1" className="btn-primary">
-              Povratak
+
+        <img src={images[0] || defaultBcg} class="image-single" alt="single room" width="490px" />
+
+        <Link exact to="/rezervacija/1" className="btn-primary">
+          Povratak
             </Link>
-          
-        
-          
-        
+
+
+
+
         <section className="single-room">
           <div className="single-room-images">
             {defaultImages.map((item, index) => (

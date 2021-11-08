@@ -7,14 +7,14 @@ import Form from 'react-bootstrap/Form'
 import { Link } from 'react-router-dom';
 
 
-import {UserContext} from '../../UserContext'
+import { UserContext } from '../../UserContext'
 import Card from 'react-bootstrap/Card'
 
 /**
  * Login page, where users can submit login information. Upon successful login user is shown the Dashboard page.
  */
 class Login extends Component {
-  constructor () {
+  constructor() {
     super()
     this.handleInputChange = event => {
       const { name, value } = event.target
@@ -35,7 +35,7 @@ class Login extends Component {
     }
   }
 
-  isFormInValid () {
+  isFormInValid() {
     if (this.state.username.length < 4 || this.state.password.length < 5) {
       return true
     } else {
@@ -43,17 +43,17 @@ class Login extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <>
         <Container fluid>
-          
+
 
           <Row className='justify-content-center py-3'>
             <Col xs={11} sm={9} md={7} lg={5} xl={3}>
               <Card border='dark' className='text-center' bg='light'>
                 <Card.Header className='py-5'>
-                  
+
                 </Card.Header>
                 <Form onSubmit={e => this.handleSubmit(e)}>
                   <Card.Body className='py-3'>
@@ -91,18 +91,18 @@ class Login extends Component {
                   <Card.Footer>
                     <Row className='justify-content-center py-4'>
                       <Col xs={12} sm={10}>
-                     
-                     <Link to="/dashboard">
-                        <Button
-                          disabled={this.isFormInValid()}
-                          type='submit'
-                          size='block'
-                          variant='primary'
-                        >
+
+                        <Link to="/dashboard">
+                          <Button
+                            disabled={this.isFormInValid()}
+                            type='submit'
+                            size='block'
+                            variant='primary'
+                          >
                             Login
                         </Button>
-                    </Link>
-                        
+                        </Link>
+
 
                       </Col>
                     </Row>

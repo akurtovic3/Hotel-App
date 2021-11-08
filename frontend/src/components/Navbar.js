@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../images/logo-navbar.png';
 
-import {  Route, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -32,9 +32,9 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          <img src={logo} alt="website logo" class="logo-navbar" width="60px" height="60px"/>
-           Vila Nezirović 
-            
+            <img src={logo} alt="website logo" class="logo-navbar" width="60px" height="60px" />
+           Vila Nezirović
+
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -50,8 +50,9 @@ function Navbar() {
                 to={{
                   pathname: '/rezervacija/0',
                   state: {
-                      ponuda:false,
-                  },}}
+                    ponuda: false,
+                  },
+                }}
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -76,14 +77,14 @@ function Navbar() {
               >
                 <button type="button" class="btn btn-outline-light">Prijava</button>
               </Link>
-              
+
               {button && <Link to='/radnik' className='nav-links-prijava'>
-              <button type="button" style={{fontSize : "18px"}} class="btn btn-outline-light">Prijava osoblja</button>
+                <button type="button" style={{ fontSize: "18px" }} class="btn btn-outline-light">Prijava osoblja</button>
               </Link>}
             </li>
           </ul>
-          
-          
+
+
         </div>
       </nav>
     </>

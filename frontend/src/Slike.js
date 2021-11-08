@@ -22,52 +22,52 @@ import img9 from "./images/room-9.jpeg";
 import img10 from "./images/room-10.jpeg";
 import img11 from "./images/room-11.jpeg";
 import img12 from "./images/room-12.jpeg";
-const images= [
-    {
-      fields: {
-        file: {
-          url: img2
-        }
-      }
-    },
-    {
-      fields: {
-        file: {
-          url: img2
-        }
-      }
-    },
-    {
-      fields: {
-        file: {
-          url: img2
-        }
-      }
-    },
-    {
-      fields: {
-        file: {
-          url: img2
-        }
+const images = [
+  {
+    fields: {
+      file: {
+        url: img2
       }
     }
-  ]
+  },
+  {
+    fields: {
+      file: {
+        url: img2
+      }
+    }
+  },
+  {
+    fields: {
+      file: {
+        url: img2
+      }
+    }
+  },
+  {
+    fields: {
+      file: {
+        url: img2
+      }
+    }
+  }
+]
 function App() {
-    return (
-        <div className="slide-container">
-        <Slide scale={0.4}>
-        
-          
-            <img key="0" src={img8}  height= "400px" width="700px" />
-            <img key="1" src={room3} height= "400px"  width="700px" />
-            <img key="2" src={room4} height= "400px"  width="700px" />
-            <img key="3" src={img3} height= "400px"  width="700px" />
-            <img key="4" src={img4} height= "400px"  width="700px" />
-            <img key="5" src={img5} height= "400px"  width="700px" />
-            <img key="6" src={img6} height= "400px"  width="700px" />
-            <img key="7" src={img7} height= "400px"  width="700px" />
-          </Slide>
-          </div>
-    )
+  return (
+    <div className="slide-container">
+      <Slide scale={0.4}>
+
+
+        <img key="0" src={img8} height="400px" width="700px" />
+        <img key="1" src={room3} height="400px" width="700px" />
+        <img key="2" src={room4} height="400px" width="700px" />
+        <img key="3" src={img3} height="400px" width="700px" />
+        <img key="4" src={img4} height="400px" width="700px" />
+        <img key="5" src={img5} height="400px" width="700px" />
+        <img key="6" src={img6} height="400px" width="700px" />
+        <img key="7" src={img7} height="400px" width="700px" />
+      </Slide>
+    </div>
+  )
 }
 export default App;

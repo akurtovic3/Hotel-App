@@ -10,19 +10,19 @@ export default function Ponude() {
   return (
 
     <>
-    <Navbar/>
-    <div className='ponude-header'>
-      
-      <h1>Specijalne ponude</h1>
-      <ScrollToTop/>
-    </div>
-    
-    
-    <SpecPonudeContainer/>
-    <Footer />
-    
+      <Navbar />
+      <div className='ponude-header'>
+
+        <h1>Specijalne ponude</h1>
+        <ScrollToTop />
+      </div>
+
+
+      <SpecPonudeContainer />
+      <Footer />
+
     </>
-  
-  
+
+
   );
 }
